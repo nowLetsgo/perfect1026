@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            点击循环变色
+                1.获取元素
+                2.绑定点击事件
+                3.设置一个计数器
+                4.每次点击 让计数器累加
+                5.根据计数器的值，改变对应的颜色
+            
+            知识点：
+                给元素设置css样式：
+                    元素.style.样式的属性名 = ‘样式的属性值’
+                    这种设置样式的方法 其实是设置的是行内样式
+        */
+
+        var oBox = document.getElementById("box");
+        var num = 0; //默认偶数是hotpink
+        oBox.onclick = function () {
+            //每次触发 需要计数器累加
+            num++;
+            //判断计数器的奇数偶数，从而改变颜色
+            if (num % 2 === 0) {
+                //偶数
+                oBox.style.background = "hotpink";
+            } else {
+                oBox.style.background = "lightgreen";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

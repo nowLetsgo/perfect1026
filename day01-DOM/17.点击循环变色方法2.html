@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            点击循环变色(开关思想)
+                1.获取元素
+                2.绑定点击事件
+                3.设置一个开关
+                4.每次点击后 改变开关的状态
+                5.根据开关的状态 改变元素样式
+            
+        */
+
+
+        var oBox = document.getElementById("box");
+        var flag = true; //设置一个开关 默认true是hotpink
+        oBox.onclick = function () {
+            //事件的this直接指向绑定事件的对象
+            console.log(this);
+            flag = !flag;
+            if (flag) {
+                this.style.backgroundColor = "hotpink";
+            } else {
+                this.style.backgroundColor = "lightgreen";
+            }
+        }
+    </script>
+</body>
+
+</html>

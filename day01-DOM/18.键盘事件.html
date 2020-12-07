@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <div id="box">123</div>
+    <script>
+        /* 
+            键盘事件：
+                - 可输入的元素可以绑定键盘事件
+                - 如果想要对某个元素绑定键盘事件，可以直接绑定给document，然后事件触发之后，在控制某个元素
+
+            键盘事件
+                - keyup：按键抬起
+                - keydown：按键按下
+            
+            
+        
+        */
+
+        var oIpt = document.getElementById('ipt');
+        var oBox = document.getElementById('box');
+
+
+        oIpt.onkeyup = function () {
+            console.log("键盘抬起")
+        }
+
+        oIpt.onkeydown = function () {
+            console.log("键盘按下")
+        }
+
+
+        var num = 0;
+        document.onkeydown = function () {
+            num++;
+            // console.log("键盘按下document")
+            // 可以控制其他元素
+            oBox.style.marginLeft = num + "px";
+        }
+    </script>
+</body>
+
+</html>
