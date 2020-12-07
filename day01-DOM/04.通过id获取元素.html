@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        1
+    </ul>
+    <div id="con"></div>
+
+    <script>
+        /* 
+            document:在整个文档中获取
+            get:获取
+            ELement:元素(因为id是唯一的，所以元素只可能有1个，所以element是单数)
+            By：通过
+            ID：ID属性
+         */
+        var oBox = document.getElementById("box");
+        console.log(oBox);
+        oBox.style.color = "red";
+
+        //不获取也可以直接拿id使用，但是超级不建议
+        console.log(con);
+    </script>
+</body>
+
+</html>

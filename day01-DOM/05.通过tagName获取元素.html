@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <ul>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+
+    <script>
+        /*  
+            通过标签名获取的元素是复数，是一个集合，所以使用的时候要添加下标，或者获取的时候添加下标
+
+            document:在整个文档中获取
+            get:获取
+            ELement:元素(因为id是唯一的，所以元素只可能有1个，所以element是单数)
+            By：通过
+            TagName：标签名
+
+
+            类数组：
+                HTMLCollection
+                Object
+         */
+
+        //获取box元素，对获取的li做一个限制
+        var oBox = document.getElementById('box');
+        //获取所有的li标签
+        // var oLis = document.getElementsByTagName('li');
+        var oLis = oBox.getElementsByTagName('li');
+
+        console.log(oLis);
+
+        // 给所有的li标签设置一个背景颜色
+        //oLis不是一个元素 是一个集合，里边包含的内容才是元素，所以不能直接使用
+        // oLis.style.backgroundColor = "red";
+
+        //因为oLis是一个类数组，所以可以用添加下标的方式使用
+        /* oLis[0].style.backgroundColor = "red";
+        oLis[1].style.backgroundColor = "red";
+        oLis[2].style.backgroundColor = "red";
+        oLis[3].style.backgroundColor = "red"; */
+
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].style.backgroundColor = "red";
+        }
+    </script>
+</body>
+
+</html>
