@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li name="li1">2</li>
+        <li>3</li>
+        <li name="li1">4</li>
+    </ul>
+    <form action="###">
+        <input type="text" name="li1">
+    </form>
+    <script>
+        /* 
+            通过name属性获取元素，在ie9及以下 只能获取表单的name属性
+            所以几乎不适用
+        
+        */
+        var oLi1s = document.getElementsByName("li1");
+        console.log(oLi1s)
+    </script>
+</body>
+
+</html>

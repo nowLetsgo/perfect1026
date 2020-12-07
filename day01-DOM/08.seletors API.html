@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li class="li1">2</li>
+        <li>3</li>
+        <li class="li1">4</li>
+    </ul>
+    <script>
+        /* 
+            h5提供了两个新的获取元素的接口
+                这两种方法 都是可以使用任意css选择器获取元素的
+                - querySelector
+                    无论获取的元素是多个还是单个，都是获取的单个（第一个）
+                - querySelectorAll
+                    无论获取的元素是多个还是单个，都是一个集合
+                    获取到的集合是一个nodeList对象，自带forEach方法，不需要转数组
+        
+        */
+
+        //获取所有的li
+        var oLis = document.querySelectorAll("#box li");
+        console.log(oLis);
+        oLis.forEach(function (item) {
+            item.style.background = "red";
+        })
+
+
+        //获取所有的.li1
+        var oLi1s = document.querySelectorAll('#box .li1');
+        // var oLi1s = document.querySelector('#box .li1');
+        console.log(oLi1s)
+
+        //获取box
+        var oBox = document.querySelector('#box');
+        // var oBox = document.querySelectorAll('#box');
+        console.log(oBox)
+    </script>
+</body>
+
+</html>

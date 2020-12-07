@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li class="li1">2</li>
+        <li>3</li>
+        <li class="li1">4</li>
+    </ul>
+
+    <script>
+        /*  
+            通过类名获取的元素是复数，是一个集合，所以使用的时候要添加下标，或者获取的时候添加下标
+
+            document:在整个文档中获取
+            get:获取
+            ELements:元素(标签名获取的是复数)
+            By：通过
+            className：类名
+
+
+            类数组：
+                HTMLCollection
+                Object
+         */
+
+
+        var oBox = document.getElementById('box');
+        var oLi1s = oBox.getElementsByClassName("li1");
+        console.log(oLi1s)
+
+        /* 
+            类数组转数组：
+                - 新方法：Array.from()
+
+                - 旧方法：Array.prototype.slice.call(类数组)
+    
+        */
+        //类数组转数字 并使用数组的forEach方法
+        var re = Array.prototype.slice.call(oLi1s);
+        console.log(re);
+        re.forEach(function (item, index) {
+            item.style.backgroundColor = "red";
+        })
+
+
+        //直接使用forEach遍历
+        Array.prototype.forEach.call(oLi1s, function (item, index) {
+            item.style.backgroundColor = "yellow";
+        })
+    </script>
+</body>
+
+</html>
