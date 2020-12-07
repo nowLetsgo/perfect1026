@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        /* 
+            失去焦点：
+                当表单变成不可输入状态的时候，就是失去焦点
+
+            获取焦点：
+                当表单变成可输入状态的时候，就是获取焦点
+
+            失去焦点事件：onblur
+            获取焦点事件：onfocus
+        */
+
+        //测试
+        var oIpt = document.getElementById('ipt');
+        oIpt.onfocus = function () {
+            console.log("获取焦点")
+        }
+        oIpt.onblur = function () {
+            console.log("失去焦点")
+        }
+    </script>
+</body>
+
+</html>

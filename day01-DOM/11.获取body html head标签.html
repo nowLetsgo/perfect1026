@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var oHtml = document.getElementsByTagName("html")[0];
+        var oBody = document.getElementsByTagName("body")[0];
+        var oHead = document.getElementsByTagName("head")[0];
+
+        console.log(oHtml, oBody, oHead)
+
+
+        /* 
+            js提供了获取html  body  head的简便方法
+                document.body:获取body元素
+                documemt.head：获取head元素
+                document.documentElement：获取html元素
+        */
+
+        console.log(oHtml === document.documentElement)
+        console.log(oBody === document.body)
+        console.log(oHead === document.head)
+    </script>
+</body>
+
+</html>

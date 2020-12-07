@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt" value="请输入电话号码">
+    <script>
+        /* 
+            1.获取元素
+            2.对元素绑定获取和失去焦点事件
+            3.当获取焦点的时候，判断是否符合清空的条件，如果符合就清空
+            4.当失去焦点的时候，判断是否符合填写默认值的条件，符合就填写默认值
+
+            知识点：
+                获取表单的值：
+                    元素.value属性 ，并且表单是值一定是一个字符串
+        */
+
+        var oIpt = document.getElementById('ipt');
+        //获取焦点
+        oIpt.onfocus = function () {
+            //判断内容是否是 ‘请输入电话号码’，如果是则说明是默认值，需要清空
+            if (oIpt.value === '请输入电话号码') {
+                oIpt.value = "";
+            }
+        }
+
+        //失去焦点
+        oIpt.onblur = function () {
+            //当内容为空的时候，回复默认值
+            if (oIpt.value === '') {
+                oIpt.value = '请输入电话号码';
+            }
+        }
+    </script>
+</body>
+
+</html>

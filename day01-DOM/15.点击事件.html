@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            点击事件：
+                左键单击：onclick (在元素上按下并在元素上抬起 就完成了单击事件)
+                左键双击：ondblclick(一般会触发两次单击，两次单击间隔低于300ms则为双击)
+                右键单击：oncontextmenu
+        */
+
+        var oBox = document.getElementById('box');
+        //左键单击
+        oBox.onclick = function () {
+            console.log("左键单击")
+        }
+
+        //左键双击
+        oBox.ondblclick = function () {
+            console.log("左键双击")
+        }
+
+        //右键单击
+        oBox.oncontextmenu = function () {
+            console.log("右键单击");
+
+            //右键单击的时候，会默认有菜单，可以阻止默认事件
+            //最粗暴的阻止默认事件方法
+            return false;
+        }
+    </script>
+</body>
+
+</html>
