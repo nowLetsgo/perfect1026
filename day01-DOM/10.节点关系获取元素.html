@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <!-- <li>注释</li> -->
+        <li>3</li>
+    </ul>
+    <script>
+        // var oLis = document.querySelectorAll('#box li');
+        var oBox = document.getElementById('box');
+        var oLis = oBox.getElementsByTagName("li")
+
+        //parentNode:获取元素的父元素节点(全兼容)
+        console.log(oLis[0].parentNode) //ul
+        console.log(oLis[0].parentNode.parentNode) //body
+        console.log(oLis[0].parentNode.parentNode.parentNode) //html
+        console.log(oLis[0].parentNode.parentNode.parentNode.parentNode) //#document
+        console.log(oLis[0].parentNode.parentNode.parentNode.parentNode.parentNode) //null
+        // console.log(oLis[0].parentNode.parentNode.parentNode.parentNode.parentNode.parentNode) //null
+
+
+
+        //children:获取某个元素中所有的子元素节点（IE8可以获取到注释节点-解决方法：避免在这里书写注释）
+        console.log(oBox.children);
+
+
+
+        /* 
+            firstChild:
+                - 在主流浏览器中获取第一个子节点（可能是文本节点）
+                - 在IE8及以下 获取的是第一个子元素节点
+
+            firstElementChild
+                - 在主流浏览器中获取到的是第一个子元素节点
+                - 在ie8及以下 不识别
+        */
+        /* console.log(oBox.firstChild.nodeName);
+        console.log(oBox.firstElementChild.nodeName); */
+
+
+        //特征检测法书写兼容（不考虑浏览器什么版本，只考虑这个属性浏览器是否支持）
+        //一定要把firstElementChild写在if中，因为ie会得到结果为null 自动转为false
+        //而firstChild 所有的浏览器都支持，只不过获取的值不一样而已
+        /* if (oBox.firstElementChild) {
+            console.log(oBox.firstElementChild.nodeName + "~")
+        } else {
+            console.log(oBox.firstChild.nodeName + "~")
+        } */
+
+        //封装一个函数，获取第一个子元素节点的函数
+
+        function getFirstChild(obj) {
+            /* if (obj.firstElementChild) {
+                return obj.firstElementChild;
+            } else {
+                return obj.firstChild;
+            } */
+            return obj.firstElementChild ? obj.firstElementChild : obj.firstChild;
+        }
+
+        var re = getFirstChild(oBox);
+        console.log(re.nodeName);
+
+
+
+
+
+        //其他封装
+        //获取最后一个子元素节点封装
+        function getLastChild(obj) {
+            return obj.lastElementChild ? obj.lastElementChild : obj.lastChild;
+        }
+
+        var re = getLastChild(oBox);
+        console.log(re);
+
+
+        //获取下一个兄弟元素节点
+        function getNextSilbling(obj) {
+            return obj.nextElementSibling ? obj.nextElementSibling : obj.nextSibling;
+        }
+
+        var re = getNextSilbling(oLis[1]);
+        console.log(re);
+
+
+        //获取上一个兄弟元素节点
+        function getPreviousSilbling(obj) {
+            return obj.previousElementSibling ? obj.previousElementSibling : obj.previousSibling;
+        }
+
+        var re = getPreviousSilbling(oLis[1]);
+        console.log(re);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">添加</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        //使用旧版本获取元素 是动态的（只要元素发生变化，获取的内容就会发生变化）
+        /* var oBtn = document.getElementById("btn");
+        var oBox = document.getElementById('box');
+        var oLis = oBox.getElementsByTagName("li");
+
+        //给btn绑定一个点击事件
+        oBtn.onclick = function () {
+            //遍历所有的li li有几个 就会向ul中插入几个新的li
+            for (var i = 0; i < oLis.length; i++) {
+                //创建一个新的li
+                var oNewLi = document.createElement("li");
+                //给新的li一个内容
+                oNewLi.innerHTML = "新的li"
+                //把新的li插入到ul中
+                oBox.appendChild(oNewLi);
+            }
+        } */
+
+
+
+        //新版本获取元素是静态的，一旦获取完成，则不再受元素修改后的任何影响
+        /* var oBtn = document.getElementById("btn");
+        var oBox = document.getElementById('box');
+        var oLis = oBox.querySelectorAll("li");
+        //给btn绑定一个点击事件
+        oBtn.onclick = function () {
+            //遍历所有的li li有几个 就会向ul中插入几个新的li
+            for (var i = 0; i < oLis.length; i++) {
+                //创建一个新的li
+                var oNewLi = document.createElement("li");
+                //给新的li一个内容
+                oNewLi.innerHTML = "新的li"
+                //把新的li插入到ul中
+                oBox.appendChild(oNewLi);
+            }
+
+        } */
+    </script>
+</body>
+
+</html>
