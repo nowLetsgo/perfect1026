@@ -55,6 +55,29 @@
         Array.prototype.forEach.call(oLi1s, function (item, index) {
             item.style.backgroundColor = "yellow";
         })
+
+
+
+        //slice一定会根据调用slice的值返回一个新数组
+        var arr = [1, 2, 3];
+        var re = arr.slice(1);
+        console.log(re, arr);
+
+
+        console.log(Array.prototype.slice.call(oLi1s))
+        console.log([].slice.call(oLi1s))
+
+
+
+        /* function fn(a, b, c) {
+
+        }
+        fn.call(window, 1, 2, 3)
+        fn.apply(window, [1, 2, 3])
+
+        [1, 2, 3].forEach(function (item, index, array) {
+
+        }) */
     </script>
 </body>
 

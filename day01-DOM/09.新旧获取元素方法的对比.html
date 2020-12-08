@@ -24,7 +24,8 @@
         //给btn绑定一个点击事件
         oBtn.onclick = function () {
             //遍历所有的li li有几个 就会向ul中插入几个新的li
-            for (var i = 0; i < oLis.length; i++) {
+            var l = oLis.length;
+            for (var i = 0; i < l; i++) {
                 //创建一个新的li
                 var oNewLi = document.createElement("li");
                 //给新的li一个内容

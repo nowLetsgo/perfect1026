@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="outer">
+        <textarea id="text"></textarea>
+        <p>还可以输入<span id="num">40</span>字</p>
+    </div>
+    <script>
+        /* 
+            - 对textarea绑定键盘按下或者抬起事件
+            - 当事件发生的时候，计算输入框文字的长度
+            - 计算剩余输入字数，并赋值给span标签
+            - 如果字数低于0 则文字变红
+
+            知识点：
+                给一个元素内容重新赋值 使用textContent属性
+
+
+         */
+
+        var oText = document.getElementById('text');
+        var oNum = document.getElementById('num');
+
+        oText.onkeyup = function () {
+            //获取表单的内容使用value属性
+            var textLength = oText.value.length;
+            //计算剩余字数
+            var conNum = 40 - textLength;
+
+            /* //添加判断，如果剩余字数小于0 则文字变红
+            if (conNum < 0) {
+                oNum.style.color = "red";
+            } else {
+                oNum.style.color = "#000";
+            } */
+
+            //如果剩余字数小于0，则不允许输入内容了
+            if (conNum < 0) {
+                oText.value = oText.value.substr(0, 40)
+            }
+
+            //把字数给span标签
+            oNum.textContent = conNum;
+        }
+    </script>
+</body>
+
+</html>
