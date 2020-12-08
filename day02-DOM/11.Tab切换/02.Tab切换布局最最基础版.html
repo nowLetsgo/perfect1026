@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 600px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        .tab .title {
+            display: flex;
+        }
+
+        .title h2 {
+            width: 198px;
+            border: 1px solid #000;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .title h2.active {
+            background-color: turquoise;
+            color: #fff;
+        }
+
+        .con section {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+
+            display: none;
+        }
+
+        .con section.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- tab切换 -->
+        <div class="tab">
+            <!-- 标题 -->
+            <header class="title">
+                <h2 class="active">标题1</h2>
+                <h2>标题2</h2>
+                <h2>标题3</h2>
+            </header>
+            <!-- 内容 -->
+            <div class="con">
+                <section class="show">内容一</section>
+                <section>内容二</section>
+                <section>内容三</section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* 
+            对每一个标题都绑定点击事件
+
+            知识点：
+                每一个元素对象都有一个classList属性，这个属性上有add、remove、toggle、has等操作类名的方法
+        
+         */
+
+        var oH2s = document.querySelectorAll('.title h2');
+        var oSections = document.querySelectorAll('.con section');
+
+
+        oH2s[1].onclick = function () {
+            //给当前点击的元素添加
+            oH2s[1].classList.add("active");
+            oSections[1].classList.add("show");
+
+            //去掉其他元素的类名
+            oH2s[0].classList.remove("active");
+            oH2s[2].classList.remove("active");
+            oSections[0].classList.remove("show");
+            oSections[2].classList.remove("show");
+        }
+
+
+
+
+
+        oH2s[0].onclick = function () {
+            //给当前点击的元素添加
+            oH2s[0].classList.add("active");
+            oSections[0].classList.add("show");
+
+            //去掉其他元素的类名
+            oH2s[1].classList.remove("active");
+            oH2s[2].classList.remove("active");
+            oSections[1].classList.remove("show");
+            oSections[2].classList.remove("show");
+        }
+
+
+
+        oH2s[2].onclick = function () {
+            //给当前点击的元素添加
+            oH2s[2].classList.add("active");
+            oSections[2].classList.add("show");
+
+            //去掉其他元素的类名
+            oH2s[0].classList.remove("active");
+            oH2s[1].classList.remove("active");
+            oSections[0].classList.remove("show");
+            oSections[1].classList.remove("show");
+        }
+    </script>
+</body>
+
+</html>

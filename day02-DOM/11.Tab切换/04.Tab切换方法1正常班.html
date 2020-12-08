@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 600px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        .tab .title {
+            display: flex;
+        }
+
+        .title h2 {
+            width: 198px;
+            border: 1px solid #000;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .title h2.active {
+            background-color: turquoise;
+            color: #fff;
+        }
+
+        .con section {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+
+            display: none;
+        }
+
+        .con section.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- tab切换 -->
+        <div class="tab">
+            <!-- 标题 -->
+            <header class="title">
+                <h2 class="active">标题1</h2>
+                <h2>标题2</h2>
+                <h2>标题3</h2>
+            </header>
+            <!-- 内容 -->
+            <div class="con">
+                <section class="show">内容一</section>
+                <section>内容二</section>
+                <section>内容三</section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* 
+            对每一个标题都绑定点击事件
+
+            知识点：
+                每一个元素对象都有一个classList属性，这个属性上有add、remove、toggle、has等操作类名的方法
+        
+         */
+
+        var oH2s = document.querySelectorAll('.title h2');
+        var oSections = document.querySelectorAll('.con section');
+
+
+        //外层的for循环只是为了遍历所有的h2 然后给所有的h2绑定点击事件，不会对里边内容有任何影响
+        //因为事件里的作用域也声明i了，所以外层的全局i是影响不了里边作用域的
+        for (var i = 0; i < oH2s.length; i++) {
+            oH2s[i].onclick = function () {
+                //内部的for循环 只是为了遍历所有的h2，判断哪一个是用户点击的，从而做出相应的操作
+                for (var i = 0; i < oH2s.length; i++) {
+                    if (oH2s[i] === this) {
+                        oH2s[i].classList.add("active")
+                        oSections[i].classList.add("show")
+                    } else {
+                        oH2s[i].classList.remove("active")
+                        oSections[i].classList.remove("show")
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
