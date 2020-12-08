@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <p id="con"></p>
+    <script>
+        /* 
+            只要表单的内容改变，则p标签的内容会跟着改变
+            - 获取元素
+            - 对表单绑定input事件
+            - 每次触发事件的时候，获取到value 并赋值给p标签
+        
+        */
+        var oIpt = document.getElementById('ipt');
+        var oCon = document.getElementById('con');
+
+        oIpt.oninput = function () {
+            oCon.textContent = this.value;
+        }
+    </script>
+</body>
+
+</html>

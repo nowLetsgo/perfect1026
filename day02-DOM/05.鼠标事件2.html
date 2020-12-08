@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            overflow: hidden;
+        }
+
+        #box p {
+            height: 100px;
+            margin: 100px 0;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p></p>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        /* 
+            鼠标事件2：
+                onmouseover:鼠标移入(会触发冒泡)
+                onmouseout:鼠标移出(会触发冒泡)
+
+
+
+                onmouseenter:鼠标移入
+                onmouseleave:鼠标移出
+
+         */
+
+
+        /* oBox.onmouseover = function () {
+            console.log("鼠标移入");
+        }
+        oBox.onmouseout = function () {
+            console.log("鼠标移出");
+        } */
+
+
+        /* oBox.onmouseenter = function () {
+            console.log("鼠标移入");
+        }
+        oBox.onmouseleave = function () {
+            console.log("鼠标移出");
+        } */
+    </script>
+</body>
+
+</html>

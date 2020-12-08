@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+            overflow: auto;
+        }
+    </style>
+    <!-- <script>
+        //没有加载元素 所以是null
+        var oBox = document.getElementById('box');
+        console.log(oBox); //null
+
+        var oImg = document.getElementById('img');
+        console.log(oImg); //null
+    </script> -->
+
+
+    <script>
+        //window.onload可以可以书写在任意位置，不要考虑等待代码的执行
+        //window.onload因为使用的是DOM0级绑定方式，所以目前只能在一个页面中使用1次，否则会被覆盖
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            console.log(oBox);
+
+            var oImg = document.getElementById('img');
+            console.log(oImg);
+            console.log(oImg.offsetWidth);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+    <img src="./images/02.png" alt="" id="img">
+
+    <script>
+        var oImg = document.getElementById('img');
+        //打印图片的宽度 
+        //在这里是获取不到图片的宽度的，因为加载图片是需要一个过程的
+        //而代码执行到这个地方的时候，图片可能没有加载完毕，那么就获取不到宽度
+        console.log(oImg.offsetWidth);
+
+        /* 
+            window.onload：
+                等待页面中的DOM节点 以及 所有的资源（图片 音频 视频 程序等等）全部加载完毕以后 才触发事件
+        
+         */
+    </script>
+</body>
+
+</html>

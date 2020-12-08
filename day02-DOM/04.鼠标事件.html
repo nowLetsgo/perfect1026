@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        /* 
+            鼠标事件：
+                onmousedown：鼠标按下
+                onmouseup：鼠标抬起
+                onmousemove：鼠标移动
+
+         */
+
+        oBox.onmousedown = function () {
+            this.style.background = "hotpink";
+        }
+        oBox.onmouseup = function () {
+            this.style.background = "aquamarine"
+        }
+
+        var lastTime = 0; //暂时给初始时间一个0
+        oBox.onmousemove = function () {
+            //每次移动的时候获取当前的时间
+            var nowTime = Date.now();
+            //计算和上一次的时间差
+            var reduceTime = nowTime - lastTime;
+
+            //计算好差值之后，把这一次的时间变成lastTime
+            lastTime = nowTime;
+
+            console.log(reduceTime);
+
+            // console.log("鼠标移动了")
+        }
+    </script>
+</body>
+
+</html>

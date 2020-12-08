@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt1">
+    <input type="text" id="ipt2">
+    <script>
+        /* 
+            表单改变事件：
+                input： 当表单内容发生变化的时候触发
+                change： 当表单内容发生变化的时候并失去焦点的时候触发
+         */
+
+        var oIpt1 = document.getElementById('ipt1');
+        var oIpt2 = document.getElementById('ipt2');
+        oIpt1.oninput = function () {
+            console.log("当表单内容发生变化的时候触发")
+        }
+        oIpt2.onchange = function () {
+            console.log("当表单内容发生变化的时候并失去焦点的时候触发")
+        }
+    </script>
+</body>
+
+</html>
