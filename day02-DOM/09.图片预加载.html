@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 600px;
+            height: 30px;
+            border: 2px solid #000;
+        }
+
+        #outer #con {
+            width: 0%;
+            height: 30px;
+            background-color: turquoise;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="con"></div>
+    </div>
+    <p>已经加载<span id="per">0</span>%</p>
+    <script>
+        var imgsrc = ["https://s3.ax1x.com/2020/12/08/rSCogx.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCh59.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCI81.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCfUJ.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCWE4.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCHKK.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPCKf.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCqbD.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCbDO.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCTv6.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCOVe.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCXUH.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCj5d.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCxPA.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCz8I.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPPr8.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPS2t.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPpxP.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPiqS.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPkVg.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPE5j.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPZPs.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPMrT.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPeGn.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPm2q.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPnx0.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPQqU.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPKMV.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSP3a4.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSP1ZF.jpg"
+        ]
+
+
+        var oCon = document.getElementById('con');
+        var oPer = document.getElementById('per');
+        var num = 0;
+        imgsrc.forEach(function (item, index) {
+            //每次遍历一次，就生成一个img标签
+            //new Image()可以创建一个img标签
+            var newImg = new Image();
+            //当路径给到img的src的时候，图片就会自动加载
+            //给新创建的img添加一个src
+            newImg.src = item;
+
+            //给每一个img绑定一个onload事件，只要这个图片加载完成 就会触发onload
+            //书写一个计数器，每次加载完成一个  计数器累加，并计算百分比
+            newImg.onload = function () {
+                //累加器累加
+                num++;
+                //计算百分比
+                // console.log(parseInt((num / imgsrc.length) * 100))
+                var conPer = parseInt((num / imgsrc.length) * 100);
+                //给oCon设置宽度
+                oCon.style.width = conPer + "%";
+                //设置num
+                oPer.textContent = conPer;
+            }
+        })
+    </script>
+</body>
+
+</html>

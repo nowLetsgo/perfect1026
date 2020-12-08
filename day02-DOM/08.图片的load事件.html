@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./images/02.png" alt="" id="img">
+    <script>
+        var oImg = document.getElementById('img');
+
+        console.log(oImg.offsetWidth); //0
+
+        //图片加载完成后就执行
+        oImg.onload = function () {
+            console.log(oImg.offsetWidth); //0
+        }
+    </script>
+</body>
+
+</html>
