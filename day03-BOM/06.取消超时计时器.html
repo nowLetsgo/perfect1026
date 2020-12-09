@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">设置一个超时计时器</button>
+    <button id="btn2">清除超时计时器</button>
+    <script>
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        /* 
+            每一个定时器都有一个返回值，返回的是这个定时器的id,我们把这个返回值叫做句柄
+
+            我们可以使用clearTimeout的方法清除某个计时器
+
+            用法：clearTimeout(被清除延迟计时器的句柄)
+        
+        */
+
+        var timer = null;
+        //设置
+        oBtn1.onclick = function () {
+            timer = setTimeout(function () {
+                alert("hehe")
+            }, 2000)
+        }
+
+        //取消按钮
+        oBtn2.onclick = function () {
+            clearTimeout(timer);
+        }
+    </script>
+</body>
+
+</html>

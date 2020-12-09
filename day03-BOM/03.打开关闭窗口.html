@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">新窗口</button>
+    <button id="btn2">关闭新窗口</button>
+    <script>
+        /* 
+            window.open():打开一个新窗口
+                - url地址：需要打开窗口的url地址
+                - 新窗口的名称：_self _blank
+                - 新窗口的特征：宽 高 位置等等
+                - 返回一个当前窗口的名称，可以控制当前新窗口
+
+
+            窗口名.close():
+                - 关闭一个窗口
+        */
+
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var newWin = null;
+        oBtn1.onclick = function () {
+            // window.open("http://www.baidu.com")//默认新标签页跳转
+            // window.open("http://www.baidu.com", "_self") //自身跳转
+            newWin = window.open("http://www.baidu.com", "_blank") //新窗口跳转
+            //打开一个新的窗口
+            // newWin = window.open("http://www.baidu.com", "_blank", "width=300,height=300,left=100,top=100");
+
+        }
+
+
+        oBtn2.onclick = function () {
+            //关闭新窗口
+            // newWin.close();
+
+            //关闭自身 window代表自身窗口
+
+            //Scripts may close only the windows that were opened by them(js只能关闭 这个窗口打开的其他窗口)
+            window.close();
+        }
+    </script>
+</body>
+
+</html>

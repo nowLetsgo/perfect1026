@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            超时调用计时器
+                window.setTimeout();
+                    - 参数1：是超时以后调用的代码
+                        - 字符串写法
+                        - 如果代码特别多，书写字符串麻烦，那么可以书写一个函数,时间到了之后，计时器会自动调用函数
+                    - 参数2：时间(ms为单位)
+
+                    - 第三个参数之后，都是给参数1的函数传参用的
+        
+        
+        */
+
+        // eval方法：将一个字符串的代码解析运行
+        // eval("var a = 1;a++;alert(a)")
+
+
+        //如果直接书写代码，那么并不会延迟 ，会立马执行alert(1),并且延迟两秒执行alert的返回值undefined
+        // window.setTimeout(alert(1), 2000)
+
+        //把第一个参数书写为字符串，绑定的时候就不会执行了。时间到了，计时器会调用eval来解析字符串代码并执行
+        // window.setTimeout("alert(1)", 2000)
+
+        //参数1是一个函数（常用写法）
+        /* window.setTimeout(function () {
+            var a = 1;
+            a++;
+            alert(++a);
+        }, 2000) */
+
+        //有时候函数需要提到外边书写
+        /* function fn() {
+            var a = 1;
+            a++;
+            alert(++a);
+        }
+        window.setTimeout(fn, 2000) */
+
+
+
+        //计时器调用的函数需要传参 方法1
+
+        /* function fn(a, b) {
+            alert(a + b);
+        }
+        window.setTimeout("fn(1, 2)", 2000) */
+
+
+        //计时器调用的函数需要传参 方法2
+
+        /* function fn(a, b) {
+            alert(a + b);
+        }
+        window.setTimeout(fn, 2000, 1, 2) */
+    </script>
+</body>
+
+</html>

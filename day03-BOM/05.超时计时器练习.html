@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 400px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+
+        .box .tit {
+            height: 40px;
+            line-height: 40px;
+            background-color: turquoise;
+        }
+
+        .box .con {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            width: 400px;
+            height: 300px;
+            background-color: violet;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2 class="tit">标题</h2>
+        <div class="con">内容</div>
+    </div>
+    <script>
+        var oBox = document.querySelector('.box');
+        var oTit = document.querySelector('.tit');
+        var oCon = document.querySelector('.con');
+
+        var timer = null;
+        //对box绑定事件，这样无论鼠标在con还是tit中都可以显示
+        oBox.onmouseenter = function () {
+            //如果鼠标再次移入，而移除的计时器还没有执行的时候，就会出现bug
+            //所以需要在每次移入的时候 先清除一下移出的计时器
+            clearTimeout(timer);
+            //让con显示
+            oCon.style.display = "block";
+        }
+
+        //移出事件
+        oBox.onmouseleave = function () {
+            //延迟让con消失 通过超时调用定时器
+            timer = setTimeout(function () {
+                oCon.style.display = "none";
+            }, 500)
+        }
+    </script>
+</body>
+
+</html>
