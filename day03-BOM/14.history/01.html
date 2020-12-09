@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>01页面</h1>
+    <a href="./02.html">02</a>
+    <a href="./03.html">03</a>
+
+    <button id="btn1">进</button>
+    <button id="btn2">退</button>
+    <button id="btn3">退2</button>
+    <script>
+        //history对象是控制浏览器历史记录的
+
+        //history.forward():向前进1页
+        //history.back():向后退1页
+        //history.go():无论进退都可以使用，里边书写数字，正数代表进 负数代表退 数字代表进退的数量
+        //比如 -2 代表退2
+
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+        oBtn1.onclick = function () {
+            history.forward();
+        }
+        oBtn2.onclick = function () {
+            history.back();
+        }
+
+        oBtn3.onclick = function () {
+            history.go(-2);
+        }
+    </script>
+</body>
+
+</html>

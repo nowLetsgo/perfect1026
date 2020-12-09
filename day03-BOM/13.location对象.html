@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //location对象是关于浏览器的url地址的
+        console.log(location);
+
+        //一个完整的url地址：http://www.baidu.com:80?user=laoli&pass=123456#like
+        //协议://主机地址:端口号?查询字符串#锚点
+        // http://127.0.0.1:5500/day03-BOM/13.location%E5%AF%B9%E8%B1%A1.html?user=laoli#hello
+
+
+        document.onclick = function () {
+            //href:设置和获取url地址（设置也叫重定向）
+            //获取整个url地址
+            // console.log(location.href)
+            //可以直接设置 就是重定向-跳转
+            // location.href = "http://www.baidu.com"
+
+            //protocol:协议
+            console.log(location.protocol) //http:
+
+            //host:主机和端口名
+            console.log(location.host)
+
+            //hostname：主机
+            console.log(location.hostname)
+
+            //port
+            console.log(location.port)
+
+            //pathname路径
+            console.log(location.pathname)
+
+            //search查询字符串
+            console.log(location.search)
+
+            //hash 锚链接部分
+            console.log(location.hash)
+
+
+            //location的方法 -assign 和href一样 设置重定向
+            // location.assign("http://www.baidu.com")
+
+            //reload方法：重新加载文档
+            // location.reload();
+
+            //replace方法：替换当前url地址(替换之前页面的历史记录)
+            // location.replace("http://www.baidu.com")
+        }
+    </script>
+</body>
+
+</html>

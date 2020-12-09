@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            计时器是异步代码
+            延迟0秒也是异步，也要等待全部的同步代码完成
+
+        */
+        for (var i = 0; i < 3; i++) {
+            setTimeout(function () {
+                console.log(i); //3 3 3
+            }, 0)
+        }
+
+
+        //修改以上代码
+        for (var i = 0; i < 3; i++) {
+            (function (i) {
+                setTimeout(function () {
+                    console.log(i); //0 1 2
+                }, 0)
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

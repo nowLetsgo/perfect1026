@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            在主流浏览器中：窗口的宽高是通过html标签的clientWidth和clientHeight获取的
+            在低版本ie(ie6及以下)中，窗口的宽高是通过body的clientWitdh和clientHeight获取的
+        
+        
+        */
+
+        console.log(document.documentElement.clientHeight)
+        console.log(document.body.clientHeight)
+
+
+        //如果要兼容ie6
+        var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    </script>
+</body>
+
+</html>

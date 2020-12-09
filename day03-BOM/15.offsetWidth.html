@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            background: url(./images/02.png) center center no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            padding: 10px;
+            border: 1px solid #000;
+            margin: 15px;
+            display: none;
+        }
+
+        img {
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div id="box">
+            <span id="con">hello</span>
+        </div>
+        <img src="./images/02.png" alt="">
+    </div>
+    <script>
+        /* 
+            offsetWidth:
+                - 获取元素的宽度
+                - 包含 内容 + 内边距 + 边框的总宽度
+                - 当元素是display：none隐藏的时候 就获取的是0
+                - 如果是图片或其他资源没有加载的时候，并且没有设置宽的时候，获取的大小就是0
+        
+        
+        */
+        var oBox = document.getElementById('box');
+        var oSpan = document.getElementById('con');
+        var oImg = document.querySelector('i mg');
+        console.log(oBox.offsetWidth);
+        console.log(oSpan.offsetWidth);
+        console.log(oSpan.offsetHeight);
+        console.log(oImg.offsetWidth);
+    </script>
+</body>
+
+</html>

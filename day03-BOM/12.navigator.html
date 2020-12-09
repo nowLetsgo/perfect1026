@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //navigator对象：浏览器的信息
+        console.log(navigator);
+
+        //onLine属性代表是否连接网络
+        console.log(navigator.onLine);
+
+        //platform 查看当前操作系统 （win32 MacOs linux）
+        console.log(navigator.platform); //win32
+
+        //userAgent:浏览器识别码，用户代理信息
+        console.log(navigator.userAgent)
+
+
+        /* 
+            检测浏览器方法：（一般在处理兼容的时候会考虑浏览器版本）
+                1.特征检测法（常用）
+                    - 不需要考虑浏览器是什么版本，只需要检测当前方法浏览器支持不支持
+                    - 如果不支持 则换一种方法
+                    - 比如 firstChild和firstElementChild
+
+                2.字符串检测法
+                    - 直接通过浏览器识别码的字符串 判断出当前是什么浏览器
+                    - 不太常用
+        
+        */
+
+
+        //字符串检测法
+        var ua = navigator.userAgent.toLowerCase();
+        var info = {
+            ie: /msie/.test(ua) && !/opera/.test(ua),
+            op: /opera/.test(ua),
+            sa: /version.*safari/.test(ua),
+            ch: /chrome/.test(ua),
+            ff: /gecko/.test(ua) && !/webkit/.test(ua)
+        }
+        info.ie && console.log("ie");
+        info.op && console.log("欧朋");
+        info.sa && console.log("safari");
+        info.ch && console.log("chrome");
+        info.ff && console.log("firfox");
+
+
+
+        //检测操作系统（不常用）
+
+        // 如果是Windows系统，则返回true
+        var isWin = (navigator.userAgent.indexOf("Win") != -1);
+        // 如果是Macintosh系统，则返回true 
+        var isMac = (navigator.userAgent.indexOf("Mac") != -1);
+        // 如果是UNIX系统，则返回true
+        var isUnix = (navigator.userAgent.indexOf("X11") != -1);
+        // 如果是Linux系统， xc则返回true
+        var isLinux = (navigator.userAgent.indexOf("Linux") != -1);
+        console.log(isWin, isMac, isUnix, isLinux)
+    </script>
+</body>
+
+</html>
