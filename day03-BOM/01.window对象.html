@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            window对象：
+                1.代表窗口，作为BOM对象的核心
+                2.替代ECMAScript规定的顶层对象global的功能，作为全局对象，包含所有的全局方法和全局属性
+                3.全局变量和全局函数都是window对象的方法和属性
+
+            window对象包含：
+                1.document:代表整个文档
+                2.screen：代表屏幕信息
+                3.history：代表历史记录
+                4.navigator:代表浏览器信息
+                5.location：代表浏览器的url地址
+        
+        
+        */
+        console.log(window);
+
+        var a = 1;
+
+        function fn() {
+            var b = c = 2;
+        }
+        window.fn(); //可以执行
+        console.log(window.a) //1
+        console.log(window.c) //2
+        console.log(window.b) //对象的属性不存在 则返回undefined
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            浏览器三种弹窗：
+                alert:
+                    - 只有一个确认按钮的弹窗
+                confirm:
+                    - 有确认和取消两个按钮的弹窗供用户选择
+                    - 方法有返回值布尔值，代表用户选择确定还是取消
+                prompt：
+                    - 有输入功能和确认取消按钮的弹窗
+                    - 如果取消则返回null 否则返回文本框的内容
+                
+        
+        
+        */
+
+        // alert(1);
+
+        /* var re = confirm("are you sure?");
+        console.log(re); */
+
+
+        /* var re = prompt("你叫什么名字?");
+        console.log(re); */
+
+        // 扣1就是有
+
+        function fn() {
+            var re = prompt("你有对象吗?");
+            if (re) {
+                if (re === "1") {
+                    alert("祝你幸福");
+                } else {
+                    var re1 = confirm("是因为你丑吗？");
+                }
+            } else {
+                fn();
+            }
+        }
+
+        fn();
+    </script>
+</body>
+
+</html>
