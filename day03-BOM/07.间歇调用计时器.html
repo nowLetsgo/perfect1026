@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">清除</button>
+    <script>
+        /* 
+            间歇调用计时器
+                setInterval()
+                参数以及写法以及返回值和setTimeout一值
+                功能:每隔一段时间执行一次代码
+                第一次执行就已经有延迟了
+
+                clearInterval();
+                清除间隙计时器
+        
+        */
+        var oBtn = document.getElementById("btn")
+        var timer = setInterval(function () {
+            console.log("hello");
+        }, 2000)
+
+        oBtn.onclick = function () {
+            clearInterval(timer);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: turquoise;
+            position: absolute;
+            left: 0;
+            top: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">走你~</button>
+    <div id="box"></div>
+    <script>
+        /* 
+            js动画一般都是有计时器实现 每间隔一段时间元素动一下，然后构成动画
+        
+        */
+
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        var num = 0; //给box一个初始值
+        var timer = null; //要把timer放在全局  保证就一个timer变量 
+        oBtn.onclick = function () {
+            //每次点击的时候都会添加一个计时器，如果之前的计时器没有执行完成，则计时器可能出现叠加
+            //每次点击要添加新的计时器的时候，先把其他计时器给清掉
+            clearInterval(timer);
+            timer = setInterval(function () {
+                num += 3;
+                if (num >= 1000) {
+                    //因为num累加可能会超过1000的范围
+                    //所以当进入临界值判断的时候，直接固定num的值为临界值即可
+                    num = 1000;
+                    clearInterval(timer);
+                }
+                oBox.style.left = num + "px";
+            }, 1)
+        }
+    </script>
+</body>
+
+</html>

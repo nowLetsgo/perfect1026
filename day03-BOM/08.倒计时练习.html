@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="con">敌军还有4秒到达战场</h1>
+    <script>
+        var oCon = document.querySelector('.con');
+        //定义时间初始值
+        var time = 4;
+        var timer = setInterval(function () {
+            time--;
+            //判断临界值
+            if (time <= 0) {
+                //清除计时器之后，并不会直接退出计时器，而是要把当前计时器的代码全部执行完成
+                clearInterval(timer);
+                oCon.textContent = '全军出击';
+                return;
+            }
+            
+            oCon.textContent = '敌军还有' + time + '秒到达战场';
+
+
+        }, 1000)
+    </script>
+</body>
+
+</html>
