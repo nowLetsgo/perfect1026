@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            height: 4000px;
+        }
+
+        .top {
+            width: 143px;
+            height: 151px;
+            background: url(./images/01.png) center center no-repeat;
+            background-size: 100% 100%;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="top"></div>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oTop = document.querySelector('.top');
+        var returnTopTimer = null;
+        //监听滚动条事件，判断滚动条的位置 从而让火箭显示或隐藏
+        window.onscroll = function () {
+            //监听系统滚动条的位置 是否大于500
+            if (window.pageYOffset > 500) {
+                oTop.style.display = "block";
+            } else {
+                oTop.style.display = "none";
+            }
+        }
+
+
+        //点击按钮回到顶部---直接回到顶部
+        oTop.onclick = function () {
+            clearInterval(returnTopTimer)
+            //先获取当前的位置
+            var nowLocation = window.pageYOffset;
+            //设置一个计时器，让当前位置的变量累减 然后每次累减过后 赋值给滚动条
+            returnTopTimer = setInterval(function () {
+                nowLocation -= 10;
+                if (nowLocation <= 0) {
+                    nowLocation = 0;
+                    clearInterval(returnTopTimer)
+                }
+                window.scrollTo(0, nowLocation)
+            }, 1)
+        }
+    </script>
+</body>
+
+</html>

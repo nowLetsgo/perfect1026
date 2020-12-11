@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 3000px;
+        }
+
+        #btn {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我啊</button>
+    <div id="box"></div>
+    <script>
+        //系统滚动条不是window对象的
+        // console.log(window.scrollTop)
+
+        /* 
+            系统滚动条：
+                高版本浏览器(ie7及以上)：
+                    html的scrollTop
+                ie6-：
+                    body的scrollTop
+                高版本浏览器（ie9及以上）
+                    window.pageYoffset
+
+            设置系统滚动条：
+                可以直接对html或body的scrollTop属性直接设置
+                也可以使用window.scrollTo();完美兼容的
+                    scrollTo():
+                        接受两个参数，一个是x滚动条位置 一个是y滚动条位置
+         */
+
+
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function () {
+            /* console.log(document.documentElement.scrollTop)
+            console.log(document.body.scrollTop)
+            console.log(window.pageYOffset) */
+
+
+            // document.documentElement.scrollTop = 300;
+            // document.body.scrollTop = 300;
+
+            // window.scrollTo(0, 500)
+
+            console.log(getWinYScroll());
+        }
+
+
+        //分装一个全兼容的获取系统滚动条的方法
+        function getWinYScroll() {
+            var html = document.documentElement;
+            var body = document.body;
+            /* if (window.pageYoffset) {
+                return window.pageYoffset;
+            } else if (html.scrollTop) {
+                return html.scrollTop
+            } else {
+                return body.scrollTop
+            } */
+
+            return window.pageYoffset || html.scrollTop || body.scrollTop;
+        }
+    </script>
+</body>
+
+</html>
