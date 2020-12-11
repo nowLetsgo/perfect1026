@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 500px;
+            border: 1px solid #000;
+            overflow: auto;
+        }
+
+        .con {
+            width: 4000px;
+            height: 1000px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="box">
+        <div class="con"></div>
+    </div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.querySelector('.box');
+        /* 
+            scrollLeft：
+                获取 或者 设置 元素的滚动条的位置
+        
+        
+         */
+        oBtn.onclick = function () {
+            //获取
+            // console.log(oBox.scrollLeft)
+
+
+            //设置
+            // oBox.scrollLeft = 200;
+        }
+    </script>
+</body>
+
+</html>

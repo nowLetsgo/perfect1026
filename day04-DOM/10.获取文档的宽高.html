@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 3000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /* 
+            主流浏览器中：
+                html的offsetHeight就是文档的高度
+            ie低版本（6）：
+                body.offsetHeight就是文档的高度
+         */
+
+        //宽度获取的不是文档的宽度，而是窗口的宽度（水平方向不会出现滚动条）
+        console.log(document.documentElement.offsetWidth)
+
+        //高度获取的是真正文档的高度
+        console.log(document.documentElement.offsetHeight)
+    </script>
+</body>
+
+</html>

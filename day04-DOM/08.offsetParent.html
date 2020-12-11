@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .outer {
+            width: 700px;
+            height: 500px;
+            background-color: gold;
+            margin: 40px;
+            border: 2px solid #000;
+            padding: 10px;
+            position: relative;
+        }
+
+        .inner {
+            width: 400px;
+            height: 300px;
+            margin: 60px;
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: greenyellow;
+            position: relative;
+        }
+
+        .con {
+            width: 100px;
+            height: 100px;
+            margin: 30px;
+            border: 5px solid #000;
+            padding: 10px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            offsetParent:
+                获取元素的最近定位父级
+
+         */
+
+        var oCon = document.querySelector('.con');
+        console.log(oCon.offsetParent) //inner
+        console.log(oCon.offsetParent.offsetParent) //outer
+        console.log(oCon.offsetParent.offsetParent.offsetParent) //body
+        console.log(oCon.offsetParent.offsetParent.offsetParent.offsetParent) //null
+    </script>
+</body>
+
+</html>

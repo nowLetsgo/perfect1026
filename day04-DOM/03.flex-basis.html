@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 1000px;
+            height: 300px;
+            border: 1px solid #000;
+            display: flex;
+            /* flex-direction: column; */
+        }
+
+        ul li {
+            /* width: 0px; */
+            /* height: 0; */
+            /* flex-basis: 0; */
+            flex: 1;
+        }
+
+        ul li:nth-child(odd) {
+            flex-grow: 1;
+            background-color: cornsilk;
+        }
+
+        ul li:nth-child(even) {
+            flex-grow: 1;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>今 <br> 天</li>
+        <li>天气啊</li>
+        <li>是</li>
+        <li>真的棒啊啊</li>
+    </ul>
+</body>
+
+</html>

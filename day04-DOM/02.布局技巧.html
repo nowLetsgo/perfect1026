@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        /* #outer {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header {
+            height: 100px;
+            background-color: aqua;
+        }
+
+        #con {
+            flex: 1;
+            background-color: bisque;
+        } */
+
+
+        #outer {
+            height: 100%;
+            position: relative;
+        }
+
+        #header {
+            height: 100px;
+            background-color: cornflowerblue;
+        }
+
+        #con {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100px;
+            bottom: 0;
+            background-color: cornsilk;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="header"></div>
+        <div id="con"></div>
+    </div>
+</body>
+
+</html>

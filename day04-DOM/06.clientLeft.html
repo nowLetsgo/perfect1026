@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 700px;
+            height: 500px;
+            background-color: gold;
+            margin: 40px;
+            border: 2px solid #000;
+            padding: 10px;
+            position: relative;
+        }
+
+        .inner {
+            width: 400px;
+            height: 300px;
+            margin: 60px;
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: greenyellow;
+            position: relative;
+        }
+
+        .con {
+            width: 100px;
+            height: 100px;
+            margin: 30px;
+            border: 5px solid #000;
+            padding: 10px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            clientLeft：
+                其实就是左边框的宽度
+        
+         */
+
+        var oCon = document.querySelector('.con');
+        var oOuter = document.querySelector('.outer');
+        var oInner = document.querySelector('.inner');
+        console.log(oCon.clientLeft)
+        console.log(oOuter.clientLeft)
+        console.log(oInner.clientLeft)
+    </script>
+</body>
+
+</html>

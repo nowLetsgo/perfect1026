@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+        .outer {
+            width: 700px;
+            height: 500px;
+            background-color: gold;
+            margin: 40px;
+            border: 2px solid #000;
+            padding: 10px;
+            position: relative;
+        }
+
+        .inner {
+            width: 400px;
+            height: 300px;
+            margin: 60px;
+            border: 1px solid #000;
+            padding: 10px;
+            background-color: greenyellow;
+            position: relative;
+        }
+
+        .con {
+            width: 100px;
+            height: 100px;
+            margin: 30px;
+            border: 5px solid #000;
+            padding: 10px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con"></div>
+        </div>
+    </div>
+    <script>
+        /* con.offsetLeft
+        con.offsetParent.offsetLeft
+        con.offsetParent.offsetParent.offsetLeft
+        con.offsetParent.offsetParent.offsetParent.offsetLeft */
+        var oCon = document.querySelector('.con');
+
+        var obj = oCon;
+        var num = 0;
+        while (obj) {
+            //如果obj存在则获取obj的offsetLeft,如果不存在则不会进入while，遍历结束
+            console.log(obj);
+
+            //判断如果当前元素是初始元素，则不添加边框，否则还要计算边框的宽度
+            if (obj === oCon) {
+                num += obj.offsetLeft;
+            } else {
+                num += (obj.offsetLeft + obj.clientLeft);
+            }
+
+            //如果obj存在，并且已经获取过值了，则把obj变成 原来obj的offsetParent
+            obj = obj.offsetParent;
+        }
+        console.log(num)
+
+
+        function getEleToDoc(Ele) {
+            var l = 0,
+                t = 0; 
+            var obj = Ele;
+            while (obj) {
+                if (obj === Ele) {
+                    l += obj.offsetLeft;
+                    t += obj.offsetTop;
+                } else {
+                    l += (obj.offsetLeft + obj.clientLeft);
+                    t += (obj.offsetTop + obj.clientTop);
+                }
+
+                //如果obj存在，并且已经获取过值了，则把obj变成 原来obj的offsetParent
+                obj = obj.offsetParent;
+            }
+
+            return {
+                left: l,
+                top: t
+            }
+        }
+        console.log(getEleToDoc(oCon));
+    </script>
+</body>
+
+</html>
