@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我~</button>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oBox = document.querySelector('.box');
+        var oBtn = document.getElementById('btn');
+        var oLis = document.querySelectorAll('.box li');
+
+        oBtn.onclick = function () {
+            /* 
+                插入节点：
+                    A.appendChild(B);
+                    在A元素内部的末尾 插入一个B节点
+                
+
+                    A.insertBefore(new,old);
+                    在old元素的正前方插入一个new  new和old是兄弟关系
+                    A是old和new的父元素节点
+             */
+
+            //当新创建的元素没有插入结构的时候，这个元素就在内存存放
+            var newLi = document.createElement("li");
+            console.log(newLi);
+
+            //给元素设置内容方法有很多，textContent  innerHTML  innerText
+            newLi.textContent = "静哥哥";
+
+            //插入父元素
+            // oBox.appendChild(newLi);
+
+            //插兄弟元素
+            oBox.insertBefore(newLi, oLis[2])
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 700px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+        .con {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="con"></div>
+    </div>
+    <script>
+        var oCon = document.querySelector('.con');
+        /* 
+            Ele.getBoundingClientRect()
+                获取元素四个方法到视窗左和上的距离
+
+                left:元素左侧 到 视窗 左侧的距离
+                right:元素右侧 到 视窗 左侧的距离
+                top:元素上侧 到 视窗 上侧的距离
+                bottom:元素下侧 到 视窗 上侧的距离
+                width：元素的宽度（border-box）
+                height:元素的高度
+        
+        
+         */
+
+        console.log(oCon.getBoundingClientRect())
+    </script>
+</body>
+
+</html>
