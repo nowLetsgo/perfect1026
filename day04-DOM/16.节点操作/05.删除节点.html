@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我~</button>
+    <ul class="box">
+        <li>1 <a href="###">删我</a></li>
+        <li>2 <a href="###">删我</a></li>
+        <li>3 <a href="###">删我</a></li>
+        <li>4 <a href="###">删我</a></li>
+    </ul>
+    <script>
+        var oBox = document.querySelector('.box');
+        var oBtn = document.getElementById('btn');
+        var oLis = document.querySelectorAll('.box li');
+        var oLiAs = document.querySelectorAll('.box li a');
+
+        oBtn.onclick = function () {
+            /* 
+                删除元素：
+                    A.removeChild(B)
+                    删除A元素中的子元素B
+             */
+        }
+
+        oLiAs.forEach(function (item, index) {
+            item.onclick = function () {
+                item.parentNode.parentNode.removeChild(item.parentNode)
+            }
+        })
+    </script>
+</body>
+
+</html>
