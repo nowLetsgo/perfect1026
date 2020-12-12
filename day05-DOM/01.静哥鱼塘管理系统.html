@@ -39,6 +39,7 @@
             <th>年龄</th>
             <th>操作</th>
         </tr>
+
     </table>
     <script>
         var oName = document.querySelector('#name');
@@ -60,7 +61,7 @@
                 return;
             }
 
-            //创建节点
+            /* //创建节点
             var newTr = document.createElement("tr");
             var newTdName = document.createElement("td");
             var newTdSex = document.createElement("td");
@@ -78,20 +79,25 @@
             newTr.appendChild(newTdAge)
             newTr.appendChild(newTdDele)
 
+            oTr.parentNode.appendChild(newTr); */
 
-            oTr.parentNode.appendChild(newTr);
+            var oNewTr = document.createElement("tr");
+            var oStr = "<td>" + oNameValue + "</td>\
+                <td>" + oSexValue + "</td>\
+                <td>" + oAgeValue + "</td>\
+                <td><a href='###'>删除</a></td>";
+            oNewTr.innerHTML = oStr;
+            oTr.parentNode.appendChild(oNewTr);
 
 
-
+            //每次添加完成 绑定删除事件
+            var oDeles = document.querySelectorAll('table tr a');
+            oDeles.forEach(function (item, index) {
+                item.onclick = function () {
+                    item.parentNode.parentNode.parentNode.removeChild(item.parentNode.parentNode)
+                }
+            })
         }
-
-        //每次添加完成 绑定删除事件
-        var oDeles = document.querySelectorAll('table tr a');
-        oDeles.forEach(function (item, index) {
-            item.onclick = function () {
-                item.parentNode.parentNode.parentNode.removeChild(item.parentNode.parentNode)
-            }
-        })
     </script>
 </body>
 

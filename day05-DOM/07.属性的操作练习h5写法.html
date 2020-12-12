@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        li {
+            background-color: turquoise;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">变红</button>
+    <ul class="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var oBox = document.querySelector('.box');
+        var oLis = document.querySelectorAll('.box li');
+
+        var oBtn = document.getElementById('btn');
+
+
+        //对所有的li绑定点击事件 当点击的时候添加一个标记
+        oLis.forEach(function (item, index) {
+            item.onclick = function () {
+                //给被点击的元素添加一个自定义属性作为标记
+                item.dataset.click = "true";
+            }
+        })
+
+        oBtn.onclick = function () {
+            oLis.forEach(function (item, index) {
+                if (item.dataset.click) {
+                    item.style.background = "red";
+                    //当效果已经完成后 可以把标记去掉
+                    delete item.dataset.click;
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

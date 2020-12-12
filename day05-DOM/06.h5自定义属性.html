@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" data-study="js"></div>
+    <script>
+        var oBox = document.querySelector('.box');
+        /* 
+            h5规定：
+                如果是自定义属性 请添加data-*前缀
+                h5给每一个元素提供了一个dataset属性，是一个对象，保存的是当前元素所有的自定义属性
+                只要对dataset这个对象操作属性 就是给当前元素操作自定义属性
+
+            设置h5自定义属性
+                使用 ele.dataset.key = value
+
+            获取自定义属性
+                使用 ele.dataset.key
+
+            删除自定义属性
+                使用 delete ele.dataset.key
+         */
+
+        document.onclick = function () {
+            console.log(oBox.dataset.study)
+
+
+            oBox.dataset.eat = "food";
+
+
+            delete oBox.dataset.study;
+        }
+    </script>
+</body>
+
+</html>

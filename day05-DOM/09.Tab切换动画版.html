@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            width: 600px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        .tab .title {
+            display: flex;
+        }
+
+        .title h2 {
+            width: 198px;
+            border: 1px solid #000;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .title h2.active {
+            background-color: turquoise;
+            color: #fff;
+        }
+
+        .con {
+            height: 300px;
+            overflow: auto;
+        }
+
+        .con section {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+        }
+
+        .con section:nth-child(1) {
+            background-color: deeppink;
+        }
+
+        .con section:nth-child(2) {
+            background-color: yellowgreen;
+        }
+
+        .con section:nth-child(3) {
+            background-color: goldenrod;
+        }
+
+        .con section.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- tab切换 -->
+        <div class="tab">
+            <!-- 标题 -->
+            <header class="title">
+                <h2 class="active">标题1</h2>
+                <h2>标题2</h2>
+                <h2>标题3</h2>
+            </header>
+            <!-- 内容 -->
+            <div class="con">
+                <section class="show">内容一</section>
+                <section>内容二</section>
+                <section>内容三</section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var oH2s = document.querySelectorAll('.title h2');
+        var oSections = document.querySelectorAll('.con section');
+        var oCon = document.querySelector('.con');
+        var TabTimer = null;
+        oH2s.forEach(function (item, index) {
+            item.onclick = function () {
+                clearInterval(TabTimer);
+                // console.log(item, index)
+                //先清空
+                oH2s.forEach(function (item, index) {
+                    item.classList.remove("active");
+                })
+                this.classList.add("active");
+
+                //内容移动 动画通用
+                //起始位置 当前滚动条的位置
+                var startLocation = oCon.scrollTop;
+                //结束位置
+                var endLoaction = index * oSections[0].offsetHeight;
+                //起始步数
+                var startStep = 0;
+                //结束步数
+                var endStep = 40;
+                //每一步所走的距离
+                var everyStep = (endLoaction - startLocation) / (endStep - startStep);
+
+                TabTimer = setInterval(function () {
+                    startLocation += everyStep;
+                    //步数增加
+                    startStep++;
+                    //判断临界值
+                    if (startStep >= endStep) {
+                        clearInterval(TabTimer)
+                    }
+                    //赋值
+                    oCon.scrollTop = startLocation;
+
+
+                    /* //初始位置累加错误方法(如果直接拿scrollTop运算,则会忽略小数)
+                    oCon.scrollTop += everyStep;
+                    console.log(everyStep)
+                    console.log(oCon.scrollTop) */
+
+                }, 1)
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="box">
+    </ul>
+    <script>
+        /* 
+            重排和重绘是DOM编程中耗能的主要原因之一:
+                重排（回流）：当render tree中的一部分或者是全部，因为元素的尺寸、布局、隐藏等等改变引起页面的重新渲染，这个过程称作为重排
+                重绘：当render tree（渲染树）中更新的属性只会影响元素的外观、风格，不会影响元素的布局的时候，浏览器需要重新绘制当前元素的样式，被称作为重绘。
+                重绘不会引起重排，但重排一定会引起重绘，一个元素的重排通常会带来一系列的反应，甚至触发整个文档的重排和重绘，性能代价是高昂的
+        
+        
+         */
+
+        var oBox = document.querySelector('.box');
+        document.onclick = function () {
+            var oFrag = document.createDocumentFragment();
+            for (var i = 0; i < 100; i++) {
+                var newLi = document.createElement("li");
+                newLi.innerHTML = "a";
+                oFrag.appendChild(newLi);
+            }
+            console.log(oFrag)
+            oBox.appendChild(oFrag)
+        }
+    </script>
+</body>
+
+</html>

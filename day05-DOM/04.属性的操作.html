@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="con" class="box red " study="js">hello</div>
+    <script>
+        var oBox = document.querySelector('.box');
+
+        /* 
+            读取属性值：
+                ele.getAttribute(属性名)
+                    - 自有属性
+                        - 可以直接通过 元素对象.属性名 获取到
+                        - 如果某些自有属性和js的关键字冲突了，那么就会把当前自有属性获取的方法修改
+                            比如class属性获取的时候 可以通过className获取
+                    - 自定义属性
+                        - 不能直接通过 元素对象.属性名 获取到，因为他在当前元素的自有属性上没有找到该属性，则会把当前元素对象当作一个js对象，去获取他的属性了
+                        - 自定义属性要通过getAttribute去找，才能去元素的属性上找当前自有属性
+            
+            设置属性值：
+                - 自有属性
+                    - 直接设置即可
+                - 自定义属性
+                    setAttribute(key,value)
+
+            
+            删除属性值：
+                - 自有属性
+                    - 直接设置为空字符串
+                    - 表单的一些属性 直接设置为false
+                - 自定义属性
+                    removeAttribute
+                
+        
+        
+         */
+
+        /* console.log(oBox.id); //con
+        console.log(oBox.class); //undefined
+        console.log(oBox.className); //undefined
+        console.log(oBox.study); //undefined
+        console.log(oBox.getAttribute("study")); //js */
+
+
+
+        oBox.id = "concon";
+        oBox.className = "red";
+
+        oBox.setAttribute("eat1", "food");
+        oBox.setAttribute("eat2", "foot");
+
+        oBox.removeAttribute("study")
+    </script>
+</body>
+
+</html>

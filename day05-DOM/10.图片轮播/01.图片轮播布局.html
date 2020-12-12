@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            overflow: auto;
+
+        }
+
+        .con {
+            width: 4000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .btn .left,
+        .btn .right {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: rgba(134, 56, 166, .5);
+            color: #fff;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .btn .left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn .right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .list {
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .list li {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(20, 200, 200, .3);
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .list li.active {
+            background-color: rgba(20, 200, 200, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="./images/01.png" alt="">
+                <img src="./images/02.png" alt="">
+                <img src="./images/03.png" alt="">
+                <img src="./images/04.png" alt="">
+                <img src="./images/05.png" alt="">
+            </div>
+            <div class="btn">
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

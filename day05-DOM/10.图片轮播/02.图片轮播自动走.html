@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            overflow: auto;
+
+        }
+
+        .con {
+            width: 4000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .btn .left,
+        .btn .right {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: rgba(134, 56, 166, .5);
+            color: #fff;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .btn .left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn .right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .list {
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .list li {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(20, 200, 200, .3);
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .list li.active {
+            background-color: rgba(20, 200, 200, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="./images/01.png" alt="">
+                <img src="./images/02.png" alt="">
+                <img src="./images/03.png" alt="">
+                <img src="./images/04.png" alt="">
+                <img src="./images/05.png" alt="">
+            </div>
+            <div class="btn">
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oInner = document.querySelector('.inner');
+        var oImgs = document.querySelectorAll('.inner .con img');
+        var oRight = document.querySelector('.right');
+        var changeTimer = null,
+            moveTimer = null;
+        var v = 0; //定义一个变量，代表图片的下标
+        //每隔两秒换张图
+        changeTimer = setInterval(function () {
+            //为了防止执行内部计时器的时候，上一个内部计时器还没有完成，需要清除一下
+            clearInterval(moveTimer);
+            //图片下标累加
+            v++;
+            //判断临界值
+            if (v >= oImgs.length) {
+                v = 0;
+            }
+            // oInner.scrollLeft = v * oImgs[0].offsetWidth;
+            var startLoaction = oInner.scrollLeft;
+            var endLocation = v * oImgs[0].offsetWidth;
+            var startStep = 0;
+            var endStep = 40;
+            var everyStep = (endLocation - startLoaction) / (endStep - startStep);
+            moveTimer = setInterval(function () {
+                startLoaction += everyStep;
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer)
+                }
+                oInner.scrollLeft = startLoaction;
+            }, 10)
+        }, 2000)
+    </script>
+</body>
+
+</html>
