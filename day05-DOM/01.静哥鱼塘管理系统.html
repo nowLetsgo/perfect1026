@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="###">
+        <h2>新增鱼儿</h2>
+        <div>
+            <label>
+                姓名：
+                <input type="text" id="name">
+            </label>
+        </div>
+        <div>
+            <label>
+                性别
+                <input type="text" id="sex">
+            </label>
+        </div>
+        <div>
+            <label>
+                年龄
+                <input type="text" id="age">
+            </label>
+        </div>
+
+        <button type="button" id="add">添加</button>
+    </form>
+    <table width='888' border="1" style="border-collapse: collapse;">
+        <caption>静哥的鱼塘 </caption>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+    </table>
+    <script>
+        var oName = document.querySelector('#name');
+        var oAge = document.querySelector('#age');
+        var oSex = document.querySelector('#sex');
+        var oAdd = document.querySelector('#add');
+        var oTable = document.querySelector('table');
+        var oTr = document.querySelector('table tr');
+
+
+        oAdd.onclick = function () {
+            //trim()字符串方法 前后去空格
+            var oNameValue = oName.value.trim();
+            var oSexValue = oSex.value.trim();
+            var oAgeValue = oAge.value.trim();
+            // if (!oNameValue || !oSexValue || !oAgeValue)) {}
+            if (!(oNameValue && oSexValue && oAgeValue)) {
+                alert("不能有空")
+                return;
+            }
+
+            //创建节点
+            var newTr = document.createElement("tr");
+            var newTdName = document.createElement("td");
+            var newTdSex = document.createElement("td");
+            var newTdAge = document.createElement("td");
+            var newTdDele = document.createElement("td");
+            var newADele = document.createElement("a");
+            newADele.textContent = "删除"
+            newTdDele.appendChild(newADele);
+            newTdName.textContent = oNameValue;
+            newTdSex.textContent = oSexValue;
+            newTdAge.textContent = oAgeValue;
+
+            newTr.appendChild(newTdName)
+            newTr.appendChild(newTdSex)
+            newTr.appendChild(newTdAge)
+            newTr.appendChild(newTdDele)
+
+
+            oTr.parentNode.appendChild(newTr);
+
+
+
+        }
+
+        //每次添加完成 绑定删除事件
+        var oDeles = document.querySelectorAll('table tr a');
+        oDeles.forEach(function (item, index) {
+            item.onclick = function () {
+                item.parentNode.parentNode.parentNode.removeChild(item.parentNode.parentNode)
+            }
+        })
+    </script>
+</body>
+
+</html>

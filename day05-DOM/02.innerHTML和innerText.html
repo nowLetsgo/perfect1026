@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我才是真的</button>
+    <div class="outer">
+        <a href="###">点我你懂的</a>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oBtn = document.getElementById('btn');
+        /* 
+            获取和设置元素的内容：
+
+                outerHTML:
+                    - 获取的时候 把当前元素也获取到了，并不是只获取内部的内容
+                    - 设置的时候，直接把当前元素替换掉了
+                    - 获取的时候 标签被当做字符串获取到了
+                    - 设置的时候 字符串中的标签直接被解析
+                
+                outerText:
+                    - 获取的时候，其实和innerText没区别  因为都是拿元素的文本内容
+                    - 设置的时候，直接替换当前外部元素 
+                    - 获取的时候，只获取元素中的文本节点内容
+                    - 设置的时候，字符串中的标签不会被解析
+
+        
+         */
+        oBtn.onclick = function () {
+            // console.log(oOuter.outerHTML);
+            // oOuter.outerHTML = "<em>我斜不些</em>"
+
+
+            // console.log(oOuter.outerText);
+            oOuter.outerText = "<em>我斜不些</em>";
+
+        }
+    </script>
+</body>
+
+</html>

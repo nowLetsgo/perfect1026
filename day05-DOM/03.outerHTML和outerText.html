@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我才是真的</button>
+    <div class="outer">
+        <a href="###">点我你懂的</a>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oBtn = document.getElementById('btn');
+        /* 
+            获取和设置元素的内容：
+
+                innerHTML:
+                    - 获取的时候 标签被当做字符串获取到了
+                    - 设置的时候 字符串中的标签直接被解析
+                
+                innerText:
+                    - 获取的时候，只获取元素中的文本节点内容
+                    - 设置的时候，字符串中的标签不会被解析
+
+
+                textContent：
+                    - 获取的时候，只获取元素中的文本节点内容
+                    - 设置的时候，字符串中的标签不会被解析
+
+
+                textContent和innerText的区别：
+                    - textContent可以获取空白文本
+                    - textContent兼容性差 ie9及以上
+        
+         */
+        oBtn.onclick = function () {
+            // console.log(oOuter.innerHTML);
+            // oOuter.innerHTML = "<em>我斜不些</em>"
+
+
+            console.log(oOuter.innerText);
+            // oOuter.innerText = "<em>我斜不些</em>";
+
+            console.log(oOuter.textContent);
+            // oOuter.textContent = "<em>我斜不些</em>";
+        }
+    </script>
+</body>
+
+</html>
