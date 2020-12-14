@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">取消事件</button>
+    <div id="outer">
+        <div id="inner">
+            <div id="con">con</div>
+        </div>
+    </div>
+
+    <script>
+        var oCon = document.getElementById('con');
+        var oOuter = document.getElementById('outer');
+        var oInner = document.getElementById('inner');
+        var oBtn = document.getElementById('btn');
+
+        /* 
+            动态绑定：
+                把匿名函数直接赋值给 DOM对象的事件属性，当事件触发就会执行匿名函数
+                
+            特点：
+                1.同一个事件对用一个元素只能绑定1次，否则会覆盖
+                2.只能执行冒泡
+
+            取消事件：
+                直接把事件属性的值赋值为null即可
+        */
+
+        /* oCon.onclick = function () {
+            alert("con1")
+        }
+        oCon.onclick = function () {
+            alert("con2")
+        }
+        oCon.onclick = function () {
+            alert("con3")
+        } */
+
+        /*  oCon.onclick = function () {
+             alert("con3")
+         }
+
+         oInner.onclick = function () {
+             alert("inner")
+         }
+
+         oOuter.onclick = function () {
+             alert("outer")
+         } */
+
+
+        oCon.onclick = function () {
+            alert("con3")
+        }
+
+        oBtn.onclick = function () {
+            oCon.onclick = null;
+        }
+    </script>
+</body>
+
+</html>
