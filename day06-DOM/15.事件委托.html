@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">新添加</button>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var oList = document.getElementById('list');
+        var oListLis = oList.getElementsByTagName("li");
+        var oBtn = document.getElementById('btn');
+
+
+        //普通的方法1.使用多次遍历  2.无法给未来的元素绑定事件
+        /* Array.from(oListLis).forEach(function (item, index) {
+            item.onclick = function () {
+                this.style.background = "red";
+            }
+        })
+
+        oBtn.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.textContent = "hello";
+            oList.appendChild(newLi);
+
+
+            Array.from(oListLis).forEach(function (item, index) {
+                item.onclick = function () {
+                    this.style.background = "red";
+                }
+            })
+        } */
+
+
+
+        /* 
+            事件委托：
+                事件就是我们普通绑定的事件
+                委托就是不绑定在当前元素上，而是绑定在了父级或者祖辈元素上,通过event事件对象的target属性，获取当前点击的精确元素
+                使用了冒泡的原理
+
+                优点：
+                    1.减少for循环，减少绑定事件数量，提高效率
+                    2.可以给未来的元素绑定事件
+
+        
+        
+        */
+
+
+        oList.onclick = function (e) {
+            if (e.target.nodeName.toLowerCase() === "li") {
+                e.target.style.background = "red";
+            }
+
+        }
+
+
+
+        //添加新元素
+        oBtn.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.textContent = "hello";
+            oList.appendChild(newLi);
+
+        }
+    </script>
+</body>
+
+</html>

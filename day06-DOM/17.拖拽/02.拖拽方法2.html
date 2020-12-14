@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        //鼠标在元素上按下  获取到鼠标 到 目标元素 边缘的距离
+        oBox.onmousedown = function (e) {
+            //获取当前按下时候的clientX和clientY
+            var mouseToWin = {
+                x: e.clientX,
+                y: e.clientY
+            };
+            //获取元素当前的偏移位置
+            var boxStartLocation = {
+                x: oBox.offsetLeft,
+                y: oBox.offsetTop
+            }
+
+
+            //按下以后 可以绑定移动事件  
+            //因为鼠标移动比元素渲染快，所以当鼠标移出box的时候，拖拽就会停止，所以可以把移动事件绑定在document上
+            document.onmousemove = function (e) {
+                //移动的时候clientX在改变,获取新旧clientX的差值 并添加box的初始位置 就是box最新的位置
+                var eleLocation = {
+                    x: e.clientX - mouseToWin.x + boxStartLocation.x,
+                    y: e.clientY - mouseToWin.y + boxStartLocation.y
+                }
+
+                //判断临界值
+                //获取窗口的宽高
+                var winWH = {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight,
+                }
+                if (eleLocation.x <= 0) {
+                    eleLocation.x = 0;
+                } else if (eleLocation.x >= winWH.width - oBox.offsetWidth) {
+                    eleLocation.x = winWH.width - oBox.offsetWidth
+                }
+                if (eleLocation.y <= 0) {
+                    eleLocation.y = 0;
+                } else if (eleLocation.y >= winWH.height - oBox.offsetHeight) {
+                    eleLocation.y = winWH.height - oBox.offsetHeight
+                }
+
+
+
+                //赋值
+                oBox.style.left = eleLocation.x + "px";
+                oBox.style.top = eleLocation.y + "px";
+            }
+
+            //绑定松开事件 
+            //可能不在box上松开，那么就需要把事件绑定在document上
+            document.onmouseup = function () {
+                //取消move事件 就可以不移动了
+                document.onmousemove = null;
+                //自杀式删除自身  因为等再次按下的时候 重新绑定了
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>
