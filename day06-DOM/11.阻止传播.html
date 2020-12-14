@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">取消事件</button>
+    <div id="outer">
+        <div id="inner">
+            <div id="con">con</div>
+        </div>
+    </div>
+
+    <script>
+        var oCon = document.getElementById('con');
+        var oOuter = document.getElementById('outer');
+        var oInner = document.getElementById('inner');
+        var oBtn = document.getElementById('btn');
+
+        /* 
+            阻止传播：
+                无论是冒泡还是捕获，当执行到某个事件的时候，如果遇到了阻止传播代码，则直接停止当前事件的事件流的传播
+
+                主流浏览器：
+                    event事件对象的 stopPropagation
+
+                ie低版本：
+                    event事件对象的 cancelBubble 为 true
+        */
+
+
+        oCon.addEventListener("click", function () {
+            alert("con3")
+        }, true)
+        oInner.addEventListener("click", function (e) {
+            // e.stopPropagation();
+            // e.cancelBubble = true;
+            e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+            alert("inner")
+        }, true)
+
+        oOuter.addEventListener("click", function () {
+            alert("outer")
+        }, true)
+        document.addEventListener("click", function () {
+            alert("document")
+        }, true)
+    </script>
+</body>
+
+</html>

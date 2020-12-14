@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">delete</button>
+    <div id="box">
+        box
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        //绑定事件的兼容函数
+        function addEvent(Ele, Type, Fn, Bool) {
+            if (Ele.addEventListener) {
+                Ele.addEventListener(Type, Fn, Bool || false)
+            } else if (Ele.attachEvent) {
+                Ele.attachEvent("on" + Type, Fn)
+            } else {
+                Ele['on' + Type] = Fn;
+            }
+        }
+
+        function fn() {
+            alert("hello");
+        }
+        addEvent(oBox, "click", fn, false)
+    </script>
+</body>
+
+</html>

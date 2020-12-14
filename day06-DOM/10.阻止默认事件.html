@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: lawngreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        oBox.oncontextmenu = function (e) {
+            /* 
+                阻止默认事件：
+                    主流浏览器中：
+                        event对象的preventDefault()
+                    ie低版本：
+                        event对象的returnValue属性 值设置为false
+                    
+                    简单粗暴的阻止方法：
+                        return false;
+                        但是必须书写在末尾，因为会直接退出函数
+            
+            
+            */
+            // e.preventDefault();
+            // e.returnValue = false;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        }
+    </script>
+</body>
+
+</html>
