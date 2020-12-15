@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 1040px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .outer img {
+            width: 500px;
+            height: 300px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer"></div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var imgsrc = ["https://s3.ax1x.com/2020/12/08/rSCogx.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCh59.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCI81.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCfUJ.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCWE4.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCHKK.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPCKf.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCqbD.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCbDO.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCTv6.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCOVe.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCXUH.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCj5d.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCxPA.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCz8I.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPPr8.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPS2t.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPpxP.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPiqS.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPkVg.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPE5j.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPZPs.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPMrT.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPeGn.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPm2q.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPnx0.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPQqU.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPKMV.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSP3a4.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSP1ZF.jpg"
+        ]
+
+        imgsrc.forEach(function (item) {
+            var newImg = new Image();
+            //先把src保存在当前img的自定义属性上，等加载到的时候，在把自定义属性给到src属性
+            newImg.src = "./loading.gif";
+            newImg.dataset.src = item;
+            oOuter.appendChild(newImg)
+        })
+        var oImgs = document.querySelectorAll('.outer img');
+        //监听滚动条
+        window.onload = window.onscroll = function () {
+            //获取窗口的高度
+            var winHeight = document.documentElement.clientHeight;
+            //获取滚动条已经滚动的距离
+            var winScroll = window.pageYOffset;
+            //遍历所有的图片
+            oImgs.forEach(function (item) {
+                //判断哪一个图片已经进入页面（图片距离文档顶部的值 小于 屏幕的高度加上滚动条滚过的距离）
+                if (getEleToDoc(item).top <= winHeight + winScroll) {
+                    //让图片显示  把当前img标签上保存的data-src 赋值给img的src
+                    item.src = item.dataset.src;
+                }
+            })
+        }
+
+
+
+
+        //获取元素到文档顶部或左侧边缘的距离封装
+        function getEleToDoc(Ele) {
+            var l = 0,
+                t = 0;
+            var obj = Ele;
+            while (obj) {
+                if (obj === Ele) {
+                    l += obj.offsetLeft;
+                    t += obj.offsetTop;
+                } else {
+                    l += (obj.offsetLeft + obj.clientLeft);
+                    t += (obj.offsetTop + obj.clientTop);
+                }
+
+                //如果obj存在，并且已经获取过值了，则把obj变成 原来obj的offsetParent
+                obj = obj.offsetParent;
+            }
+
+            return {
+                left: l,
+                top: t
+            }
+        }
+    </script>
+</body>
+
+</html>
