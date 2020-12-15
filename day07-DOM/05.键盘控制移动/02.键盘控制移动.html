@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        var x = 0,
+            y = 0,
+            leftMove = false,
+            rightMove = false,
+            topMove = false,
+            bottomMove = false;
+
+        setInterval(function () {
+            if (leftMove) {
+                x--;
+            }
+            if (rightMove) {
+                x++;
+            }
+            if (topMove) {
+                y--;
+            }
+            if (bottomMove) {
+                y++;
+            }
+
+            oBox.style.left = x + "px";
+            oBox.style.top = y + "px";
+        }, 1)
+
+        document.onkeydown = function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    leftMove = true;
+                    break;
+                case 38:
+                    topMove = true;
+                    break;
+                case 39:
+                    rightMove = true;
+                    break;
+                case 40:
+                    bottomMove = true;
+                    break;
+            }
+        }
+
+        document.onkeyup = function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    leftMove = false;
+                    break;
+                case 38:
+                    topMove = false;
+                    break;
+                case 39:
+                    rightMove = false;
+                    break;
+                case 40:
+                    bottomMove = false;
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

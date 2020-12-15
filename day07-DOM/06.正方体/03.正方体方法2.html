@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            /* perspective: 1000px; */
+            transform: rotate3d(1, 1, 1, 60deg);
+            animation: rotate 2s linear infinite;
+            /* transform-origin: center center 100px; */
+        }
+
+        .box li {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            font-size: 40px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            transition: all 1s;
+        }
+
+
+
+        .box:hover li:nth-child(1) {
+            transform: rotateX(180deg) translateZ(200px)
+        }
+
+        .box:hover li:nth-child(2) {
+            transform: translateZ(200px)
+        }
+
+        .box:hover li:nth-child(3) {
+            transform: rotateY(-90deg) translateZ(200px);
+
+        }
+
+        .box:hover li:nth-child(4) {
+            transform: rotateY(90deg) translateZ(200px);
+
+        }
+
+        .box:hover li:nth-child(5) {
+            transform: rotateX(90deg) translateZ(200px);
+
+        }
+
+        .box:hover li:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(200px);
+
+        }
+
+        .box li:nth-child(1) {
+            left: 0;
+            top: 0;
+            background-color: rgb(159, 228, 23, .7);
+        }
+
+        .box li:nth-child(2) {
+            left: 0;
+            top: 0;
+            background-color: rgba(23, 228, 91, 0.7);
+        }
+
+        .box li:nth-child(3) {
+            left: 0;
+            top: 0;
+            background-color: rgba(228, 214, 23, 0.7);
+        }
+
+        .box li:nth-child(4) {
+            left: 0;
+            top: 0;
+            background-color: rgba(23, 88, 228, 0.7);
+        }
+
+        .box li:nth-child(5) {
+            left: 0;
+            top: 0;
+            background-color: rgba(228, 122, 23, 0.7);
+        }
+
+        .box li:nth-child(6) {
+            left: 0;
+            top: 0;
+            background-color: rgba(146, 14, 76, 0.7);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate3d(1, 1, 1, 0deg)
+            }
+
+            to {
+                transform: rotate3d(1, 1, 1, 360deg)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</body>
+
+</html>

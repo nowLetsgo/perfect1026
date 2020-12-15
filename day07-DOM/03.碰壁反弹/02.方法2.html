@@ -21,23 +21,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background-color: rgb(27, 49, 36);
-            animation: changeColor .1s linear infinite;
-        }
-
-        @keyframes changeColor {
-            30% {
-                background-color: green;
-            }
-
-            60% {
-                background-color: yellow;
-            }
-
-            80% {
-                background-color: yellowgreen;
-            }
-
+            background-color: aqua;
         }
     </style>
 </head>
@@ -52,19 +36,30 @@
 
         var x = 40,
             y = 80;
-        var i = 1,
-            j = 1;
+        var i = true,
+            j = true;
         setInterval(function () {
-            //无论满足哪一个条件 只要碰壁了 就改变方向
-            //通过改变x每次累加的值的 正负 来改变方向
-            if (x < 0 || x >= oOuter.clientWidth - oCon.offsetWidth) {
-                i *= -1;
+            if (i) {
+                x++
+            } else {
+                x--;
             }
-            if (y < 0 || y >= oOuter.clientHeight - oCon.offsetHeight) {
-                j *= -1;
+            if (x >= oOuter.clientWidth - oCon.offsetWidth) {
+                i = false;
+            } else if (x <= 0) {
+                i = true;
             }
-            x += i;
-            y += j;
+
+            if (j) {
+                y++
+            } else {
+                y--;
+            }
+            if (y >= oOuter.clientHeight - oCon.offsetHeight) {
+                j = false;
+            } else if (y <= 0) {
+                j = true;
+            }
             oCon.style.left = x + "px";
             oCon.style.top = y + "px";
         }, 1)

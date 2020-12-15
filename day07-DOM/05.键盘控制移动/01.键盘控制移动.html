@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        var x = 0,
+            y = 0;
+        document.onkeydown = function (e) {
+            // console.log(e.keyCode)
+            /* 
+                左：37
+                上：38
+                右：39
+                下：40
+            */
+
+            if (e.keyCode === 39) {
+                x += 10;
+            }
+            if (e.keyCode === 37) {
+                x -= 10;
+            }
+
+            if (e.keyCode === 38) {
+                y -= 10;
+            }
+            if (e.keyCode === 40) {
+                y += 10;
+            }
+
+            oBox.style.left = x + "px";
+            oBox.style.top = y + "px";
+        }
+    </script>
+</body>
+
+</html>

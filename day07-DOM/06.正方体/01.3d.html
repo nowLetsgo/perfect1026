@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(123, 123, 123, .5);
+            position: relative;
+            /* 在父级开启3d 有Z轴了*/
+            transform-style: preserve-3d;
+
+            /* 开启近大远小效果 */
+            perspective: 100px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: red;
+            transition: all .5s linear;
+
+        }
+
+        .outer:hover .box {
+            transform: rotateY(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>
