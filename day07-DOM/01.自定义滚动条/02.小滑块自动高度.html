@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .scrollBar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 30px;
+            background-color: silver;
+            height: 100%;
+        }
+
+        .scrollBar .box {
+            position: absolute;
+            top: 0;
+
+            width: 30px;
+            /* height: 60px; */
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- 内容 -->
+        <div class="con"></div>
+
+        <!-- 自定义滚动条 -->
+        <div class="scrollBar">
+            <div class="box"></div>
+        </div>
+    </div>
+    <script>
+        //js生成内容
+        var oCon = document.querySelector('.con');
+        var oBox = document.querySelector('.box');
+        var oScrollBar = document.querySelector('.scrollBar');
+        for (var i = 0; i < 300; i++) {
+            oCon.innerHTML += i + "<br>"
+        }
+
+        // 求出滑块的盖度（根据比例计算）
+        // 窗口的高度x/文档的总高度  ===  滑块的高度y / 滑槽的总高度
+        // 窗口的高度x  ===  滑块的高度y * (文档的总高度 / 滑槽的总高度)
+        // 滑块的高度y = 窗口的高度x  /(文档的总高度 / 滑槽的总高度)
+        // 比例就是：(文档的总高度 / 滑槽的总高度)
+        var scale = oCon.offsetHeight / oScrollBar.offsetHeight;
+        var oBoxHeight = document.documentElement.clientHeight / scale;
+        oBox.style.height = oBoxHeight + "px";
+        //滑块的拖拽
+
+        oBox.onmousedown = function (e) {
+            e.preventDefault();
+            var mouseToBox = e.offsetY;
+            document.onmousemove = function (e) {
+                e.preventDefault();
+
+                var boxLocation = e.clientY - mouseToBox;
+
+                //判断临界值
+                if (boxLocation <= 0) {
+                    boxLocation = 0;
+                } else if (boxLocation >= oScrollBar.clientHeight - oBox.offsetHeight) {
+                    boxLocation = oScrollBar.clientHeight - oBox.offsetHeight
+                }
+                oBox.style.top = boxLocation + "px";
+
+                /* 
+                    比例计算：
+                        文档移动的距离x/文档的总高度  ===  滑块移动的距离y / 滑槽的总高度
+                        求X：
+                            文档移动的距离x = (滑块移动的距离y / 滑槽的总高度)*文档的总高度
+                            文档移动的距离x = 滑块移动的距离y * 文档的总高度 / 滑槽的总高度
+                            文档移动的距离x = 滑块移动的距离y * (文档的总高度 / 滑槽的总高度)
+
+                        所以：
+                            比例就是：文档的总高度 / 滑槽的总高度
+                            已知刚才boxLocation 就是 滑块移动的距离y
+
+                */
+                //文档的总高度(con的高度) / 滑槽的总高度
+                //比例在计算滑块的高度的时候 已经计算完成 所以直接使用即可
+                // var scale = oCon.offsetHeight / oScrollBar.clientHeight;
+                var docMove = boxLocation * scale;
+                //赋值
+                oCon.style.transform = "translateY(" + -docMove + "px)";
+            }
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>
