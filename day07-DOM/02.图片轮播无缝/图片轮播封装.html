@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            overflow: auto;
+
+        }
+
+        .con {
+            width: 4000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .btn .left,
+        .btn .right {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: rgba(134, 56, 166, .5);
+            color: #fff;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .btn .left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn .right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .list {
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .list li {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(20, 200, 200, .3);
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .list li.active {
+            background-color: rgba(20, 200, 200, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="./images/01.png" alt="">
+                <img src="./images/02.png" alt="">
+                <img src="./images/03.png" alt="">
+                <img src="./images/04.png" alt="">
+                <img src="./images/05.png" alt="">
+                <img src="./images/01.png" alt="">
+            </div>
+            <div class="btn">
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oInner = document.querySelector('.inner');
+        var oImgs = document.querySelectorAll('.inner .con img');
+        var oRight = document.querySelector('.right');
+        var oLeft = document.querySelector('.left');
+        var oListLis = document.querySelectorAll('.list li');
+        var changeTimer = null,
+            moveTimer = null;
+        var v = 0; //定义一个变量，代表图片的下标
+
+        //移动的动画 move
+        function move() {
+            var startLoaction = oInner.scrollLeft;
+            var endLocation = v * oImgs[0].offsetWidth;
+            var startStep = 0;
+            var endStep = 40;
+            var everyStep = (endLocation - startLoaction) / (endStep - startStep);
+            moveTimer = setInterval(function () {
+                startLoaction += everyStep;
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer)
+                }
+                oInner.scrollLeft = startLoaction;
+            }, 10)
+        }
+
+        //下标点亮
+        function list() {
+            /* //遍历所有的li 给下标点亮
+            oListLis.forEach(function (item, index) {
+                var i = v;
+                if (i === 5) {
+                    i = 0;
+                }
+                if (index === i) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
+            }) */
+
+            //清空所有
+            oListLis.forEach(function (item) {
+                item.classList.remove("active");
+            })
+            oListLis[v === 5 ? 0 : v].classList.add("active");
+
+        }
+        autoMove();
+        //自动走
+        function autoMove() {
+            //每隔两秒换张图
+            changeTimer = setInterval(function () {
+                //为了防止执行内部计时器的时候，上一个内部计时器还没有完成，需要清除一下
+                clearInterval(moveTimer);
+                //图片下标累加
+                v++;
+                //判断临界值
+                if (v >= oImgs.length) {
+                    oInner.scrollLeft = 0;
+                    v = 1;
+                }
+                // oInner.scrollLeft = v * oImgs[0].offsetWidth;
+                move();
+                list();
+
+            }, 2000)
+        }
+
+
+
+        //oRight的点击事件
+        oRight.onclick = function () {
+            //当点击的时候 把自动走给清掉
+            clearInterval(changeTimer);
+            //为了防止执行内部计时器的时候，上一个内部计时器还没有完成，需要清除一下
+            clearInterval(moveTimer);
+            //图片下标累加
+            v++;
+            //判断临界值
+            if (v >= oImgs.length) {
+                oInner.scrollLeft = 0;
+                v = 1;
+            }
+            move();
+
+
+            list();
+
+            autoMove();
+
+
+        }
+
+
+        //oLeft的点击事件
+        oLeft.onclick = function () {
+            //当点击的时候 把自动走给清掉
+            clearInterval(changeTimer);
+            //为了防止执行内部计时器的时候，上一个内部计时器还没有完成，需要清除一下
+            clearInterval(moveTimer);
+
+            v--;
+            if (v < 0) {
+                v = oImgs.length - 2;
+                oInner.scrollLeft = (oImgs.length - 1) * oImgs[0].offsetWidth;
+            }
+
+            move();
+
+            list();
+
+            autoMove();
+        }
+
+
+        //给下标绑定点击事件
+        oListLis.forEach(function (item, index) {
+            item.onclick = function () {
+                //当点击的时候 把自动走给清掉
+                clearInterval(changeTimer);
+                //为了防止执行内部计时器的时候，上一个内部计时器还没有完成，需要清除一下
+                clearInterval(moveTimer);
+                //先清空所有的样式
+                oListLis.forEach(function (item, index) {
+                    item.classList.remove("active");
+                })
+                item.classList.add("active");
+
+                //index就是要走到的图片的下标
+                v = index;
+
+
+                move();
+
+                list();
+
+                autoMove();
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 800px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        #con {
+            position: absolute;
+            left: 40px;
+            top: 80px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="con"></div>
+    </div>
+    <script>
+        var oOuter = document.getElementById('outer');
+        var oCon = document.getElementById('con');
+
+        var x = 40,
+            y = 80;
+        var i = 1,
+            j = 1;
+        setInterval(function () {
+            //无论满足哪一个条件 只要碰壁了 就改变方向
+            //通过改变x每次累加的值的 正负 来改变方向
+            if (x < 0 || x >= oOuter.clientWidth - oCon.offsetWidth) {
+                i *= -1;
+            }
+            if (y < 0 || y >= oOuter.clientHeight - oCon.offsetHeight) {
+                j *= -1;
+            }
+            x += i;
+            y += j;
+            oCon.style.left = x + "px";
+            oCon.style.top = y + "px";
+        }, 1)
+    </script>
+</body>
+
+</html>
