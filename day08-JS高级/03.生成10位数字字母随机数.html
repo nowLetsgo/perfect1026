@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            生成10位数字字母随机数
+                1.生成一个[0-35]的随机数 
+                2.转换成36进制
+                3.把10次的结果拼接字符串
+        */
+        var str = "";
+        for (var i = 0; i < 10; i++) {
+            var num = Math.floor(Math.random() * 36);
+            var re = num.toString(36);
+            str += re;
+        }
+        console.log(str);
+
+
+        /* 
+            生成一个永远不重复的id
+        
+        */
+        console.log(Date.now())
+        console.log(Date.now().toString(36))
+    </script>
+</body>
+
+</html>

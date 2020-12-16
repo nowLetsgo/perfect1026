@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            判断数据类型：
+                typeof：所有的值
+                    number
+                    boolean
+                    string
+                    undefined
+                    object
+                    function
+                    symbol(ES6)
+                    bigint(ES6)
+
+                    typeof能够检测出来的类型：
+                        number、boolean、string、undefined、function、symbol(ES6)、bigint(ES6)
+
+                
+                ===:
+                    null和undefined只有一个唯一的值 所以可以使用全等判断 null和undefined
+
+                A instanceof B:
+                    判断B在不在A的原型链上 只要在就都会返回true
+
+                Object.prototype.toString():    
+                    完美的检测任意数据类型
+        
+        
+        */
+        function fn() {
+
+        }
+        console.log(typeof fn)
+
+
+        var a;
+        console.log(typeof a); //undefined
+        console.log(a === undefined) //如果返回true  则一定是undefined
+
+        var b = null;
+        console.log(b === null); //如果返回true 则一定是null类型
+
+        console.log([1, 2, 3] instanceof Array); //true
+        console.log({}
+            instanceof Object); //true
+        console.log([1] instanceof Object); //true
+        console.log(new Date() instanceof Object); //true
+
+
+        //Object.prototype.toString
+        console.log(Object.prototype.toString.call([])); //[object Array]
+        console.log(Object.prototype.toString.call({})); //[object Object]
+        console.log(Object.prototype.toString.call("123")); //[object String]
+        console.log(Object.prototype.toString.call(1)); //[object Number]
+        console.log(Object.prototype.toString.call(true)); //[object Boolean]
+        console.log(Object.prototype.toString.call(null)); //[object Null]
+        console.log(Object.prototype.toString.call(undefined)); //[object Undefined]
+        console.log(Object.prototype.toString.call(new Date())); //[object Date]
+        console.log(Object.prototype.toString.call(fn)); //[object Function]
+        console.log(Object.prototype.toString.call(new RegExp())); //[object RegExp]
+
+
+        console.log(Object.prototype.toString.call([]).slice(8, -1).toLowerCase()); //Array
+
+        function checkType(value) {
+            return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+        }
+
+        console.log(checkType([]))
+        console.log(checkType({}))
+        console.log(checkType(""))
+        console.log(checkType(1))
+        console.log(checkType(true))
+    </script>
+</body>
+
+</html>
