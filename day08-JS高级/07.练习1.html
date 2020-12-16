@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        问题: var a = xxx, a内存中到底保存的是什么?
+        */
+        var a
+        a = 'abc' //基本类型值
+        a = function () { //一个对象的地址值
+
+        }
+
+        var b = true; //基本类型值
+        a = b //基本类型值
+        b = [] //地址值
+        a = b //地址值
+    </script>
+</body>
+
+</html>

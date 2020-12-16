@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var o5 = {
+            m: 2
+        };
+        var o6 = o5;
+
+        function fn(obj) {
+            obj = {
+                m: 5
+            };
+        }
+        fn(o5)
+        console.log(o5.m, o6.m, o6 === o5); //5 2 false
+
+
+
+
+        //test2
+        var o5 = {
+            m: 5
+        };
+        var o6 = o5;
+
+        function fn(obj) {
+            obj.m = 2
+        }
+        fn(o5)
+        console.log(o5.m, o6.m, o6 === o5) //2 2 true
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //2个引用变量指向同一个对象, 通过一个引用变量修改对象内部数据, 另一个引用变量也看得见
+        var o1 = {
+            m: 1
+        }
+        var o2 = o1; //地址值的赋值
+        o2.m = 2; //o2和o1都是一个地址 代表同一个对象
+        console.log(o1.m, o1 === o2) //2  true
+
+
+        //2个引用变量指向同一个对象,让一个引用变量指向另一个对象, 另一个引用变量还是指向原来的对象
+        var o3 = {
+            m: 3
+        }
+        var o4 = o3
+        o3 = {
+            m: 4
+        }
+        console.log(o4.m, o4 === o3) //3 false
+    </script>
+</body>
+
+</html>
