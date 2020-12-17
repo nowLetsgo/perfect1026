@@ -9,18 +9,24 @@
 
 <body>
     <script>
+        /* 
+            js调用函数时传递变量参数时, 是值传递还是引用传递?
+                只有值传递 没有引用传递 只不过传递的值可能是 地址  也可能是其他基本类型
+        */
+
         var o5 = {
             m: 2
         };
         var o6 = o5;
-
+        //传参就是 地址值的赋值
         function fn(obj) {
+            // 又把obj的值赋值了一个新的地址 不会影响外边的o5 o6
             obj = {
                 m: 5
             };
         }
         fn(o5)
-        console.log(o5.m, o6.m, o6 === o5); //5 2 false
+        console.log(o5.m, o6.m, o6 === o5); //2 2 true
 
 
 

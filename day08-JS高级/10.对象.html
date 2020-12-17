@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象：
+                对象的key 最终解析出来一定是一个字符串类型，不可能是其他类型
+            
+                .操作符:叫做成员访问，访问或者设置一个对象的属性或方法，但是点操作符后跟的都是字符串
+
+                []操作符对于对象来说：访问或者设置一个对象的属性或方法，中括号中可以书写变量（最终会把变量解析为字符串），也可以书写字符串，但是必须添加引号
+
+                []操作符是万能的，里边可以书写变量或字符串，但是点操作符只能书写字符串（不用添加引号）
+
+                使用[]的场景：1.属性是用变量来表示的  2.key命名不规范 需要添加引号
+        
+        
+        */
+        var o1 = {};
+        var o2 = {};
+        var obj = {};
+        //o1和o2最终都解析为变量 '[object Object]'
+        obj[o1] = 1;
+        obj[o2] = 2;
+        console.log(obj)
+
+
+
+        /* obj.o1 = 1;
+        obj.o2 = 2;
+        console.log(obj.o1); // 1   2
+        console.log(obj["o1"]); // 1   2 */
+    </script>
+</body>
+
+</html>

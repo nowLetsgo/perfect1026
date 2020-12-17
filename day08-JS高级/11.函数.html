@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            函数是n条语句的封装体，可以执行
+            函数作用：
+                1.代码复用
+                2.便于阅读和维护
+            函数的定义方法：
+                1.函数声明
+                2.函数表达式
+                3.实例化Function构造函数
+            函数的身份：
+                1.作为n条语句的封装体，在需要的位置调用
+                2.对象,被称作为 函数对象
+            函数的调用：
+                1.默认调用  fn()
+                2.上下文对象调用  obj.fn();  div.onclick = function(){}
+                3.实例化调用： new fn()
+                4.call\apply调用：fn.call();
+        
+        */
+
+        function fn() {
+
+        }
+        //把函数当做一个对象 可以扩展属性和方法
+        fn.a = 1;
+
+        console.log(fn.a)
+    </script>
+</body>
+
+</html>
