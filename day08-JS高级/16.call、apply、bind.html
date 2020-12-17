@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            call,apply,bind是Function对象原型对象上自带的三个方法，所有的函数都能调用
+
+            - 改变函数执行时的上下文，或者改变函数调用时的this指向
+
+            call方法：
+                - 执行调用call方法的函数
+                - 改变调用call方法的函数中的this指向 指向call方法的第一个参数
+
+            call方法参数
+                1.this被改变的指向的对象
+                    - 如果第一个参数是 null或者undefined  则改变this指向window
+                    - 如果是基本包装类型，指向其的包装对象
+                    - 如果是对象类型，则直接指向当前对象
+                2.后边的参数都是 被调用函数的实参  逗号间隔开
+
+            apply:
+                apply和call基本一样
+                但是传参的时候有些同
+                    - call给函数传参的时候，是作为call的第二个参数以后所有的参数 逗号隔开
+                    - apply 给函数传参的时候，函数的参数全部放在数组中，作为apply的第二个参数
+            
+            bind:   
+                和call的功能基本类似，传参方式也一样
+                区别：
+                    call和apply作用是改变this指向，并直接调用函数
+                    bind作用是改变this指向，并返回一个改变this指向以后的函数（不会调用）
+        
+        
+        */
+        var obj = {
+            name: "xiaowang"
+        }
+
+        function add(a, b) {
+            console.log(this);
+            console.log(a + b)
+        }
+        add(1, 2); //window  3
+
+
+        add.call(obj, 1, 2) //obj 3
+
+        add.call(1) //Number(1)
+        add.call(true) //Boolean(true)
+        add.call("a") //String(a)
+        add.call(function fn() {}) //fn
+        add.call(null) //window
+        add.call(undefined) //window
+        add.call([1, 2, 3]) //arr
+
+
+        add.apply(obj, [1, 2])
+
+
+        var re = add.bind(obj, 1, 2)
+        console.log(re);
+        re();
+        console.log(re === add); //false  返回的是一个新函数
+
+
+        document.onclick = (function () {
+            console.log(this)
+        }).bind(window)
+
+        document.onclick = function () {
+            // console.log(this);
+            var _this = this;
+            setTimeout(function () {
+                console.log(_this)
+            }, 400)
+        }
+
+        document.onclick = function () {
+            setTimeout((function () {
+                console.log(this)
+            }).bind(this), 400)
+        }
+
+
+        /* 
+            练习
+        
+        */
+        var arr = [1, 2, 3, 4, 5];
+        // console.log(Math.max(...arr))
+        console.log(Math.max.apply(Math, arr))
+    </script>
+</body>
+
+</html>

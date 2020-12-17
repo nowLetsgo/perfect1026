@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            立即执行函数表达式（匿名函数自调用） IIFE
+                隐藏内部的实现
+                构成局部作用域 不会污染全局变量
+                模块化开发
+        
+        
+        */
+        for (var i = 0; i < 3; i++) {
+            (function (i) {
+                setTimeout(function () {
+                    console.log(i); //
+                })
+            })(i);
+            /* 
+            
+            */
+            (function () {})()
+
+        }
+
+
+        for (let i = 0; i < 3; i++) {
+            setTimeout(function () {
+                console.log(i); //
+            })
+        }
+    </script>
+</body>
+
+</html>

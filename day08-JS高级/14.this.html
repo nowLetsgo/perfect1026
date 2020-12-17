@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            this是什么？
+                - 一个关键字，一个引用变量
+                - this在函数中可以直接使用
+                - this指向其所在函数的调用者，如果没有则指向window
+                - this在函数执行的时候才确定指向
+
+            this的指向和函数的调用方式相关：
+                - 函数默认调用（独立函数调用）
+                    - 指向window
+                - 上下文对象调用
+                    - 指向上下文对象
+                    - 可能会出现隐式丢失现象（注意隐式丢失以后，this的指向）
+                - 实例化调用
+                    - this指向实例化对象
+
+                - call apply bind 强制绑定
+                    指向call、apply、bind的第一个参数
+
+            怎么确定this指向呢？
+                1.先看有没有强制绑定
+                2.再看是不是实例化调用
+                3.看是否有上下文对象调用
+                4.默认绑定
+
+        */
+
+        function fn() {
+            this.a = 1;
+            console.log(this);
+        }
+
+        fn(); //window
+
+        var obj = {
+            name: "laowang",
+            do: function () {
+                console.log(this)
+                fn(); //window
+            }
+        }
+        obj.do(); //obj
+
+        var fn2 = obj.do;
+        fn2(); //window
+        document.onclick = obj.do; //document
+
+
+        document.onclick = function () {
+            console.log(this) //document
+            fn(); //window
+        }
+
+        var o1 = new fn(); //o1
+
+        fn.call(obj); //obj
+    </script>
+</body>
+
+</html>

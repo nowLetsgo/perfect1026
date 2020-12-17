@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fn1() {
+            console.log(1);
+        }
+
+        function fn2() {
+            console.log(2);
+        }
+        /* fn1.call(fn2); //1
+        fn1.call.call(fn2); //2 */
+
+        /* Function.prototype.call = function () {
+            //1.改变this指向
+            //..
+
+            //2.调用函数
+            this();
+
+        }
+        fn1.call.call(fn2); */
+
+
+        /*  function Person() {
+
+         }
+         Person.prototype.do = function () {
+             console.log(this);
+         }
+         var p1 = new Person();
+         p1.do() */
+    </script>
+</body>
+
+</html>
