@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            什么是原型链：
+        
+                1.所有的实例对象都有__proto__属性, 它指向的就是其构造函数的原型对象
+                2.这样通过__proto__属性就形成了一个链的结构，我们把这个结构称作为原型链
+                3.当查找对象内部的属性 / 方法时, js引擎自动沿着这个原型链依次查找，直到查找到为止
+                4.当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作 
+        */
+
+        function Fn() {
+            this.test1 = function () {
+                console.log("test1")
+            }
+        }
+        Fn.prototype.test2 = function () {
+            console.log("test2")
+        }
+
+        var fn1 = new Fn();
+        fn1.test1();
+        fn1.test2();
+        fn1.toString();
+        fn1.test3();
+    </script>
+</body>
+
+</html>

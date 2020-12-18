@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* var A = function () {}
+        A.prototype.n = 1;
+        //实例化的时候已经确定好了原型链上的内容了
+        var b = new A()
+
+        //把A的原型对象换了，但是不影响之前已经实例化的对象
+        A.prototype = {
+            n: 2,
+            m: 3
+        }
+        //后来实例化的 使用新的原型对象
+        var c = new A()
+        console.log(b.n, b.m, c.n, c.m) //1 undefined  2 3 */
+
+
+        /*
+         测试题2
+         */
+        var F = function () {};
+        Object.prototype.a = function () {
+            console.log('a()')
+        };
+        Function.prototype.b = function () {
+            console.log('b()')
+        };
+        var f = new F();
+        f.a() //a()
+        // f.b() //报错
+        F.a() //"a()"
+        F.b() //b()
+    </script>
+</body>
+
+</html>

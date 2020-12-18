@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            显式原型和隐式原型：
+                每一个函数都有一个prototype属性，即显式原型
+                    - 函数的prototype在创建函数的时候自动添加上，在访问实例化对象的属性的时候可能使用
+                每一个对象都有一个__proto__属性，即隐式原型
+                    - __proto__在实例化对象的时候添加，指向构造函数的prototype，当获取对象上的属性或方法找不到的时候，会自动调用__proto__
+                对象的隐式原型指向其所在构造函数的显式原型
+       
+       */
+
+        function Fn() {
+
+        }
+        Fn.prototype.do = function () {
+
+        }
+        var fn1 = new Fn();
+    </script>
+</body>
+
+</html>
