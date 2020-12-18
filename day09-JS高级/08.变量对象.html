@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            变量对象：
+                1.当执行上下文开启的时候，变量对象就会被激活，激活以后，作用域才能使用变量
+                2.变量对象和执行上下文相关，所以分为了 全局的变量对象和局部的变量对象
+                3.全局的变量是都window的属性和方法，所以全局的变量对象就是window
+                4.进入局部执行上下文，首先要生成一个变量对象，保存当前局部作用域中所有的变量（形参、声明的变量、声明的函数）
+                5.变量对象第一步先确定形参和实参
+                6.然后确定执行上下文中声明的函数,如果和形参同名，则完全覆盖
+                7.确定执行上下文中声明的变量,如果变量和形参或函数同名，则变量在赋值之前不会干扰同名形参和函数
+                8.以后在执行上下文中，如果使用变量 则直接去变量对象中查找即可
+
+        
+        
+        */
+
+        function fn(a, b) {
+            //模拟变量对象
+            var VO = {
+                arguments: {
+                    0: 1,
+                    1: 2,
+                    2: 3,
+                    length: 3
+                },
+                a: 1, //被覆盖
+                b: 2,
+                a: function () {
+
+                },
+                c: 3,
+            }
+
+            /* function a() {
+
+            } */
+
+            c = 3;
+            a = 4;
+            console.log(a);
+
+        }
+        fn(1, 2, 3)
+    </script>
+</body>
+
+</html>

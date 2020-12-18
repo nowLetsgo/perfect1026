@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function myInstanceof(A, B) {
+            var BPro = B.prototype;
+            var startA = A.__proto__;
+
+            //如果while条件达不到，则说明B不在A的原型链上 返回false
+            while (startA) {
+                if (startA === BPro) {
+                    return true;
+                }
+                //每次要获取上一级的原型对象
+                startA = startA.__proto__;
+            }
+
+            return false;
+        }
+
+        //判断B的原型对象 是否在A的原型链上
+        // myInstanceof(A, B)
+
+        function Foo() {}
+        var f1 = new Foo();
+
+        console.log(myInstanceof(f1, Foo))
+        console.log(myInstanceof(f1, Object))
+        console.log(myInstanceof(Object, Function))
+        console.log(myInstanceof(Object, Object))
+        console.log(myInstanceof(Function, Object))
+        console.log(myInstanceof(Function, Function))
+        console.log(myInstanceof(Object, Foo))
+    </script>
+</body>
+
+</html>

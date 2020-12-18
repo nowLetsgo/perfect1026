@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            作用域链：
+                - 函数创建的时候，会创建一个包含全局变量对象的作用域链（scope chain），作用域链是保证对 执行环境有权访问的所有变量和函数 的有序访问
+                - 函数执行的时候，会创建自身的变量对象，把当前变量对象插入到 声明函数时候生成的作用域链顶端，完成整个作用域链
+                - 作用域链的顶端一定是当前执行环境的变量对象，作用域链末端一定是全局环境的变量对象window
+                - 使用变量的时候会沿着作用域链一级一级的寻找，直到找到为止，如果找不到则报错
+        
+        */
+        /* var a = 1;
+
+        function fn() {
+            console.log(a);
+        }
+
+        function fn2() {
+            var a = 2;
+            fn(); //1
+        }
+
+        fn2(); */
+
+
+
+
+        /* var x = 10;
+
+        function fn() {
+            console.log(x);
+        }
+
+        function show(f) {
+            var x = 20;
+            f(); //10
+        }
+        show(fn); */
+
+
+
+        /* var fn = function () {
+            console.log(fn) //fn
+        }
+        fn() */
+
+
+
+        /* var obj = {
+            fn2: function () {
+                console.log(fn2) //报错
+            }
+        }
+        obj.fn2() */
+
+
+        /* var scope = "1";
+
+        function fn() {
+            var scope = "2";
+
+            function f() {
+                return scope;
+            }
+            return f();
+        }
+        console.log(fn());//2 */
+
+
+
+
+
+        var scope = "1";
+
+        function fn() {
+            var scope = "2";
+
+            function f() {
+                return scope;
+            }
+            return f;
+        }
+        console.log(fn()());//2
+    </script>
+</body>
+
+</html>
