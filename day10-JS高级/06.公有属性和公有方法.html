@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            公有属性和方法：
+                设置给实例化对象的属性和方法，被称作为公有属性和公有方法
+            私有属性和私有方法：
+                在构造函数中声明的属性和方法，被称作为私有属性和私有方法
+            静态属性和静态方法：
+                直接给构造函数对象扩展的属性和方法，无须实例化就能使用的 被称为静态属性和静态方法
+            特权方法：
+                在构造函数中给实例化对象扩展的方法，被称作为特权方法
+        
+        */
+        function Haijing(color) {
+            //公有属性
+            this.color = color;
+            //私有属性
+            var hobby = "保健";
+            //特权方法
+            this.hobby = function () {
+                cosnole.log("vvvip")
+            }
+        }
+
+        Haijing.prototype.do = function () {
+            //公有方法
+            console.log("君豪城");
+        }
+
+        //静态方法
+        Haijing.say = function () {
+            console.log("来一打六味地黄丸");
+        }
+    </script>
+</body>
+
+</html>

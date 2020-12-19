@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #box1 {
+            background-color: aqua;
+        }
+
+        #box2 {
+            background-color: rgb(0, 255, 98);
+        }
+
+        #box3 {
+            background-color: rgb(153, 0, 255);
+        }
+
+        #box4 {
+            background-color: rgb(255, 196, 0);
+        }
+
+        #box5 {
+            background-color: rgb(255, 0, 85);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <div id="box3" class="box"></div>
+    <div id="box4" class="box"></div>
+    <div id="box5" class="box"></div>
+    <script>
+        function Drag(ID) {
+            //构造函数的this指向实例化对象
+            this.oBox = document.getElementById(ID);
+            var that = this;
+            this.oBox.onmousedown = function (e) {
+                that.down(e);
+            }
+        }
+        Drag.prototype.down = function (e) {
+            //原型对象中的方法的this指向实例化对象
+            this.mouseToBox = {
+                x: e.offsetX,
+                y: e.offsetY
+            }
+            var that = this;
+            document.onmousemove = function (e) {
+                that.move(e);
+            }
+        }
+        Drag.prototype.move = function (e) {
+            var boxLoaction = {
+                x: e.clientX - this.mouseToBox.x,
+                y: e.clientY - this.mouseToBox.y,
+            }
+            this.oBox.style.left = boxLoaction.x + "px";
+            this.oBox.style.top = boxLoaction.y + "px";
+            var that = this;
+            document.onmouseup = function () {
+                that.up();
+            }
+        }
+        Drag.prototype.up = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+
+        new Drag("box1");
+        new Drag("box2");
+        new Drag("box3");
+        new Drag("box4");
+        new Drag("box5");
+    </script>
+</body>
+
+</html>
