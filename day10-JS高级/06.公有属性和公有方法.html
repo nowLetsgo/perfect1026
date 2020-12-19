@@ -25,9 +25,13 @@
             this.color = color;
             //私有属性
             var hobby = "保健";
+
+            function fn() {
+
+            }
             //特权方法
             this.hobby = function () {
-                cosnole.log("vvvip")
+                console.log("vvvip")
             }
         }
 
@@ -40,6 +44,8 @@
         Haijing.say = function () {
             console.log("来一打六味地黄丸");
         }
+
+        var h = new Haijing("yellow");
     </script>
 </body>
 

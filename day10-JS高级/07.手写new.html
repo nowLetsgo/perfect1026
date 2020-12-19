@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            return 1;
+        }
+        Person.prototype.do = function () {
+            console.log("doododod");
+        }
+        /* 
+            new:
+                1.返回了一个对象
+                2.把函数内部的this指向了这个对象
+                3.把对象的隐式原型指向了构造函数的显示原型
+                4.如果构造函数没有返回值 或者返回值是基本类型值，则正常返回实例化对象
+                    如果构造函数返回值是对象类型，则不再返回实例化对象，而是返回该对象类型
+
+        
+        */
+        // var p1 = new Person();
+        // console.log(p1)
+
+
+
+
+
+
+
+        /* 
+            手写new：
+                1.声明一个对象obj，作为new的返回值（实例化对象）
+                2.调用构造函数，并且把构造函数的this指向obj
+                3.修改obj的隐式原型为构造函数的显示原型
+                4.判断构造函数的返回值类型，如果是基本类型则正常返回obj，否则返回构造函数的返回值
+        
+        */
+        function myNew(FN) {
+            //声明一个对象obj，作为new的返回值（实例化对象）
+            var obj = {};
+            //调用构造函数，并且把构造函数的this指向obj
+            var FNReturn = FN.apply(obj, Array.from(arguments).slice(1));
+            //修改obj的隐式原型为构造函数的显示原型
+            obj.__proto__ = FN.prototype;
+
+            //判断类型是object 并且不是null
+            if (typeof FNReturn === 'object' && FNReturn != 'null') {
+                return FNReturn;
+            }
+
+            //判断是function
+            if (typeof FNReturn === 'function') {
+                return FNReturn;
+            }
+
+            //基本类型值
+            return obj;
+
+        }
+
+        var p1 = myNew(Person, "xiaowang", "18");
+        console.log(p1)
+        console.log(p1.constructor)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            多态：
+                同一个操作作用在不同的对象上边，产生不同的结果，被称作为多态
+        
+        */
+
+        //Cat的构造函数
+        function Cat() {
+
+        }
+        Cat.prototype.eat = function () {
+            console.log("吃鱼")
+        }
+        var cat = new Cat();
+
+        //Dog的构造函数
+        function Dog() {
+
+        }
+        Dog.prototype.eat = function () {
+            console.log("吃XX")
+        }
+        var dog = new Dog();
+
+
+        //封装一个指令
+        function goToEat(obj) {
+            obj.eat();
+        }
+
+        //同一个指令作用在不同的对象上
+        goToEat(cat);
+        goToEat(dog);
+    </script>
+</body>
+
+</html>

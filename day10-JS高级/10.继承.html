@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            继承：
+                当一个对象可以使用另外一个对象的属性和方法的时候，称作为继承
+        
+        */
+
+        //构造函数+原型 组合继承
+        //父类
+        function Animal(name, sex) {
+            this.name = name;
+            this.sex = sex;
+        }
+        Animal.prototype.speak = function () {
+            console.log("刘杰说：呕~")
+        }
+
+        //子类
+        function Cat(type, name, sex) {
+            //构造函数继承
+            //让父类构造函数中的this指向子类构造函数的this，子类构造函数的实例化对象就拥有了父类和子类的属性
+            Animal.call(this, name, sex)
+            this.type = type;
+        }
+        //原型继承 
+        //不能直接把父类的原型对象赋值给子类的原型对象，因为赋值是地址值的赋值，修改子类，父类也会被修改
+
+        // Cat.prototype = Animal.prototype;
+        Cat.prototype = new Animal();
+
+
+        //原型继承后要修正原型链
+        Cat.prototype.constructor = Cat;
+        console.log(Cat.prototype.constructor === Cat)
+
+        Cat.prototype.do = function () {
+            console.log("逮蟑螂");
+        }
+
+        var cat1 = new Cat("加菲", "晚安", '公');
+        console.log(cat1.name);
+        console.log(cat1.speak);
+
+        var ani1 = new Animal();
+        console.log(ani1);
+    </script>
+</body>
+
+</html>
