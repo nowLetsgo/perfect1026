@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            创建对象的方法1：直接创建
+                - 缺点：
+                    代码冗余
+        
+        */
+
+        /* var p1 = new Object();
+        p1.name = "xiaowang";
+        p1.sex = "nan";
+        p1.doThing = function () {
+            alert("写代码")
+        } */
+
+
+
+        /* 
+            创建对象方法2 - 工厂模式
+                缺点：
+                    无法确定创建的对象 是谁构建的
+        
+        */
+        /* function person(name, sex) {
+            var o = {};
+            o.name = name;
+            o.sex = sex;
+            o.doThing = function () {
+                alert("写代码")
+            }
+            return o;
+        }
+        var p1 = person("海静", "女");
+        var p2 = person("小海静", "女");
+
+        console.log(p1.constructor) */
+
+
+        /* 
+            创建对象方法3 - 构造函数
+                缺点：
+                    相同方法无法共享
+        
+        */
+
+        /* function Person(name, sex) {
+            //构造函数中，this指向其实例化对象，但是构造函数必须是new调用才行
+            this.name = name;
+            this.sex = sex;
+            this.doThing = function () {
+                alert("还有谁")
+            }
+        }
+        var j1 = new Person("haijing", "nv");
+        var j2 = new Person("xiaohaijing", "nv");
+        console.log(j1.constructor === Person)
+
+        console.log(j1.doThing === j2.doThing); //false */
+
+        /* 
+            创建对象方法4- 构造函数+原型方法
+        
+        */
+
+        function Person(name, sex) {
+            //构造函数中，this指向其实例化对象，但是构造函数必须是new调用才行
+            this.name = name;
+            this.sex = sex;
+        }
+        Person.prototype.doThing = function () {
+            alert("还有谁")
+        }
+        var j1 = new Person("haijing", "nv");
+        var j2 = new Person("xiaohaijing", "nv");
+        console.log(j1.constructor === Person)
+
+        console.log(j1.doThing === j2.doThing); //true
+    </script>
+</body>
+
+</html>

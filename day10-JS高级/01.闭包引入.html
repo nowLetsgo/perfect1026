@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            点击当前的li，弹出当前li的下标
+        
+         */
+
+        var oLis = document.querySelectorAll('ul li');
+
+        // 不行
+        /* for (var i = 0; i < oLis.length; i++) {
+            oLis[i].onclick = function () {
+                console.log(i);
+            }
+        } */
+
+        //解决方案1
+        /* for (var i = 0; i < oLis.length; i++) {
+            oLis[i].index = i;
+            oLis[i].onclick = function () {
+                console.log(this.index);
+            }
+        } */
+
+
+        //解决方案2
+        /* for (var i = 0; i < oLis.length; i++) {
+            (function (i) {
+                oLis[i].onclick = function () {
+                    console.log(i);
+                }
+            })(i)
+        } */
+
+        oLis.forEach(function (item, index) {
+            item.onclick = function () {
+                console.log(index)
+            }
+        })
+    </script>
+</body>
+
+</html>
