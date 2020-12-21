@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "laowang",
+            age: 18,
+            eat: function () {
+                console.log("饺子")
+            },
+            sister: {
+                name: "haijing",
+                sex: "姑娘",
+                age: 2
+            }
+        }
+
+        //深拷贝
+        function deepClone(obj) {
+            //判断类型 如果是基本类型 则直接返回 如果是对象类型，则开始拷贝
+            if (checkType(obj) === 'object') {
+                var newObj = {};
+            } else if (checkType(obj) === 'array') {
+                var newObj = [];
+            } else {
+                return obj;
+            }
+            //拷贝
+            for (var key in obj) {
+                //每次拷贝之前 把拷贝的递归一下，如果是基本值，则直接返回，否则再次拷贝
+                newObj[key] = deepClone(obj[key]);
+            }
+
+            return newObj;
+        }
+
+        var re = deepClone(obj1);
+        console.log(re);
+        console.log(re === obj1);
+        console.log(re.sister === obj1.sister);
+
+        //检测类型函数
+        function checkType(obj) {
+            return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+        }
+    </script>
+</body>
+
+</html>

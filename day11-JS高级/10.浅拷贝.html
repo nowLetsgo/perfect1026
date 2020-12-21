@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "laowang",
+            age: 18,
+            eat: function () {
+                console.log("饺子")
+            }
+        }
+
+        //obj1和obj2指向同一个对象，不属于拷贝
+        var obj2 = obj1;
+
+
+        //拷贝obj1，得到一个新的对象obj3
+        var obj3 = {};
+        //for in遍历obj1，一个个的拿到里边的key和value
+        for (var key in obj1) {
+            obj3[key] = obj1[key];
+        }
+        console.log(obj3)
+        console.log(obj3 === obj1)
+    </script>
+</body>
+
+</html>
