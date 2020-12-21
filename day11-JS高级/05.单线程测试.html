@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">测试是否假死</button>
+    <button id="btn2">开始单线程计算</button>
+    <script>
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+
+        oBtn2.onclick = function () {
+            //大量计算的时候会出现假死（页面效果失效）
+            var num = 0;
+            for (var i = 0; i < 9999999999; i++) {
+                num += Math.sqrt(i);
+            }
+            console.log(num)
+        }
+    </script>
+</body>
+
+</html>

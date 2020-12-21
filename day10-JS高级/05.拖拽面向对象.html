@@ -61,6 +61,9 @@
             document.onmousemove = function (e) {
                 that.move(e);
             }
+            document.onmouseup = function () {
+                that.up();
+            }
         }
         Drag.prototype.move = function (e) {
             var boxLoaction = {
@@ -70,9 +73,6 @@
             this.oBox.style.left = boxLoaction.x + "px";
             this.oBox.style.top = boxLoaction.y + "px";
             var that = this;
-            document.onmouseup = function () {
-                that.up();
-            }
         }
         Drag.prototype.up = function () {
             document.onmousemove = null;
@@ -84,9 +84,6 @@
         new Drag("box3");
         new Drag("box4");
         new Drag("box5");
-
-
-        
     </script>
 </body>
 

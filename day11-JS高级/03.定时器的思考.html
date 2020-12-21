@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.time('start');
+
+        setTimeout(function () {
+            console.timeEnd('start');
+        }, 0)
+
+        var sum = 0;
+        for (var i = 0; i < 100000000; i++) {
+            sum += Math.sqrt(i);
+        }
+    </script>
+</body>
+
+</html>

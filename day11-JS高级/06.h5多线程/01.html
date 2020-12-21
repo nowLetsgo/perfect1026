@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">测试是否假死</button>
+    <button id="btn2">开始单线程计算</button>
+    <button id="btn3">开始多线程计算</button>
+    <script>
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+
+        oBtn2.onclick = function () {
+            //大量计算的时候会出现假死（页面效果失效）
+            var num = 0;
+            for (var i = 0; i < 9999999999; i++) {
+                num += Math.sqrt(i);
+            }
+            console.log(num)
+        }
+
+
+        /* 
+            多线程：
+                不足
+                    worker内代码不能操作DOM(更新UI)
+                    不能跨域加载JS
+                    不是每个浏览器都支持这个新特性
+
+        
+        */
+        oBtn3.onclick = function () {
+            //把一个js文件当做是一个新的线程，实例化worker的时候，把js路径传入
+            //当前文件必须通过服务器打开，否则失效
+            //返回值代表分线程
+            var wk = new Worker('./worker.js');
+
+            //向分线程传递数据
+            wk.postMessage(999);
+
+            wk.onmessage = function (mes) {
+                //mes.data就是最终的数据
+                //拿到数据之后可以使用
+                console.log(mes);
+
+                //在主线程上关闭分线程
+                wk.terminate();
+            }
+        }
+    </script>
+</body>
+
+</html>

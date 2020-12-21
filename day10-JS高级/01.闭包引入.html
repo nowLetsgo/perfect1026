@@ -39,13 +39,13 @@
 
 
         //解决方案2
-        /* for (var i = 0; i < oLis.length; i++) {
+        for (var i = 0; i < oLis.length; i++) {
             (function (i) {
                 oLis[i].onclick = function () {
                     console.log(i);
                 }
             })(i)
-        } */
+        }
 
         oLis.forEach(function (item, index) {
             item.onclick = function () {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            事件循环模型/事件轮询机制（Event Loop）：
+                1.代码分类：
+                    - 初始化代码（同步代码）：for循环等、绑定事件、设置定时器、发送ajax请求
+                    - 回调执行代码（异步代码）：事件回调函数、定时器回调函数、ajax请求回调函数
+                
+                2.代码执行顺序：
+                    - 先执行同步代码
+                    - 再执行异步代码
+
+                3.事件模型的两个内容
+                    - 浏览器的事件管理模块（DOM事件管理模块、AJAX管理模块、定时器管理模块）
+                    - 回调队列
+
+                4.事件轮询
+                    - 执行初始化代码，并把异步回调函数交给对应的事件管理模块
+                    - 事件发生的时候，事件管理模块会把对应的函数和数据交给 回调队列
+                    - 初始化代码执行完成之后，会遍历回调队列中的函数并执行
+
+        
+        
+        */
+        console.log(1)
+        console.log(2)
+
+        document.onclick = function () {
+            setTimeout(function () {
+                console.log(5);
+            })
+            console.log(6) //
+        }
+        console.log(3)
+        console.log(4)
+    </script>
+</body>
+
+</html>
