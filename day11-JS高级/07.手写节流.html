@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 4000px;
+        }
+
+        #box {
+            width: 400px;
+            height: 400px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        /* //基础版节流
+        var lastTime = 0;
+        oBox.onmousemove = function () {
+            //看门狗
+            var nowTime = Date.now();
+            var reduceTime = nowTime - lastTime;
+            if (reduceTime <= 200) {
+                return;
+            }
+
+            lastTime = nowTime;
+
+            //以下是真正逻辑代码code
+            console.log(1);
+
+        } */
+
+
+        //move才是真正的事件逻辑代码
+        function move(e) {
+            //以下是真正逻辑代码code
+            console.log(1);
+            console.log(e);
+            console.log(this);
+        }
+
+        //把move传递给节流函数，节流函数调用以后 返回一个新函数 赋值给move事件
+        oBox.onmousemove = throttle(move, 200);
+
+
+        function scroll() {
+            console.log("滚了")
+        }
+        window.onscroll = throttle(scroll, 300)
+
+
+        //节流函数(高阶函数)
+        function throttle(fn, time) {
+            //绑定事件的时候，先初始化一个上一次的事件
+            var lastTime = 0;
+            //这个函数是事件触发的时候真正调用的事件函数
+            return function () {
+                //这个函数就负责书写看门狗，当允许通过的时候 再调用真正的逻辑代码move
+                var nowTime = Date.now();
+                if (nowTime - lastTime < time) {
+                    return;
+                }
+                lastTime = nowTime;
+
+                //arguments所在的函数就是真正的事件函数，所以拥有实参event  把event事件对象传递给fn move中就可以使用event事件对象了
+                // fn(arguments[0]);
+                //改变了fn的this为事件触发的对象
+                fn.call(this, arguments[0])
+            }
+        }
+    </script>
+</body>
+
+</html>

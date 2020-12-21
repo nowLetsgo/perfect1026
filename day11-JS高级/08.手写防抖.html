@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        var oIpt = document.getElementById('ipt');
+
+        //逻辑函数
+        function inputChange(e) {
+            console.log("表单改变 请求数据");
+            console.log(e);
+            console.log(this);
+        }
+        oIpt.oninput = debounce(inputChange, 800)
+
+        //防抖函数
+        function debounce(fn, time) {
+            var timer = null;
+            //事件函数
+            return function () {
+                //每次触发的时候，先把上一次的计时器清掉，然后重新开始计时
+                clearTimeout(timer)
+                //在计时器中 arguments是不符合的，需要使用这个位置的arguments，需要保存起来
+                var arg = arguments;
+                //保存外边的this 在计时器函数中使用
+                var that = this;
+                //每次触发事件，先不执行，要延迟一定的事件再执行
+                timer = setTimeout(function () {
+                    fn.call(that, arg[0]);
+                }, time)
+            }
+        }
+    </script>
+</body>
+
+</html>

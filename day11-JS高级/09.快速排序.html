@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [4, 3, 5, 8, 4, 5, 9, 1, 7, 4, 3];
+
+        //快速排序
+        function quickSort(arr) {
+            //先判断类型
+            if (checkType(arr) !== "array") {
+                return;
+            }
+
+            //判断数组的长度，如果数组长度为小于等于1，则直接把当前数组返回
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            //基准值选任意即可，一般选择中间值，找到中间值，并从原数组中取出中间值
+            var center = arr.splice(Math.floor(arr.length / 2), 1);
+
+            // 定义左侧和右侧的新数组， 用来存放比较后的值
+            var left = [];
+            var right = [];
+
+            //比较并存放数组
+            arr.forEach(function (item, index) {
+                //如果当前值小于基准值，则把当前值插入到左侧数组中
+                if (item <= center) {
+                    left.push(item)
+                } else {
+                    right.push(item)
+                }
+            })
+            // console.log(left, right)
+            var newArr = [].concat(quickSort(left), center, quickSort(right))
+
+
+            return newArr;
+        }
+
+        var re = quickSort(arr)
+        console.log(re)
+
+        function checkType(obj) {
+            return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+        }
+    </script>
+</body>
+
+</html>
