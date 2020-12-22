@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [2, 3, 4, 5];
+        console.log(arr.toString())
+
+        function fn() {
+            console.log(arguments);
+        }
+
+        // fn("2,3,4,5")
+        //eval可以把字符串转换成正常代码运行，所以只需要拼接'fn(1,2,3,4)'这样的字符串即可
+        eval("fn(1,2,3,4)")
+    </script>
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+console.log(this);
 //自身接受，不需要使用任何对象绑定事件
 onmessage = function (mes) {
     //参数就是MessageEvent 保存的是postMessage发送的内容对象

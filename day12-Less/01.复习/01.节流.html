@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function move(e) {
+            console.log(1);
+            console.log(e)
+        }
+        document.onmousemove = t(move, 200)
+
+        /* function t(fn, time) {
+            var lastTime = 0;
+            return function () {
+                var nowTime = Date.now();
+                if (nowTime - lastTime <= time) {
+                    return;
+                }
+                lastTime = nowTime;
+                fn.call(this, arguments[0]);
+            }
+        } */
+
+
+        /* function d(fn, time) {
+            var timer = null;
+            return function () {
+                clearTimeout(timer)
+                var _this = this;
+                var arg = arguments;
+                timer = setTimeout(function () {
+                    fn.call(_this, arg[0])
+                }, time)
+            }
+        } */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myApply = function (context) {
+            var type = typeof context;
+            //判断改变后的上下文对象是null和undefined的时候 this应该指向window
+            if (context === null || context === undefined) {
+                context = window;
+            }
+            //如果改变后的上下文对象是基本包装类型，则this指向其包装对象
+            switch (type) {
+                case "number":
+                    context = new Number(context);
+                    break;
+                case "boolean":
+                    context = new Boolean(context);
+                    break;
+                case "string":
+                    context = new String(context);
+                    break;
+            }
+            //获取第二个以后的参数，就是fn的参数
+            var arg = arguments[1];
+            //如果arg不存在 则返回空数组
+            arg = arg ? arg : [];
+
+
+            //因为fn1.myCall调用，所以这里的this指向的就是fn1
+            //context就是改变之后的上下文对象
+            //给context扩展一个方法，这个方法就是fn1,
+            context.fn = fn1;
+            //然后调用context的扩展的这个方法，fn1就会被调用，并且this指向了context
+            eval("context.fn(" + arg.toString() + ")");
+            //此时改变之后的上下文对象context就会多一个方法，所以使用完成之后要删除掉这个方法
+            delete context.fn;
+
+
+        }
+
+        var obj = {
+            name: "laowang"
+        }
+
+        function fn1(a, b) {
+            console.log(this, a + b)
+        }
+
+        fn1.apply(obj, [1, 2]);
+        fn1.apply(null, [1, 2]);
+        fn1.apply(undefined, [1, 2]);
+        fn1.apply(1, [1, 2]);
+        fn1.apply("str", [1, 2]);
+        fn1.apply(true, [1, 2]);
+
+        fn1.myApply(obj, [1, 2]);
+        fn1.myApply(null, [1, 2]);
+        fn1.myApply(undefined, [1, 2]);
+        fn1.myApply(1, [1, 2]);
+        fn1.myApply("str", [1, 2]);
+        fn1.myApply(true, [1, 2]);
+    </script>
+</body>
+
+</html>

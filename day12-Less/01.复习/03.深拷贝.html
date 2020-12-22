@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function d(obj) {
+            var newObj;
+            if (checkType(obj) === 'object') {
+                newObj = {};
+            } else if (checkType(obj) === 'array') {
+                newObj = [];
+            } else {
+                return obj;
+            }
+
+            for (var key in obj) {
+                newObj[key] = d(obj[key])
+            }
+            return newObj;
+        }
+
+        //检测类型函数
+        function checkType(obj) {
+            return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+        }
+    </script>
+</body>
+
+</html>
