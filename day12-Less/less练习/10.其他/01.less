@@ -1,0 +1,23 @@
+//less中引入其他less使用@import  但是千万不要引用css
+@import "02.less";
+
+@h: 30;
+
+@baseUrl: "http://doc.lipeihua.vip:8800/";
+
+.outer {
+    //变量加单位，字符串拼接 再转义
+    //@{h}在字符串中书写变量
+    //~转义 把字符串转成css可用代码
+    height:~"@{h}px";
+
+    //less函数 可以直接使用 在官网查看函数内容
+    width: ceil(1000/3px);
+    font-size: percentage(4/10);
+    //字符串插值
+    background: url("@{baseUrl}01.png")
+}
+
+.con {
+    background: url("@{baseUrl}02.png")
+}

@@ -1,0 +1,18 @@
+.outer {
+    //如果只有一个单位 则以当前单位为准
+    //如果都有单位 则以第一个单位为准
+    width: 300px + 200;
+    height: 20em * 20px;
+    border: 10/3px solid #000;
+
+    .con {
+        //less中无法知道百分比的最终数值，所以只能按照百分比计算
+        width: 100%-40px;
+        //calc是css中渲染的方法 不会被less解析  在页面渲染的时候会计算百分比的数值然后计算
+        height: calc(100% -30px);
+
+        font-size: 1000 / 10px;
+
+        color: #fff - 10;
+    }
+}

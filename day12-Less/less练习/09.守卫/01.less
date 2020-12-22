@@ -1,0 +1,27 @@
+/* .main(@a) when(@a>30) {
+    width: 100px;
+    height: 100px;
+}
+
+.main(@a) when(@a<=30) {
+    width: 200px;
+    height: 200px;
+} */
+
+.main(@w) when(@w>1000),
+(@w<200) {
+    width:~"@{w}px";
+    height: 100px;
+}
+
+.main(@w) when(@w<=1000) and (@w>=200) {
+    width:~"@{w}px";
+    height: 50px;
+}
+
+
+
+.outer {
+    //重载：根据参数个数不同，来匹配不同的混合
+    .main(300)
+}

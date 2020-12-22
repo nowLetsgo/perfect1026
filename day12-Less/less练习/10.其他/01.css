@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.outer {
+  height: 30px;
+  width: 334px;
+  font-size: 40%;
+  background: url("http://doc.lipeihua.vip:8800/01.png");
+}
+.con {
+  background: url("http://doc.lipeihua.vip:8800/02.png");
+}

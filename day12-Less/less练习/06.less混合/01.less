@@ -1,0 +1,52 @@
+//定义一个混合
+//不带参数的混合
+/* .center1() {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+} */
+
+//带参数的混合，并且可以设置参数默认值
+.center2(@w, @h, @bg: yellow) {
+    width: @w;
+    height: @h;
+    background: @bg;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+//清浮动混合
+.clearFix() {
+    *zoom: 1; //css hack 低版本IE开启haslayout
+
+    &:after {
+        content: "\200B";
+        height: 0px;
+        display: block;
+        clear: both;
+    }
+}
+
+.outer {
+    .clearFix(); //使用混合
+    // .center1();
+    .center2(300px, 300px, yellow);
+
+
+    .inner {
+        // .center1();
+        .center2(200px, 200px, pink);
+
+        .con {
+            // .center1();
+            .center2(@bg: green, @w: 100px, @h: 100px);
+        }
+    }
+}

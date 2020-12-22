@@ -1,0 +1,52 @@
+//变量使用@来定义，使用的时候也要添加@
+//1.作为样式的值使用
+@z: 0;
+@mainColor: yellow;
+//2.作为属性名 使用的时候 @{变量名}
+@bg: background;
+
+//3.作为选择器使用  用的时候 @{变量名}
+@o: #outer;
+
+//4.作为url地址
+@img1: "https: //ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1387419502,952543109&fm=26&gp=0.jpg";
+
+//4.作为url地址2
+@img2: url("https: //ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1387419502,952543109&fm=26&gp=0.jpg");
+
+//5.变量计算
+@c: @z+2;
+
+@img3: url(@img1);
+
+@{o} {
+    width: 300px;
+    height: 300px;
+    @{bg}: @mainColor;
+    margin: auto;
+    position: absolute;
+    left: @z;
+    top: @z;
+    bottom: @z;
+    right: @z;
+    // background: url(@img1) 0 0 no-repeat;
+    // background: @img2 0 0 no-repeat;
+    background: @img3 0 0 no-repeat;
+}
+
+
+//练习
+@var: 0;
+
+.class {
+    @var: 1;
+
+    .brass {
+        @var: 2;
+        //less变量延迟加载，也就是等待当前样式所在区域的代码全部执行完毕，才进行加载变量
+        three: @var;
+        @var: 3;
+    }
+
+    one: @var;
+}

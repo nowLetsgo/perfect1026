@@ -1,0 +1,13 @@
+.main(@w) {
+    width: @w;
+}
+
+.main(@w, @h) {
+    width: @w;
+    height: @h;
+}
+
+.outer {
+    //重载：根据参数个数不同，来匹配不同的混合
+    .main(100px, 100px)
+}

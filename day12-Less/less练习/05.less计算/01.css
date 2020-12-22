@@ -1,0 +1,11 @@
+.outer {
+  width: 500px;
+  height: 400em;
+  border: 3.33333333px solid #000;
+}
+.outer .con {
+  width: 60%;
+  height: calc(100% -30px);
+  font-size: 100px;
+  color: #f5f5f5;
+}

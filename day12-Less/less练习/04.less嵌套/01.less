@@ -1,0 +1,56 @@
+html,
+body {
+    background-color: pink;
+}
+
+.outer {
+    width: 1200px;
+    border: 1px solid #000;
+
+
+}
+
+.header {
+    height: 100px;
+    background-color: yellow;
+
+    &:hover {
+        color: yellow;
+    }
+}
+
+.header:hover {
+    color: #ccc;
+}
+
+.con {
+    margin: 0 auto;
+    border: 1px solid #000;
+
+    &>.nav {
+        margin: 10px;
+    }
+
+    &~div {
+        color: yellow;
+    }
+}
+
+.footer {
+    width: 1200px;
+    box-shadow: 0px 0px 0px 0px #ccc;
+}
+
+ul {
+    li {
+        line-height: 40px;
+
+        &:nth-child(1) {
+            color: green;
+        }
+
+        &:nth-child(2) {
+            color: pink;
+        }
+    }
+}

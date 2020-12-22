@@ -1,0 +1,13 @@
+/* .main(@a) when(@a>30) {
+    width: 100px;
+    height: 100px;
+}
+
+.main(@a) when(@a<=30) {
+    width: 200px;
+    height: 200px;
+} */
+.outer {
+  width: 300px;
+  height: 50px;
+}

@@ -1,0 +1,17 @@
+//模式匹配中，公有的样式混合 需要书写@_做为参数
+.main(@_) {
+    width: 100px;
+    height: 100px;
+}
+
+.main(color1) {
+    background-color: pink;
+}
+
+.main(color2) {
+    background-color: yellow;
+}
+
+.outer {
+    .main(color1)
+}
