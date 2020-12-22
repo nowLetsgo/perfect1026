@@ -36,12 +36,13 @@
             //因为fn1.myCall调用，所以这里的this指向的就是fn1
             //context就是改变之后的上下文对象
             //给context扩展一个方法，这个方法就是fn1,
-            context.fn = fn1;
+            context.fn = this;
             //然后调用context的扩展的这个方法，fn1就会被调用，并且this指向了context
-            eval("context.fn(" + arg.toString() + ")");
+            var result = eval("context.fn(" + arg.toString() + ")");
             //此时改变之后的上下文对象context就会多一个方法，所以使用完成之后要删除掉这个方法
             delete context.fn;
 
+            return result;
 
         }
 

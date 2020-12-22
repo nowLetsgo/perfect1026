@@ -29,17 +29,19 @@
             }
             //获取第二个以后的参数，就是fn的参数
             var arg = Array.from(arguments).slice(1);
-            
+
             console.log(arg)
 
             //因为fn1.myCall调用，所以这里的this指向的就是fn1
             //context就是改变之后的上下文对象
             //给context扩展一个方法，这个方法就是fn1,
-            context.fn = fn1;
+            context.fn = this;
             //然后调用context的扩展的这个方法，fn1就会被调用，并且this指向了context
-            eval("context.fn(" + arg.toString() + ")");
+            var result = eval("context.fn(" + arg.toString() + ")");
             //此时改变之后的上下文对象context就会多一个方法，所以使用完成之后要删除掉这个方法
             delete context.fn;
+
+            return result;
 
 
         }
@@ -50,9 +52,10 @@
 
         function fn1(a, b) {
             console.log(this, a + b)
+            return "123";
         }
 
-        fn1.call(obj, 1, 2);
+        console.log(fn1.call(obj, 1, 2));
         fn1.call(null, 1, 2);
         fn1.call(undefined, 1, 2);
         fn1.call(1, 1, 2);

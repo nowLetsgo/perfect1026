@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //myBind返回一个被改变this指向的函数
+        Function.prototype.myBind = function (context) {
+            //用_this保存当前的this 也就是调用myBind的函数
+            var _this = this;
+            var arg = Array.from(arguments).slice(1);
+            arg = arg ? arg : [];
+            return function () {
+                return _this.apply(context, arg);
+            }
+        }
+
+
+        var obj = {
+            name: "laowang"
+        }
+
+        function fn1(a, b) {
+            console.log(this, a + b)
+
+        }
+
+        var re = fn1.myBind(obj, 1, 2);
+        var re = fn1.myBind(undefined, 1, 2);
+        re();
+    </script>
+</body>
+
+</html>
