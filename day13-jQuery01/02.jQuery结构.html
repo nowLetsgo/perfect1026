@@ -9,23 +9,23 @@
 
 <body>
     <script>
-        //使用jQuery选择器获取的元素或者jQ方法返回的元素，属于jQuery实例化对象
-        //实例化对象可以调用jQuery的原型方法  
-        //jQuery构造函数对象可以调用自己的静态方法
-        //只有jquery实例化对象和jQuery对象 才能使用jQ提供的各种方法
+        //jQuery构造函数
         function jQuery() {
 
         }
+
+        // 使用jQuery选择器获取的元素或者jQ方法返回的元素， 属于jQuery实例化对象
+        // 实例化对象可以调用jQuery的原型方法
         jQuery.prototype.css = function () {
 
         }
-        jQuery.prototype.each = function () {
 
-        }
+        //jQuery构造函数对象可以调用自己的静态方法
         jQuery.ajax = function () {
 
         }
 
+        //释放jQuery到全局
         window.jQuery = window.$ = jQuery;
     </script>
 </body>

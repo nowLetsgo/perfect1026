@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>
+            <h1>h111</h1>
+        </li>
+        <li>4</li>
+    </ul>
+    <ul>
+        <li>575</li>
+        <li class="li1">6</li>
+        <li>758</li>
+        <li>8</li>
+    </ul>
+
+    <form action="">
+        <input type="text">
+        <input type="checkbox">
+        <select name="" id="">
+            <option value="">1</option>
+            <option value="">2</option>
+        </select>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+    </form>
+    <h2>h222</h2>
+    <script src="./jquery.js"></script>
+    <script>
+        console.log($("ul li:eq(1)"))
+        console.log($("ul li").eq(1))
+
+        console.log($("ul li:first"))
+        console.log($("ul li:not(.li1)"))
+        console.log($("ul li:even"))
+
+
+        console.log($("ul>:even"))
+        console.log($("ul :header"))
+        console.log($(":header"))
+
+        console.log($("ul li:contains(7)"))
+
+        console.log($("ul:has(h1)"))
+
+        console.log($(":input"))
+    </script>
+</body>
+
+</html>

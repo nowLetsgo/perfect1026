@@ -16,9 +16,18 @@
         <span class="a">span1</span>
         <span>span2</span>
     </div>
+    <span>111</span>
     <script src="./jquery.js"></script>
     <script>
         console.log($(".box").children(".a"))
+
+        console.log($("body").find(".a"))
+        console.log($("body").find(".box .a"))
+        console.log($("body").find(".box"))
+        console.log($("body").find(".box span"))
+
+        $("body").css("color", "green").find(".box").css("background", "yellow").find(".a").css("color", "pink").end()
+            .css("font-size", "50px").end().css("background", "blue")
     </script>
 </body>
 
