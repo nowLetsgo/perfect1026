@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">123</div>
+    <script src="./jquery.js"></script>
+    <script>
+        /* 
+            代码风格：
+                - 隐式迭代
+                    一般情况下 如果执行的内容一致，则直接隐式迭代，不需要我们遍历
+
+                - 链式调用
+                    jQuery的每一个方法都会返回一个jQuery对象，返回的是前边离他最近的jQuery元素获取
+                
+        */
+        $("body").css("background", "green");
+        console.log($("body").css("background", "green"))
+        console.log($("body").css("background", "green").find(".box").css("background-color", "red"))
+    </script>
+</body>
+
+</html>

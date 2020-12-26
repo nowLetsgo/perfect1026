@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //使用jQuery选择器获取的元素或者jQ方法返回的元素，属于jQuery实例化对象
+        //实例化对象可以调用jQuery的原型方法  
+        //jQuery构造函数对象可以调用自己的静态方法
+        //只有jquery实例化对象和jQuery对象 才能使用jQ提供的各种方法
+        function jQuery() {
+
+        }
+        jQuery.prototype.css = function () {
+
+        }
+        jQuery.prototype.each = function () {
+
+        }
+        jQuery.ajax = function () {
+
+        }
+
+        window.jQuery = window.$ = jQuery;
+    </script>
+</body>
+
+</html>

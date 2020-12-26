@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">123</div>
+    <script src="./jquery.js"></script>
+    <script>
+        /* 
+            jQ转js
+                - 给下标的方式
+                - jquery提供了get方法() 里边书写下标
+        
+        */
+        // $(".box").style.color = "red";
+        // $(".box")[0].style.color = "red";
+        // $(".box").get(0).style.color = "red";
+
+
+        /* 
+            js转jq:
+                在js对象外边 包裹一层 $() 即可把js对象转jq
+        
+        */
+
+        var oBox = document.querySelector('.box');
+        $(oBox).css("color", "red");
+    </script>
+</body>
+
+</html>
