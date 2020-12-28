@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script src="./jquery.js"></script>
+    <script>
+        // var oLi = document.createElement("li")
+        // oLi.innerHTML = "xin"
+        // oLi.setAttribute("study", "jq");
+        // ul.appendChild(oLi)
+        $("#btn").click(function () {
+            // $("<li study='jq'>xin</li>").appendTo($("ul"));
+            // $("ul").append($("<li study='jq'>xin</li>"))
+            // $("<li study='jq'>xin</li>").prependTo($("ul"));
+            // $("ul").prepend($("<li study='jq'>xin</li>"))
+
+            // $("<li study='jq'>xin</li>").insertAfter($("ul li:nth-child(2)"))
+            // $("ul li:nth-child(2)").after($("<li study='jq'>xin</li>"))
+
+            // $("<li study='jq'>xin</li>").insertBefore($("ul li:nth-child(2)"))
+            // $("ul li:nth-child(2)").before($("<li study='jq'>xin</li>"))
+
+            // $("ul li:nth-child(2)").remove();
+
+            // $("<li study='jq'>xin</li>").replaceAll($("ul li:nth-child(2)"))
+
+            $("ul").clone(true).appendTo($("body"))
+
+        })
+
+        $("ul").click(function () {
+            alert("1")
+        })
+    </script>
+</body>
+
+</html>

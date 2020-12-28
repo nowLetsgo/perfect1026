@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top: 40px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">自定义动画</button>
+    <div id="con">div</div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                //累加动画
+                $("#con").animate({
+                    left: "+=50px"
+                }, 1000, "linear", function () {
+                    // alert("over")
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

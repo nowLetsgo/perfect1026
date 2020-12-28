@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 700px;
+            height: 500px;
+            background-color: red;
+            margin: 20px;
+            overflow: hidden;
+            /* position: relative; */
+        }
+
+        #inner {
+            width: 500px;
+            height: 300px;
+            background-color: green;
+            margin: 30px;
+            overflow: hidden;
+            /* position: relative; */
+
+        }
+
+        #con {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 15px;
+            overflow: auto;
+        }
+
+        #box {
+            width: 10000px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <div id="outer">
+        <div id="inner">
+            <div id="con">
+                <div id="box"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                //距离文档
+                console.log($("#con").offset());
+                //距离最近定位父级
+                console.log($("#con").position());
+            })
+        })
+    </script>
+</body>
+
+</html>

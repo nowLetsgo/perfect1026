@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            /* 
+                stop:
+                    参数1：clearQueue:是否清空当前的动画队列
+                        - true 清空
+                        - false 不清空
+                    参数2：gotoEnd:是否把当前正在执行的动画走到终点位置
+                        - true 终止
+                        - false 停留当前位置
+            
+            
+            
+            */
+            $("#box").mouseenter(function () {
+                $(this).stop(true, false).animate({
+                    width: "500px",
+                }, 1000)
+            }).mouseleave(function () {
+                $(this).stop(true, false).animate({
+                    width: "200px",
+                }, 1000)
+            })
+
+            $("#box").click(function () {
+                $(this).stop(true, false).delay(1000).animate({
+                    height: "400px",
+                }, 1000)
+            })
+        })
+    </script>
+</body>
+
+</html>

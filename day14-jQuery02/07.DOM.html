@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <input type="checkbox" name="city">北京
+    <input type="checkbox" name="city" id="cao" checked="checked">草围
+    <input type="checkbox" name="city">后瑞
+    <script src="./jquery.js"></script>
+    <script>
+        $("#btn").click(function () {
+            /* 
+                attr万能
+                prop针对表单
+            
+            */
+            // $("#cao").removeProp("checked");
+            // $("#cao").prop("checked", false);
+            // $("#cao").attr("checked", false);
+
+            console.log($("#btn").html());
+        })
+    </script>
+</body>
+
+</html>

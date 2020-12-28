@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con {
+            width: 400px;
+            background-color: pink;
+            transition: all;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">显示哦</button>
+    <button id="btn2">隐藏哦</button>
+    <button id="btn3">切换</button>
+    <div id="con">
+        年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；年轻人不讲伍德，耗子喂汁；
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                //不传递任何参数的时候就是直接显示隐藏  
+                // - 参数1：可以是毫秒数，也可以是字符串 'fast'\'slow'\'normal'
+                //- 参数2：动画方式
+                //- 参数3：回调函数，当动画执行完成的时候 自动执行
+                $("#con").show('fast', "linear", function () {
+                    // alert("欺负我年龄大")
+                })
+            })
+            $("#btn2").click(function () {
+                $("#con").hide(2000)
+            })
+            $("#btn3").click(function () {
+                //显示隐藏的开关方法，当元素显示 则隐藏  当元素隐藏则显示
+                $("#con").toggle(500)
+            })
+        })
+    </script>
+</body>
+
+</html>
