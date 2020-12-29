@@ -129,9 +129,126 @@
                     //如果num的值 等于所有li的长度 代表全选
                     if (num === $(".todo-main li").length) {
                         $("#checkAll").prop("checked", true);
-                    }else{
+                    } else {
                         $("#checkAll").prop("checked", false);
                     }
+                })
+            }
+
+
+            //全部按钮 控制单选按钮
+            allClick();
+
+            function allClick() {
+                $("#checkAll").click(function () {
+                    //点击完成之后 判断全选按钮的情况
+                    if (this.checked) {
+                        $(".todo-main li label input").prop("checked", true);
+                        //改变已完成数量
+                        $("#allComplateTodos").text($(".todo-main li").length)
+                    } else {
+                        $(".todo-main li label input").prop("checked", false);
+                        $("#allComplateTodos").text(0)
+                    }
+                })
+            }
+
+
+            //发布功能
+            publish();
+
+            function publish() {
+                //判断输入回车键 就发布
+                $("#newTodo").keydown(function (e) {
+                    if (e.keyCode === 13) {
+                        //判断内容是否为空
+                        var newCon = $("#newTodo").val().trim();
+                        if (!newCon) {
+                            return;
+                        }
+
+                        var newLi = $('<li class="todo-list">\
+                                <label>\
+                                    <input type="checkbox">\
+                                    <span>' + newCon + '</span>\
+                                </label>\
+                                <button class="btn btn-danger">删除</button>\
+                            </li>')
+
+                        $(".todo-main").append(newLi);
+                        //先隐藏再下拉
+                        newLi.hide().slideDown(500)
+
+                        //清空表单
+                        $("#newTodo").val("");
+
+                        //计算全部数量
+                        setAllTodoNum();
+
+                        //取消全选按钮
+                        $("#checkAll").prop("checked", false);
+                    }
+
+                })
+            }
+
+            //单个删除
+            singleDelete();
+
+            function singleDelete() {
+                $(".todo-main").on('click', ".btn", function () {
+                    //删除当前按钮所在的父元素
+                    $(this).parent().slideUp(500, function () {
+                        $(this).remove();
+
+                        //计算全部数量
+                        setAllTodoNum();
+
+                        //cv来自函数3
+                        //所有input中 被选中的元素的长度 就是已完成数量
+                        var num = $(".todo-main li label input:checked").length;
+                        $("#allComplateTodos").text(num)
+
+                        //判断是否全选：
+                        //如果num的值 等于所有li的长度 代表全选
+                        if (num === $(".todo-main li").length) {
+                            $("#checkAll").prop("checked", true);
+                        } else {
+                            $("#checkAll").prop("checked", false);
+                        }
+
+                    })
+                })
+            }
+
+
+            //删除已完成
+            allDelete();
+
+            function allDelete() {
+                $("#removeAllComplate").click(function () {
+                    //获取到所有被选中的元素
+                    $($(".todo-main li label input:checked")).parent().parent().slideUp(500,
+                        function () {
+                            $(this).remove();
+
+
+                            //计算全部数量
+                            setAllTodoNum();
+
+                            //cv来自函数3
+                            //所有input中 被选中的元素的长度 就是已完成数量
+                            var num = $(".todo-main li label input:checked").length;
+                            $("#allComplateTodos").text(num)
+
+                            //判断是否全选：
+                            //如果num的值 等于所有li的长度 代表全选
+                            if (num === $(".todo-main li").length) {
+                                $("#checkAll").prop("checked", true);
+                            } else {
+                                $("#checkAll").prop("checked", false);
+                            }
+                        })
                 })
             }
         })
