@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script src="./jquery.js"></script>
+    <script>
+        //给实例化对象扩展
+        $.fn.bg = function (color) {
+            $(this).css("background", color)
+        }
+
+        $.fn.extend({
+            bg: function (color) {
+                $(this).css("background", color)
+            },
+            w: function (w) {
+                $(this).css("width", w)
+            }
+        })
+
+
+        $(".box").bg("green");
+        $(".box").w("300px");
+
+
+        //静态扩展
+        $.px = function (arr) {
+            return arr.sort();
+        }
+
+        $.extend({
+            px: function (arr) {
+                return arr.sort();
+            }
+        })
+        console.log($.px([3, 3, 5, 2, 1]))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 408px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            display: flex;
+        }
+
+        ul li {
+            width: 100px;
+            border: 1px solid #000;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        ul li h2 {
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        ul li .con {
+            position: absolute;
+            width: 100px;
+            height: 300px;
+            background-color: pink;
+            left: 0;
+            top: 42px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav1">
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+    </ul>
+
+    <ul class="nav2">
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+        <li>
+            <h2>title</h2>
+            <div class="con"></div>
+        </li>
+    </ul>
+    <script src="./jquery.js"></script>
+    <script src="./jQuery.nav.js"></script>
+    <script>
+        $(function () {
+            /* $("ul li").mouseenter(function () {
+                $(this).find(".con").stop(true, false).slideDown(500)
+            }).mouseleave(function () {
+                $(this).find(".con").stop(true, false).slideUp(500)
+            }) */
+
+
+            $(".nav1").nav().css("border-color", "red");
+            $(".nav2").nav();
+        })
+    </script>
+</body>
+
+</html>

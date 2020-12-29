@@ -53,7 +53,89 @@
         </div>
     </div>
     <script src="./js/jquery.js"></script>
+    <script>
+        var obj = {
+            doThing: [{
+                    content: "抽烟"
+                },
+                {
+                    content: "喝酒"
+                },
+                {
+                    content: "烫头"
+                },
+            ]
+        }
 
+        $(function () {
+            //1.数据加载
+            bindData();
+
+            function bindData() {
+                $.each(obj.doThing, function (index, item) {
+                    var str = '<li class="todo-list">\
+                        <label>\
+                            <input type="checkbox">\
+                            <span>' + item.content + '</span>\
+                        </label>\
+                        <button class="btn btn-danger">删除</button>\
+                    </li>'
+
+                    $(".todo-main").append(str);
+                })
+            }
+
+            //2.鼠标悬浮特效
+            hoverData();
+
+            function hoverData() {
+                //事件委托绑定给li的父元素
+                $(".todo-main").on("mouseenter", "li", function () {
+                    $(this).css("background", "rgb(204,204,204)").find(".btn").show();
+                }).on("mouseleave", "li", function () {
+                    $(this).css("background", "#fff").find(".btn").hide();
+                })
+            }
+
+
+            //3.计算全部任务数量
+            setAllTodoNum();
+
+            function setAllTodoNum() {
+                $("#allTodos").text($(".todo-main li").length);
+            }
+
+            //4.单选点击 计算数量和控制全选的按钮
+            singleClick();
+
+            function singleClick() {
+                $(".todo-main").on("click", "label", function () {
+                    //首先计算已完成任务数量
+                    /* //方法1遍历所有的input 判断哪一个被选中了 计数器累加
+                    var num = 0;
+                    $(".todo-main li label input").each(function (index, item) {
+                        //被选中了就又了checked属性为ture
+                        if (item.checked) {
+                            num++;
+                        }
+                    })
+                    $("#allComplateTodos").text(num) */
+
+                    //所有input中 被选中的元素的长度 就是已完成数量
+                    var num = $(".todo-main li label input:checked").length;
+                    $("#allComplateTodos").text(num)
+
+                    //判断是否全选：
+                    //如果num的值 等于所有li的长度 代表全选
+                    if (num === $(".todo-main li").length) {
+                        $("#checkAll").prop("checked", true);
+                    }else{
+                        $("#checkAll").prop("checked", false);
+                    }
+                })
+            }
+        })
+    </script>
 
 </body>
 
