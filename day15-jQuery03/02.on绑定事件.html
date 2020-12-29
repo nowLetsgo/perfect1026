@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="dele">卸载事件</button>
+    <button id="one">一次就好</button>
+    <div id="box">box</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            // $("#box").click()
+            $("#box").on("click", function () {
+                console.log("haha1")
+            })
+
+            function fn() {
+                console.log("haha2")
+            }
+            $("#box").on("click", fn)
+
+
+
+
+            //事件委托
+            $("ul").on("click", "li", [1, 2, 3], function (e) {
+                console.log(e);
+                $(this).css("color", "red")
+            })
+
+
+            $("#dele").click(function () {
+                $("#box").off("click", fn)
+            })
+
+            /* $("#one").one("click", function () {
+                alert("一次就好")
+            }) */
+            $("#one").on("click", "", "", function () {
+                alert("一次就好")
+            }, 1)
+        })
+    </script>
+</body>
+
+</html>
