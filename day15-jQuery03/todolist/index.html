@@ -228,7 +228,7 @@
             function allDelete() {
                 $("#removeAllComplate").click(function () {
                     //获取到所有被选中的元素
-                    $($(".todo-main li label input:checked")).parent().parent().slideUp(500,
+                    $(".todo-main li label input:checked").parent().parent().slideUp(500,
                         function () {
                             $(this).remove();
 
