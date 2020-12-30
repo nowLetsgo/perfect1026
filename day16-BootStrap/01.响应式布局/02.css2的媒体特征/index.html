@@ -66,16 +66,30 @@
         }
 
         /* portrait：竖屏 */
-        @media screen and (orientation:portrait) {
+        /* @media screen and (orientation:portrait) {
             #box {
                 background-color: #000;
             }
-        }
+        } */
 
         /* landscape:横屏 */
-        @media screen and (orientation:landscape) {
+        /* @media screen and (orientation:landscape) {
             #box {
                 background-color: #fff;
+            }
+        } */
+
+        @media screen {
+            @media (orientation:portrait) {
+                #box {
+                    background-color: #000;
+                }
+            }
+
+            @media (orientation:landscape) {
+                #box {
+                    background-color: red;
+                }
             }
         }
 
@@ -93,11 +107,11 @@
         } */
 
         /* //not对后边所有语句一起取反 */
-        @media not screen and (min-width: 1000px) {
+        /* @media not screen and (min-width: 1000px) {
             #con {
                 background-color: blue;
             }
-        }
+        } */
     </style>
 </head>
 
