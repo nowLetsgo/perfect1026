@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper-bundle.css">
+    <link rel="stylesheet" href="./animate.min.css">
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img style="width: 80%; height: 30%;" class="ani" swiper-animate-effect="fadeInUp"
+                    swiper-animate-duration="1s" swiper-animate-delay="0.5s"
+                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3319767492,2247347915&fm=26&gp=0.jpg"
+                    alt="">
+                <img style="width: 80%; height: 30%;"
+                    src="https://tva2.sinaimg.cn/crop.0.0.180.180.180/92a7acd3jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1609406463&ssig=8UtYigwe5I"
+                    alt="" class="ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s"
+                    swiper-animate-delay="1.5s">
+                <img style="width: 80%; height: 30%;"
+                    src="https://ww3.sinaimg.cn/mw690/89406091jw1e7uarhqruyj20qn0ezq3f.jpg" alt="" class="ani"
+                    swiper-animate-effect="flipInX" swiper-animate-duration="1s" swiper-animate-delay="2.5s">
+            </div>
+            <div class="swiper-slide">
+                <img style="width: 80%; height: 30%;" src="https://www.swiper.com.cn/demo/progressShow/img/zhiling1.jpg"
+                    alt="" class="ani" swiper-animate-effect="rotateInDownLeft" swiper-animate-duration="1s"
+                    swiper-animate-delay="0.5s">
+                <img style="width: 80%; height: 30%;" src="https://www.swiper.com.cn/demo/progressShow/img/zhiling2.jpg"
+                    alt="" class="ani" swiper-animate-effect="slideInLeft" swiper-animate-duration="1s"
+                    swiper-animate-delay="1.5s">
+                <img style="width: 80%; height: 30%;" src="https://www.swiper.com.cn/demo/progressShow/img/zhiling4.jpg"
+                    alt="" class="ani" swiper-animate-effect="zoomInLeft" swiper-animate-duration="1s"
+                    swiper-animate-delay="2.5s">
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-slide">
+                    <img style="width: 80%; height: 30%;"
+                        src="https://www.swiper.com.cn/demo/progressShow/img/zhiling1.jpg" alt="" class="ani"
+                        swiper-animate-effect="rollIn" swiper-animate-duration="1s" swiper-animate-delay="0.5s">
+                    <img style="width: 80%; height: 30%;"
+                        src="https://www.swiper.com.cn/demo/progressShow/img/zhiling2.jpg" alt="" class="ani"
+                        swiper-animate-effect="bounceInLeft" swiper-animate-duration="1s" swiper-animate-delay="1.5s">
+                    <img style="width: 80%; height: 30%;"
+                        src="https://www.swiper.com.cn/demo/progressShow/img/zhiling4.jpg" alt="" class="ani"
+                        swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="2.5s">
+                </div>
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+
+    </div>
+    <script src="./swiper-bundle.js"> </script>
+    <script src="./swiper.animate1.0.3.min.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+            speed: 1300,
+            // autoplay: {
+            //     delay: 2000, //1秒切换一次
+            // },
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
