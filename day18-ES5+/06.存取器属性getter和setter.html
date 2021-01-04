@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //getter和setter
+        var p = {
+            firstName: "lao",
+            lastName: "wang"
+        }
+        Object.defineProperty(p, "fullName", {
+            get() {
+                return this.firstName + " " + this.lastName;
+            },
+            set(data) {
+                [this.firstName, this.lastName] = data.split(" ");
+            }
+        })
+
+        p.fullName = "xiao zhang"
+        console.log(p)
+    </script>
+</body>
+
+</html>

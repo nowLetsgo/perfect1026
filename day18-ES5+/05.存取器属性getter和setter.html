@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            getter和setter
+            - get propertyName(){} 用来得到当前属性值的回调函数
+
+            - set propertyName(){} 用来监视当前属性值变化的回调函数
+
+            - getter负责查询值，它不带任何参数，setter则负责设置键值，值是以参数的形式传递，在他的函数体中，一切的return都是无效的。
+        
+        
+        
+        */
+        var goods = {
+            price: 1000,
+            count: 3,
+            other: 50,
+            get allPrice() {
+                return (this.price + this.other) * this.count
+            }
+        }
+
+        //想要根据商品的对象的数据得到总价(普通的方法)
+        var allPrice = (goods.price + goods.other) * goods.count;
+        console.log(allPrice)
+
+
+        console.log(goods.allPrice);
+
+
+
+
+        //getter和setter
+        var p = {
+            firstName: "lao",
+            lastName: "wang",
+            get fullName() {
+                return this.firstName + " " + this.lastName;
+            },
+            set fullName(data) {
+                console.log(data);
+                /* this.firstName = data.split(" ")[0];
+                this.lastName = data.split(" ")[1]; */
+                [this.firstName, this.lastName] = data.split(" ");
+
+            }
+        }
+        console.log(p.fullName)
+        p.fullName = "xiao wang";
+        console.log(p)
+    </script>
+</body>
+
+</html>
