@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            常量：不会变化的数据，有些时候有的数据是不允许修改的，所以需要定义常量。
+
+            常量：
+                - 不能给常量赋值(如果是对象，只要不改变地址即可，可以修改对象中的内容)
+                - 常量声明必须赋值
+                - 常量也是块级作用域生效
+                - 常量不能提升
+                - 常量不能重复声明
+                - 全局的常量和let声明的变量都不再是window对象的属性和方法了
+
+        */
+
+        {
+            const PI = 3.14;
+            console.log(PI)
+        }
+
+        {
+            const PI = 3.14;
+            // PI = 2.222;//Assignment to constant variable
+
+            const P = {
+                name: "laowang",
+                age: 18
+            }
+            P.age = 19;
+            console.log(P.age)
+        }
+
+        {
+            // const PI;//Missing initializer in const declaration
+        };
+
+        {
+            // console.log(PI) //Cannot access 'PI' before initialization
+            const PI = 3.14
+            // const PI = 32.14 //Identifier 'PI' has already been declared
+        }
+
+
+
+        const a = 1;
+        let b = 2;
+        console.log(window.a) //un
+        console.log(window.b) //un
+    </script>
+</body>
+
+</html>
