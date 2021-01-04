@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // console.log(a); //报错
+    </script>
+
+    <script>
+        var a = 1;
+    </script>
+
+    <script>
+        console.log(a); //1
+    </script>
+
+    <script>
+        /* 
+        
+            函数作用域和块作用域：
+                函数作用域：
+                    在ES5中,JS的作用域分为全局作用域和局部作用域。通常是用函数区分的，函数内部属于局部作用域
+
+                块级作用域：
+                    - 使用{}扩起来的区域叫做代码块，一个代码块构成一个块级作用域
+                    - 想要让块级作用域生效，则使用let或const来声明一个变量或常量，这个变量或常量就是块级作用域的生效原因
+                    - 多个块级作用域嵌套，也是要构成作用域链
+
+        
+        */
+
+        //一个代码块是可以独立运行的
+        {};
+
+        {
+            //用var声明的变量作用域分类是函数分类的，所以这里的b是全局作用域的
+            var b = 2;
+        }
+        console.log(b); //2
+
+
+        if (false) {
+            //var声明的变量只有在函数中才是局部变量，此时是全局的 会提升到变量对象中
+            //但是有时候需要再if成立的时候，才定义c 并再判断语句中使用c，但是目前var声明的变量是不能实现的
+            var c = 3;
+            //let声明的变量 是块作用域内的变量，只再当前块作用域生效
+            let d = 4;
+        }
+        console.log(c); //undefined
+        console.log(d); //d is not defined
+    </script>
+
+</body>
+
+</html>
