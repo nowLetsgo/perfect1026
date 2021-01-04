@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //全局严格模式
+        'use strict';
+
+        function fn() {
+            //局部的严格模式
+            //当全局或者是祖辈的作用域已经声明了严格模式，则不需要在单独声明
+            'use strict';
+            // a = 10;
+            // console.log(a);
+
+            //2.严格模式下 函数自己调用 this不是指向window
+            console.log(this)
+        }
+        // fn.bind(window)()
+        fn()
+
+        //变量不能未声明就使用
+        // a = 10;
+        // console.log(a);
+
+        console.log(this)
+
+
+
+        //严格模式下 eval成立了新的作用域
+        var b = 1;
+        eval('var b = 2;b++;')
+        console.log(b);
+    </script>
+</body>
+
+</html>

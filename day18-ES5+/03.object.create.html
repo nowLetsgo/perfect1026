@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Object.create()
+                - 创建一个对象的第三种方法
+                - 可以指定对象原型（__proto__）和对象属性的描述
+                - 参数1：对象的原型指向
+                - 参数2：属性及属性的描述
+        */
+
+        var obj = {
+            name: "原型"
+        }
+        //第一个参数必须书写，把obj当做了新对象的上一级原型链的对象
+        //也可以说 newObj1 继承了 obj
+        var newObj1 = Object.create(obj);
+        console.log(newObj1)
+
+        //创建一个干干净净的对象（没有上一级原型链）
+        var newObj2 = Object.create(null)
+        console.log(newObj2);
+
+        //创建一个类似于字面量方式创建的对象
+        var newObj3 = Object.create(Object.prototype);
+        console.log(newObj3)
+
+
+        //创建一个对象 并自带有属性
+        var newObj4 = Object.create(null, {
+            // name: "laowang" // Property description must be an object: laowang Property description must be an object: laowang
+            //属性的描述除了value以外都可以省略，默认值是false
+            name: {
+                value: "laowang",
+                //设置属性值是否可写
+                writable: false,
+                //设置属性值是否可以被枚举出来
+                enumerable: false,
+                //设置属性是否可以被删除  和 当前属性的描述（enumerable、configurable）是否可以被修改
+                configurable: false,
+            }
+        });
+        console.log(newObj4)
+        console.log(newObj4.name)
+
+        console.log("是否可以被重写------")
+        newObj4.name = "xiaowang";
+        console.log(newObj4.name)
+
+        console.log("是否可以被枚举出来-----")
+        for (var key in newObj4) {
+            console.log(key)
+        }
+
+        console.log("是否可以被删除----")
+        delete newObj4.name;
+        console.log(newObj4.name)
+    </script>
+</body>
+
+</html>

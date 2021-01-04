@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Object.create()
+                - 创建一个对象的第三种方法
+                - 可以指定对象原型（__proto__）和对象属性的描述
+                - 参数1：对象的原型指向
+                - 参数2：属性及属性的描述
+            
+            添加新属性：
+                - 直接传统方法添加，可以被修改删除枚举
+
+                - Object.defineProperty()
+                    - 参数1：被扩展的对象
+                    - 参数2：属性名
+                    - 参数3：属性的描述，描述默认值都是false
+
+                - Object.defineProperties()
+                    - 参数1：被扩展的对象
+                    - 参数2：对象（多个属性的key和对象的描述）
+
+                - 以上两个方法作用在普通对象上，对象原来的值不受影响，但是新添加的属性受描述的影响
+                    
+        */
+
+        //创建一个对象 并自带有属性
+        var newObj1 = Object.create(null, {
+            // name: "laowang" // Property description must be an object: laowang Property description must be an object: laowang
+            //属性的描述除了value以外都可以省略，默认值是false
+            name: {
+                value: "laowang",
+                //设置属性值是否可写
+                writable: false,
+                //设置属性值是否可以被枚举出来
+                enumerable: false,
+                //设置属性是否可以被删除  和 当前属性的描述（enumerable、configurable）是否可以被修改
+                configurable: false,
+            }
+        })
+
+
+        //添加属性方法1 成员访问.设置
+        /* newObj1.age = 18;
+
+        newObj1.age = 20;
+        console.log(newObj1)
+        for (var key in newObj1) {
+            console.log(key)
+        }
+        delete newObj1.age
+        console.log(newObj1) */
+
+
+
+        //Object.defineProperty() 
+        /* Object.defineProperty(newObj1, "sex", {
+            value: "nv",
+            //描述默认都是false
+        }) */
+
+
+        //Object.defineProperties() 
+        Object.defineProperties(newObj1, {
+            sex: {
+                value: "nv",
+            },
+            age: {
+                value: 18
+            }
+        })
+
+        console.log("被修改-----")
+        newObj1.sex = "nan";
+        console.log(newObj1)
+
+        console.log("被枚举-----")
+        for (var key in newObj1) {
+            console.log(key)
+        }
+
+        console.log("被删除-----")
+        delete newObj1.sex
+        console.log(newObj1)
+
+
+
+
+        //普通对象被defineproperty方法操作
+        var newObj2 = {
+            name: "liujie"
+        }
+        Object.defineProperties(newObj2, {
+            age: {
+                value: 40
+            }
+        })
+
+        console.log("被修改-----")
+        newObj2.age = 17;
+        console.log(newObj2)
+
+        console.log("被枚举-----")
+        for (var key in newObj2) {
+            console.log(key)
+        }
+
+        console.log("被删除-----")
+        delete newObj2.age
+        console.log(newObj2)
+    </script>
+</body>
+
+</html>

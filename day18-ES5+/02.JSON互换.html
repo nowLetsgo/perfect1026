@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //接受后端的数据一般都是JSON字符串格式
+
+        //假如接受了一个json字符串
+        var dataStr = `{"name": "计算机组成原理","time": 2008,"author": "mrLi"}`;
+        // var dataStr = `123`;
+        // var dataStr = `["h","e","l","l","w"]`;
+
+        var re1 = JSON.parse(dataStr);
+        console.log(re1);
+
+
+        var dataObj = {
+            "name": "计算机组成原理",
+            "time": 2008,
+            "author": "mrLi"
+        }
+        //在很多时候需要把对象转为字符串  则调用JSON.stringify()
+
+        var re2 = JSON.stringify(dataObj);
+        console.log(re2);
+    </script>
+</body>
+
+</html>

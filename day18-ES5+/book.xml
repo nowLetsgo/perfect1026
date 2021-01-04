@@ -1,0 +1,45 @@
+<?xml>
+<book>
+    <com>
+        <name>计算机组成原理</name>
+        <time>2008</time>
+        <author>mrLi</author>
+        <read>
+            <person>杰哥2</person> 
+            <person>杰哥1</person> 
+            <person>杰哥3</person> 
+            <person>杰哥4</person> 
+        </read>
+    </com>
+    <com>
+        <name>计算机组成原理</name>
+        <time>2008</time>
+        <author>mrLi</author>
+        <read>
+            <person>杰哥2</person> 
+            <person>杰哥1</person> 
+            <person>杰哥3</person> 
+            <person>杰哥4</person> 
+        </read>
+    </com>
+    <com>
+        <name>计算机组成原理</name>
+        <time>2008</time>
+        <author>mrLi</author>
+    </com>
+    <com>
+        <name>计算机组成原理</name>
+        <time>2008</time>
+        <author>mrLi</author>
+    </com>
+    <com>
+        <name>计算机组成原理</name>
+        <time>2008</time>
+        <author>mrLi</author>
+    </com>
+    <com>
+        <name>计算机组成原理</name>
+        <time>2008</time>
+        <author>mrLi</author>
+    </com>
+</book>
