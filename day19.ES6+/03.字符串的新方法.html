@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            trim:两端去空格
+            trimStart:前边去空格
+            trimEnd：末尾去空格
+
+            startsWith:判断开头有没有包含某个字符串
+            endsWith:结尾有没有包含某个字符串
+            includes:字符串中有没有包含某个字符串
+
+            repeat(num):将字符串重复num次 生成一个新的字符串
+
+            padStart(num,con)：将一个字符串用con补充至num长度  添加在开头
+            padEnd 补充字符串添加在结尾
+        
+        
+        */
+        /* const str = `   hello  world   `;
+
+        const re1 = str.trim();
+        const re2 = str.trimStart();
+        const re3 = str.trimEnd();
+        console.log(re1, re2, re3); */
+
+
+        /* const str = `hello world`;
+        console.log(str.startsWith("hel"));
+        console.log(str.startsWith("h"));
+        console.log(str.endsWith("l"));
+        console.log(str.endsWith("ld"));
+        console.log(str.includes("ld"));
+        console.log(str.includes("wor"));
+        console.log(str.includes("ddd"));
+        console.log(str.includes(" ")); */
+
+
+        /* const str = `静哥哥，你好骚啊~`;
+        const re = str.repeat(10);
+        console.log(re); */
+
+
+        const str = "静哥哥";
+        console.log(str.padEnd(10, "#"))
+        console.log(str.padStart(10, "#"))
+    </script>
+</body>
+
+</html>

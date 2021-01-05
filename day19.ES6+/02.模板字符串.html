@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        //单引号和双引号的日常使用
+        /* const p = {
+            name: "xiaozhang",
+            age: 19,
+            sex: "nan"
+        }
+
+        const str = "我的名字是" + p.name + ",我的年龄是" + p.age + ",我的性别是" + p.sex;
+        console.log(str);
+
+        const str2 = '<ul>\
+                <li>1</li>\
+                <li>2</li>\
+                <li>3</li>\
+                <li>4</li>\
+            </ul>';
+        console.log(str2); */
+
+        //模板字符串
+        /* const str = `
+        asdfasdf
+        asdf'
+        w"
+        zr  
+        1
+        4!4"
+        
+        qw\`
+        FAS
+        DFAS
+        `;
+        console.log(str); */
+
+
+        const p = {
+            name: "xiaozhang",
+            age: 19,
+            sex: "nan"
+        }
+
+        //模板字符串中直接使用 ${}来嵌套变量
+        const str = `我的名字是${p.name},我的年龄是${p.age},我的性别是${p.sex}`;
+        console.log(str);
+
+
+        //插值中可以书写表达式，（注意区分表达式和语句）
+        const flag = true;
+        const str2 = `hello${flag?"daye":"dameizi"}`
+        console.log(str2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* const obj = {
+            foo: "1",
+            hoo: "2"
+        } */
+
+        //对象的基本解构，讲究的是key的一一对应 和顺序无关 
+        /* const {
+            foo: a,
+            hoo: b
+        } = obj;
+        console.log(a, b) */
+
+        /* const {
+            hoo: b,
+            foo: a,
+        } = obj;
+        console.log(a, b) */
+
+
+        //简写后的书写方式
+        /* const {
+            foo,
+            hoo
+        } = obj;
+        console.log(foo, hoo) */
+
+
+        //可以给解构设置默认值
+        /* const {
+            foo,
+            hoo,
+            aoo = 3
+        } = obj;
+        console.log(foo, hoo, aoo) */
+
+
+        /* const obj2 = {
+            name: "xiaowang",
+            hobby: ["抽烟", "烫头", "养马"]
+        }
+        const {
+            name,
+            hobby: [a, b, c]
+        } = obj2;
+        console.log(name, a, b, c) */
+
+
+
+        //解构出log方法
+
+        /* const {
+            log
+        } = console;
+        log("hagaga") */
+
+        //如果想要获取数组的第一个和最后一个值怎么办
+        /* const arr = [1, 2, 3, 4, 5, 6];
+        const {
+            0: a,
+            [arr.length - 1]: b
+        } = arr;
+        console.log(a, b) */
+
+
+        //应用1
+        /* function fn() {
+            return {
+                name: "xiaowang",
+                age: 18
+            }
+        }
+
+        const {
+            name,
+            age
+        } = fn();
+        console.log(name, age) */
+
+        //应用2 传参的时候使用
+        /* function fn([x, y, z, w]) {
+            console.log(x, y, z, w);
+        }
+        fn([1, 2, 3, 4]) */
+
+
+
+        //对象解构的时候也可以使用rest参数
+        const obj = {
+            name: "xiaowang",
+            age: 18,
+            sex: "nan"
+        }
+
+        const {
+            name,
+            ...rest
+        } = obj;
+        console.log(name, rest)
+    </script>
+</body>
+
+</html>
