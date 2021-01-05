@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Array.from();
+                - 将一个类数组转为数组
+                - 类数组（伪数组） key值是从0开始依次递增，并且拥有length属性
+                - 旧方法 Array.prototype.slice.call(Obj,0);
+
+
+            Array.of():
+                和new Array()类似
+                唯一不一样的就是弥补了newArray中书写一个值的时候 代表长度的不足
+        */
+
+        const obj1 = {
+            0: "a",
+            1: "b",
+            2: "c",
+            length: 3
+        }
+
+        console.log(Array.from(obj1))
+
+
+        const arr1 = new Array(3);
+        console.log(arr1);
+        const arr2 = Array.of(3);
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

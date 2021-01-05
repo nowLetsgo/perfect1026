@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            copyWithin():改变原数组 并返回原数组的引用
+                在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组。
+                参数1：开始覆盖的位置
+                参数2：开始选取的位置
+                参数3：结束选取的位置（不包含）
+
+            fill():填充数组
+                参数1：填充的内容
+                参数2：开始填充的位置
+                参数3：结束填充的位置(不包含)
+
+            includes():
+                检测数组中是否包含某个值
+
+            flat():数组扁平化 拉平数组
+                返回一个新数组
+                参数是拉平的层数
+                如果不确定层数 可以直接书写Infinity
+
+            find():
+                找出第一个符合条件的成员（遍历数组的回调函数中，如果返回true 则符合条件）
+            findIndex():
+                和上边同理 只不过返回的是下标
+
+            reduce():累加器
+                reduce有两个参数
+                参数1：回调函数
+                    四个参数：
+                        参数1：初始值或者上一次回调函数的的返回值
+                        参数2：当前遍历的数组的值
+                        参数3：当前数组值的下标
+                        参数4：原数组
+                参数2：初始值
+        
+        */
+        /* const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const re = arr.copyWithin(0, 4, 6)
+        console.log(re, arr); */
+
+
+        /* const arr = [1, 2, 3, 4, 5, 6];
+        const re = arr.fill(0, 2, 4);
+        console.log(re, arr); */
+
+        /* const arr = [1, 2, 3, 4, 5, 6, [3]];
+        console.log(arr.includes(3)); //true
+        console.log(arr.includes([3])); //false
+        console.log(arr.includes([10])); //false */
+
+        /* const arr = [1, [2, [5, [6], 7], 3], 4];
+        const re = arr.flat(Infinity);
+        console.log(re, arr); */
+
+
+        /* const arr = [{
+            name: "dazhang",
+            age: 12
+        }, {
+            name: "xiaojing",
+            age: 12
+        }, {
+            name: "zhonghai",
+            age: 12
+        }, {
+            name: "xiaojingjing",
+            age: 12
+        }]
+
+        const re = arr.find(function (item, index) {
+            // console.log(item)
+            return item.name.startsWith("xiao");
+        })
+        console.log(re);
+        const re2 = arr.findIndex(function (item, index) {
+            // console.log(item)
+            return item.name.startsWith("xiao");
+        })
+        console.log(re2); */
+
+
+        /* const arr = [1, 2, 3, 4, 5];
+        const re = arr.reduce(function (p, n, i, a) {
+            console.log(p, n, i, a);
+            return p + n;
+        }, 0);
+
+        console.log(re); */
+
+
+        //reduce案例
+        /* const url = "http://www.baidu.com?name=laoli&pass=12345&sex=nan";
+        const re = url.split("?")[1].split("&").reduce(function (p, n) {
+            const [key, value] = n.split("=");
+            p[key] = value;
+            return p;
+        }, {});
+        console.log(re); */
+
+        //如果不指定reduce的第二个参数，则从下标为1开始遍历，p就是下标为0的值（也就是数组的第一个值就是初始值）
+        const arr = [1, 2, 3, 4, 5];
+        const re = arr.reduce(function (p, n, i, a) {
+            console.log(p, n, i, a);
+        });
+    </script>
+</body>
+
+</html>

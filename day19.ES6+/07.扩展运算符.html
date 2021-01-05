@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            扩展运算符：
+                展开数组
+        
+        */
+        /*  const arr = [1, 2, 3, 4, 5];
+         console.log(...arr);
+         const arr2 = [1, ...arr];
+         console.log(arr2) */
+
+
+        //复制数组 浅复制
+        /* const arr = [1, 2, [3, 4]];
+        const arr2 = [...arr];
+        console.log(arr, arr2);
+        console.log(arr === arr2);
+        console.log(arr[2] === arr2[2]); */
+
+        //合并数组(浅层次的)
+        /* const arr1 = [1, 2, 3];
+        const arr2 = [2, 2, 2];
+        const arr3 = [...arr1, ...arr2];
+        console.log(arr3); */
+
+
+        //扩展运算符 也可以展开字符串
+        console.log([..."abcde"]);
+    </script>
+</body>
+
+</html>

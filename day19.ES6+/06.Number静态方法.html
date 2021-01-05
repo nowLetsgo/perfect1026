@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Number.isFinite():检测是否是有限大的数
+            Number.isNaN():类似于isNaN 但是isNaN会先转成number类型
+                - Number.isNaN()只是检测这个是是不是NaN
+
+            Number.isInteger():检测是否是整数 
+
+            Number.parseInt():取整 和parseInt一样
+        
+        */
+
+        console.log(Number.isFinite(2))
+        console.log(Number.isFinite(-2))
+        console.log(Number.isFinite(Infinity))
+        console.log(isNaN("a")) //true
+        console.log(Number.isNaN("a")) //false
+        console.log(Number.isNaN(NaN)) //true
+        console.log(Number.isInteger(1.1)) //false
+        console.log(Number.isInteger(2)) //true
+    </script>
+</body>
+
+</html>

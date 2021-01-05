@@ -14,9 +14,20 @@
             八进制：0o开头（旧版本是0开头）
             十六进制：0x开头
 
-
             二进制：
             1 10 11 100 101 110 111 1000 1001 1010 1011
+
+            十进制转2进制
+            10？
+            10除2  得5  余0
+            5除2   得2  余1
+            2除2   的1  余0 
+            1除2   的0  余1
+            余数倒起来合并即可  1010
+
+            二进制转十进制
+            1010？
+            最后一位0*2的0次方  +  1*2的1次方 + 0*2的2次方 + 1*2的3次方
 
             八进制：
             1 2 3 4 5 6 7 10 11 12 13 14 15 16 17 20
@@ -31,6 +42,51 @@
             parseInt(a,b);把b进制的a转换成10进制
             a.toString(b);把a转成b进制
         */
+
+
+        //把任意10进制数字转换为2进制
+        /* function divideBy2(num) {
+            //声明一个数组，用来保存取余的余数
+            const arr = [];
+
+            //遍历，num只要不为0 则一直计算
+            while (num > 0) {
+                //remainder保存余数
+                let remainder = num % 2;
+                //计算一次余数之后，修改num的值 为除2的得到的值
+                num = parseInt(num / 2);
+                arr.push(remainder);
+            }
+
+            //当退出while的时候，则说明计算完成 数组中保存的是二进制的值的倒序
+            console.log(arr);
+            console.log(arr.reverse().join(""))
+            return arr.reverse().join("");
+        }
+
+        divideBy2(0) */
+
+
+        //把任意10进制数字转换为n进制(n进制为2-36)
+        function divideByn(num, n) {
+            //声明一个数组，用来保存取余的余数
+            const arr = [];
+
+            //遍历，num只要不为0 则一直计算
+            while (num > 0) {
+                //remainder保存余数
+                let remainder = num % n;
+                //计算一次余数之后，修改num的值 为除2的得到的值
+                num = parseInt(num / n);
+                arr.unshift(remainder.toString(n));
+            }
+
+            //当退出while的时候，则说明计算完成 数组中保存的是二进制的值的倒序
+            console.log(arr);
+            return arr.join("");
+        }
+
+        console.log(divideByn(255555, 36))
     </script>
 </body>
 
