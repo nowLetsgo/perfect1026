@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const {
+            log
+        } = console;
+        log(Math.pow(2, 3))
+        log(Math.pow(2, 10))
+        log(Math.pow(3, 3))
+
+        /* 
+            在ES6中提供了 指数运算符  专门用来计算n的m次方  n**m
+
+            如果多个运算则从右向左运算
+        
+        */
+
+        log(2 ** 3)
+        log(3 ** 3)
+
+        log(2 ** 3 ** 2)
+
+
+
+
+        /* 
+            Math新增方法：
+                Math.trunc()：取掉小数
+                Math.sign():判断一个数字是正负0 NaN,如果正数则返回1 负数返回-1 0返回0 NaN返回NaN
+                Math.sqrt():平方根
+                Math.cbrt():立方根
+                Math.hypot():求所有参数平方和 的 平方根
+        
+        */
+
+        log(Math.floor(1.1)) //1
+        log(Math.floor(-1.1)) //-2
+        log(Math.ceil(1.1)) //2
+        log(Math.ceil(-1.1)) //-1
+        log(Math.trunc(1.1)) //1
+        log(Math.trunc(-1.1)) //-1
+
+        log(Math.sign(-2)) //-1
+        log(Math.sign(2)) //1
+        log(Math.sign(0)) //0
+        log(Math.sign(NaN)) //NaN
+        log(Math.sign(Infinity)) //1
+
+        log(Math.sqrt(3))
+        log(Math.sqrt(2))
+
+        log(Math.cbrt(27))
+
+        log(Math.hypot(3, 4))
+        log(Math.hypot(3, 4, 5, 6, 7, 8, 9))
+    </script>
+</body>
+
+</html>
