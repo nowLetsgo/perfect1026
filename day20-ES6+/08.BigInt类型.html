@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //超过53个二进制位 则计算精度不再准确
+        console.log(2 ** 53);
+        console.log(2 ** 53 + 1);
+        console.log(2 ** 53 + 2);
+        console.log(2 ** 53 + 3);
+        console.log(2 ** 53 + 4);
+        console.log(2 ** 53 + 5);
+
+        /* let a = 0.1;
+        let b = 0.2;
+        console.log((a * 10 + b * 10) / 10) */
+
+        //当数字大于 2的1024次方的时候 则不再计算 直接返回无穷大
+        console.log(2 ** 1024);
+        console.log(2 ** 1023 + 2 ** 1023);
+
+        /* 
+            BigInt：
+                - 大整型：只能是整数
+                - 定义的时候 再整数后添加一个n 即是bigint类型
+                - 只能和自身类型进行运算
+
+    
+        */
+
+        const big1 = 1n;
+        console.log(big1);
+        console.log(typeof big1); //bigint
+
+        // console.log(1n + 1); //Cannot mix BigInt and other types, use explicit conversions
+        console.log(1n + 1n);
+
+        // console.log(2n ** 102400n);
+
+        console.log(Number(1n)) //1
+        console.log(String(1n)) //1
+        console.log(Boolean(1n)) //true
+        console.log(1n == 1) //true
+        console.log(1n === 1) //false
+        console.log(new BigInt()) //BigInt is not a constructor
+    </script>
+</body>
+
+</html>

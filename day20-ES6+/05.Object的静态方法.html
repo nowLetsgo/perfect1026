@@ -81,24 +81,6 @@
         const re2 = Object.assign({}, obj1);
         console.log(re2);
         console.log(re2 === obj2);
-
-
-        const obj4 = {
-            name: "laowang",
-            hobby: {
-                name: "liujie"
-            }
-        }
-        //深拷贝
-        function deepClone(obj) {
-            if (typeof obj === 'object') {
-                return Object.assign({}, deepClone(obj));
-            }
-            return obj;
-
-        }
-        const re4 = deepClone(obj4);
-        console.log(re4);
     </script>
 </body>
 

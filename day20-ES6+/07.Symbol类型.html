@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: "xiaowang",
+            age: 19
+        }
+        //我们想要给一个对象添加属性和方法的时候，可能和原有对象的属性重名，我们希望有一个独一无二的值 来替代属性名
+
+        /* 
+            Symbol类型
+                - 代表独一无二的值
+                - 不需要实例化 直接Symbol()即可创建一个独一无二的值
+                - Symbol的参数只用来识别 没有任何作用
+        */
+
+
+        const sy1 = Symbol("sy1");
+        const sy2 = Symbol("sy2");
+        console.log(sy1 === sy2);
+        console.log(typeof sy2); //symbol
+        console.log(sy2); //Symbol()
+
+        //把独一无二的值设置给对象上
+        obj[sy1] = "hahahaha";
+        obj[sy2] = "hehheeh";
+        console.log(obj)
+
+
+        //如果直接设置Symbol 则不再能获取到这个属性的值了
+        obj[Symbol()] = "geggegege";
+
+        //不能用new调用
+        // console.log(new Symbol()) //Symbol is not a constructor
+
+        console.log(String(Symbol())) //Symbol()
+        console.log(Boolean(Symbol())) //true
+        // console.log(Number(Symbol()))
+        console.log(Object(Symbol())); //Symbol {Symbol()}
+        console.log(Object.prototype.toString.call(Symbol()).slice(8, -1).toLowerCase()); //symbol
+
+        //forIn 不能遍历Symbol属性
+        for (let key in obj) {
+            console.log(key) //name  age
+        }
+
+
+        //如果需要遍历对象中的Symbol属性 则直接使用Object.getOwnPropertySymbols(obj)得到一个数组，数组中保存的是Symbol属性的key
+        console.log(Object.getOwnPropertySymbols(obj)); //[Symbol(sy1), Symbol(sy2), Symbol()]
+
+        const symbolArray = Object.getOwnPropertySymbols(obj);
+        symbolArray.forEach(function (item, index) {
+            console.log(obj[item])
+        })
+    </script>
+</body>
+
+</html>

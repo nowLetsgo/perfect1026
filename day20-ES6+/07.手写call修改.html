@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myCall = function (context, ...rest) {
+            var type = typeof context;
+            //判断改变后的上下文对象是null和undefined的时候 this应该指向window
+            if (context === null || context === undefined) {
+                context = window;
+            }
+            //如果改变后的上下文对象是基本包装类型，则this指向其包装对象
+            switch (type) {
+                case "number":
+                    context = new Number(context);
+                    break;
+                case "boolean":
+                    context = new Boolean(context);
+                    break;
+                case "string":
+                    context = new String(context);
+                    break;
+            }
+
+            var key = Symbol('key');
+            context[key] = this;
+            //然后调用context的扩展的这个方法，fn1就会被调用，并且this指向了context
+            var result = context[key](...rest);
+            //此时改变之后的上下文对象context就会多一个方法，所以使用完成之后要删除掉这个方法
+            delete context[key];
+
+            return result;
+        }
+
+        var obj = {
+            name: "laowang",
+            fn: function () {
+                console.log("hello")
+            }
+        }
+
+        function fn1(a, b) {
+            console.log(this, a + b)
+            return "123";
+        }
+
+        console.log(fn1.call(obj, 1, 2));
+        fn1.call(null, 1, 2);
+        fn1.call(undefined, 1, 2);
+        fn1.call(1, 1, 2);
+        fn1.call("str", 1, 2);
+        fn1.call(true, 1, 2);
+
+        fn1.myCall(obj, 1, 2);
+        fn1.myCall(null, 1, 2);
+        fn1.myCall(undefined, 1, 2);
+        fn1.myCall(1, 1, 2);
+        fn1.myCall("str", 1, 2);
+        fn1.myCall(true, 1, 2);
+    </script>
+</body>
+
+</html>

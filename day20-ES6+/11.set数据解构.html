@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Set类型：成员唯一
+                size 返回Set的长度
+                add 添加某个值，返回 Set 结构本身。
+                delete 删除某个值，返回一个布尔值，表示删除是否成功。
+                has 返回一个布尔值，表示该值是否为Set的成员
+                clear 清除所有成员，没有返回值。
+                forEach()：使用回调函数遍历每个成员
+        
+        */
+
+        const set1 = new Set([1, 2, 1, 2, 3, 3, 2, 3, 4, 5, 4, 3, 1]);
+        console.log(set1);
+        console.log(set1.size)
+        console.log(set1.add("a"))
+        console.log(set1.delete(3)) //里边跟的是值 不是下标 返回值是删除成功或失败
+        console.log(set1.has(3)) //false
+        set1.forEach((item, index) => {
+            console.log(item)
+        })
+        console.log(set1.clear())
+        console.log(set1)
+
+
+        //数组去重
+        const arr = [1, 2, 1, 2, 3, 3, 2, 3, 4, 5, 4, 3, 1];
+        const re = [...new Set(arr)];
+        console.log(re);
+
+        //字符串去重
+        const str = "abcddcasgrer";
+        console.log([...new Set([...str])].join(""))
+    </script>
+</body>
+
+</html>
