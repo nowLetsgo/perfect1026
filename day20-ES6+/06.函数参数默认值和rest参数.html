@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //ES5给参数默认值
+        function fn(a, b) {
+            //如果用户没有传递b 则b默认为0
+            // b = b ? b : 0;
+            return a + (b || 0);
+        }
+        console.log(fn(1))
+
+
+        //ES6给参数默认值
+        function fn2(a, b = 0) {
+            return a + b;
+        }
+        console.log(fn2(1, 3));
+
+
+
+        //rest参数
+        //可以收集多余的参数，替代arguments 直接返回的是一个数组
+        //只能写在末尾
+        function add(a, ...rest) {
+            console.log(rest);
+        }
+        add(1, 2, 3, 4, 5)
+    </script>
+</body>
+
+</html>

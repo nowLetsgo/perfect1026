@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Object.is():    
+                判断两个对象是否相等（其实就是全等），一个区别就是修复了NaN不等于NaN的问题
+
+            Object.assing(obj1,obj2,obj3)合并对象
+                把第二个参数之后的对象合并到了第一个对象上，并返回了第一个对象的地址
+        
+        */
+
+        console.log(Object.is(1, 1))
+        console.log(Object.is("a", "a"))
+        console.log(Object.is(NaN, NaN))
+        console.log(NaN === NaN);
+        console.log(Object.is({
+            name: "laowang"
+        }, {
+            name: "laowang"
+        }))
+
+
+        //练习：判断两个对象是否相等
+        var deepEqual = function (x, y) {
+            // 判断两个对象是否指向同一内存时（或者两个基本类型），直接返回true
+            if (x === y) {
+                return true;
+            }
+            //判断两个对象都是对象类型并且不是null的时候
+            else if ((typeof x == "object" && x != null) && (typeof y == "object" && y != null)) {
+                //首先判断两个对象的长度是否相等（通过keys获取键名的迭代器对象）
+                if (Object.keys(x).length != Object.keys(y).length) {
+                    //如果长度不相等 则直接返回false
+                    return false;
+                }
+                //遍历其中一个对象
+                for (var prop in x) {
+                    //判断另一个对象是否在这个对象中出现
+                    if (y.hasOwnProperty(prop)) {
+                        //比较两个对象相同属性的值是否相等，如果不等则返回false
+                        if (!deepEqual(x[prop], y[prop])) {
+                            return false;
+                        }
+                    } else {
+                        //如果一个对象不在这个对象中出现，则直接返回false
+                        return false;
+                    }
+                }
+                //如果以上情况都不返回false，则返回true
+                return true;
+            } else {
+                //当两个值既不是对象，也不相等的时候，则直接返回false
+                return false;
+            }
+        }
+
+
+        const obj1 = {
+            name: "laowang",
+        }
+        const obj2 = {
+            sex: "nan"
+        }
+        const obj3 = {
+            age: 12
+        }
+
+        const re = Object.assign(obj1, obj2, obj3);
+        console.log(re);
+        console.log(re === obj1);
+        //如果不想改变obj1
+        const re2 = Object.assign({}, obj1);
+        console.log(re2);
+        console.log(re2 === obj2);
+
+
+        const obj4 = {
+            name: "laowang",
+            hobby: {
+                name: "liujie"
+            }
+        }
+        //深拷贝
+        function deepClone(obj) {
+            if (typeof obj === 'object') {
+                return Object.assign({}, deepClone(obj));
+            }
+            return obj;
+
+        }
+        const re4 = deepClone(obj4);
+        console.log(re4);
+    </script>
+</body>
+
+</html>

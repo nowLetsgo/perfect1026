@@ -54,13 +54,18 @@
         console.log(flat(arr)); */
 
         //数组的单向对比
-        /* const arr1 = [1, 2, 3, 4, 5, 6, 7];
+        const arr1 = [1, 2, 3, 4, 5, 6, 7];
         const arr2 = [2, 3, 5, 6];
-        const re = arr1.reduce(function (p, c) {
-            arr2.includes(c) || p.push(c);
-            return p;
-        }, []);
-        console.log(re); */
+
+
+        function fn(arr1 = [], arr2 = []) {
+            const re = arr1.reduce(function (p, c) {
+                arr2.includes(c) || p.push(c);
+                return p;
+            }, []);
+            console.log(re);
+        }
+        fn(arr1, arr2)
     </script>
 </body>
 
