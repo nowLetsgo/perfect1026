@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象的key一定最后会解析成字符串
+                - 当给一个已有对象添加属性的时候 可以使用点操作符和中括号操作符
+                    - 中括号操作符通用，无论key是字符串还是变量都可以书写
+                    - 点操作符：只能key是一个字符串的时候
+                    - 中括号操作符使用场景：1.key是一个变量  2.key是一个命名不规范的字符串
+
+                - 创建对象的时候，书写的key都是字符串 不会理解为一个变量（ES5）
+                    ES6提供了一个属性名表达式，当创建对象的时候 把key用中括号括起来，这个key就可以书写变量和字符串了
+        
+        */
+
+        const key1 = "name";
+        const key2 = "sex";
+        const key3 = [1, 2];
+        const obj = {
+            [key2]: "nan",
+            ["hobby"]: "eat",
+            [key3]: "haha"
+        }
+        obj[key1] = "laowang";
+        console.log(obj);
+    </script>
+</body>
+
+</html>

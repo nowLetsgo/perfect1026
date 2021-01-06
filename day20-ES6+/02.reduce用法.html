@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //reduce求数组的最大值
+        /* const arr = [1, 3, 5, 7, 9, 2, 4, 5, 3, 1];
+        const re = arr.reduce(function (p, c) {
+            return p > c ? p : c;
+        });
+        console.log(re); */
+
+
+        //计算字符串中每一个值出现的次数，用对象来表示
+        /* const str = "abcdaedfbcdba";
+        const re = [...str].reduce(function (p, c) {
+            p[c] ? p[c]++ : p[c] = 1;
+            return p;
+        }, {})
+        console.log(re); */
+
+        //数组去重
+        /*  const arr = [1, 3, 3, 2, 1, 1, 4, 5, 3, 4, 7, 6, 5, 7];
+         const re = arr.reduce(function (p, c) {
+             if (p.includes(c)) {
+                 return p;
+             }
+             return [...p, c];
+         }, [])
+         console.log(re); */
+
+        //数组扁平化
+        /* const arr = [
+            [1, 2],
+            [3, 4],
+            [5, [6]]
+        ];
+
+        function flat(arr) {
+            if (!Array.isArray(arr)) {
+                return arr;
+            }
+            return arr.reduce(function (p, c) {
+                return p.concat(flat(c))
+            }, []);
+        }
+
+        console.log(flat(arr)); */
+
+        //数组的单向对比
+        /* const arr1 = [1, 2, 3, 4, 5, 6, 7];
+        const arr2 = [2, 3, 5, 6];
+        const re = arr1.reduce(function (p, c) {
+            arr2.includes(c) || p.push(c);
+            return p;
+        }, []);
+        console.log(re); */
+    </script>
+</body>
+
+</html>

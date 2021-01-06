@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const name = "laowang",
+            age = 18,
+            sex = "nan";
+
+        //传统对象写法
+        const obj = {
+            name: "name",
+            age: age,
+            sex: sex,
+            hobby: "吃红烧肉",
+            do: function () {
+                console.log("打豆豆");
+            }
+        }
+
+        //对象的简写
+        //1.当key和value（一定是一个变量）一样的话，可以直接简写一个key即可
+        //2.对象中的方法可以直接省略 冒号和function 进行简写
+        const obj2 = {
+            name,
+            age,
+            sex,
+            hobby: "吃红烧肉",
+            do() {
+                console.log("打豆豆");
+            }
+        }
+
+        console.log(obj2)
+    </script>
+</body>
+
+</html>
