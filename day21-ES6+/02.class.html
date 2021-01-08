@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES5
+        */
+
+        /* function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.do = function () {
+            console.log("写代码");
+        }
+        Person.doThing = function () {
+            console.log("吃饭");
+        } */
+
+
+        /* 
+            ES6:
+            
+        
+        */
+
+        class Person {
+            //构造器函数。直接给实例化对象扩展属性和方法
+            //只要使用new调用了Person 则constructor函数直接调用
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            //给实例化对象扩展原型方法
+            do() {
+                console.log("写代码");
+            }
+
+            //直接设置给了实例化对象(基本不用)
+            sex = "nv";
+
+            //给Person扩展静态方法
+            static eat() {
+                console.log(eat)
+            }
+        }
+        //直接给原型对象扩展也是可以的
+        Person.prototype.drink = function () {
+            console.log("drink");
+        }
+
+        const liujie = new Person("liujie", 18);
+        console.log(liujie)
+        console.log(Person.eat)
+    </script>
+</body>
+
+</html>

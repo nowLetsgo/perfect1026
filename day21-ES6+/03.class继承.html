@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES5
+        */
+
+        /* function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.do = function () {
+            console.log("写代码");
+        }
+
+        function Teacher(sex, name, age) {
+            Person.call(this, name, age);
+            this.sex = sex;
+        }
+
+        Teacher.prototype = new Person();
+        Teacher.prototype.constructor = Teacher;
+        Teacher.prototype.doThing = function () {
+
+        } */
+
+
+        //ES6
+        class Person {
+            //构造器函数。直接给实例化对象扩展属性和方法
+            //只要使用new调用了Person 则constructor函数直接调用
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            //给实例化对象扩展原型方法
+            do() {
+                console.log("写代码");
+            }
+        }
+
+
+        class Teacher extends Person {
+            constructor(sex, name, age) {
+                //ES6中继承的子类中，如果使用构造函数constructor()那么就必须使用super()方法初始化，这样下面才可以调用this关键字。
+                //super()只能用在子类的构造函数之中，用在其他地方就会报错,这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。
+                super(name, age);
+                this.sex = sex
+            }
+            eat() {
+                console.log("吃")
+            }
+        }
+
+        const t1 = new Teacher("nv", "liujie", "33");
+        console.log(t1)
+        console.log(t1.do)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [1, 2, 3, 4, 5, 6];
+
+        function Iterator() {
+            //定义一个计数器
+            let count = 0;
+            return {
+                next() {
+                    if (count < arr.length) {
+                        return {
+                            value: arr[count++],
+                            done: false
+                        }
+                    }
+                    return {
+                        value: undefined,
+                        done: true
+                    }
+
+                }
+            }
+        }
+
+        //调用arr的iterator之后，会返回一个对象，然后调用这个对象的next方法 会依次拿到数组的值
+        const it = Iterator(arr);
+        console.log(it);
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+
+        //模拟iterator接口的使用
+        /* const it = arr[Symbol.iterator]();
+        console.log(it)
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next())
+        console.log(it.next()) */
+
+        /* 
+            字符串 数组 map set 都部署了iterator接口
+            - 解构赋值
+            - ...扩展运算符
+            - for of
+        
+        */
+        const str = "123";
+        const set1 = new Set("abc");
+        const map1 = new Map([
+            ["name", "laowang"],
+            ["age", 12]
+        ]);
+        const obj1 = {
+            name: "laowang",
+            age: 18
+        }
+        console.log(str[Symbol.iterator]())
+        console.log(set1[Symbol.iterator]())
+        console.log(map1[Symbol.iterator]())
+        // console.log(obj1[Symbol.iterator]())
+        // console.log(Object.entries(obj1))
+    </script>
+</body>
+
+</html>

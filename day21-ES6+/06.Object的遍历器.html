@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.dir(Object)
+        const obj = {
+            name: "xiaowang",
+            age: 19,
+            sex: "nan"
+        }
+        /* 
+            object自身的静态属性和原型对象属性都没有部署iterator
+            但是Object静态属性上拥有entries keys values方法 可以得到键值对、键的、值的遍历器对象
+        
+        */
+        console.log(Object.entries(obj))
+        console.log(Object.keys(obj))
+        console.log(Object.values(obj))
+
+        for (let i of Object.keys(obj)) {
+            console.log(`${i}:${obj[i]}`)
+        }
+    </script>
+</body>
+
+</html>
