@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Promise的原型对象上有三个方法 then catch finally
+                - then 当promise对象返回一个成功状态，则会执行then方法
+                - catch 当promise对象返回一个失败状态，则会执行catch方法
+                - finally 无论promise但会的是成功还是失败，都会执行finally
+                - then catch函数的参数都是一个函数，函数的参数就是调用then的promise对象的promiseResult的值
+
+            then返回值：
+                - then默认返回一个fulfilled成功状态的promise对象,值为undefined
+                - 当then的返回值不是一个promise对象的时候，then仍然是 fulfilled 状态，promiseResult的值就是then中return的值
+                - 当then返回的是一个promise对象的时候，则then的返回值就是这个promise对象
+                - 当then中出现了报错，则then直接返回一个失败的promise对象，并且promiseResult的值就是报错信息
+
+            catch:
+                - 当成功的promise调用了catch，catch内部不会执行 ，而是直接返回原来的promise对象
+                - 其他情况下catch的返回值和then类似
+
+            finally:
+                - 当无论成功或失败都要执行一个操作的时候，则需要使用finally，一般finally书写在最后
+                - 不接收参数 一般不考虑返回值
+        
+        */
+
+
+        const p1 = new Promise((resolve, reject) => {
+            console.log("a start");
+            setTimeout(() => {
+                console.log("a end");
+                reject("a is not ok~");
+            }, 1000)
+        })
+
+        /* const p2 = p1.then((data) => {
+            // console.log("我收到的数据是:" + data)
+            throw new Error("哎呀 错了")
+            const p3 = new Promise((resolve, reject) => {
+                console.log("b start");
+                setTimeout(() => {
+                    console.log("b end");
+                    reject("b ok~");
+                }, 1000)
+            });
+            return p3;
+            // return [1, 2, 3]
+        })
+        console.log(p2); */
+
+
+        const p4 = p1.catch((data) => {
+            console.log("catch的data:" + data);
+            throw new Error("111")
+            // return 1;
+        })
+
+        p4.finally(() => {
+            console.log("结束了~")
+        })
+        console.log(p4)
+    </script>
+</body>
+
+</html>

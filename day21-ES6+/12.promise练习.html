@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            先请求a 再请求b 再请求c
+        
+        */
+        new Promise((resolve, reject) => {
+                console.log("a start");
+                setTimeout(() => {
+                    console.log("a end");
+                    const dataA = {
+                        name: "xiaowang"
+                    }
+                    resolve(dataA);
+                }, 2000)
+            })
+            .then((data) => {
+                return new Promise((resolve, reject) => {
+                    console.log("b start");
+                    setTimeout(() => {
+                        console.log("b end");
+                        const dataB = {
+                            age: "18"
+                        }
+                        resolve(Object.assign({}, data, dataB))
+                    }, 1000)
+                })
+
+            })
+            .then((data) => {
+                return new Promise((resolve, reject) => {
+                    console.log("c start");
+                    setTimeout(() => {
+                        console.log("c end");
+                        const dataC = {
+                            sex: "nv"
+                        }
+                        resolve(Object.assign({}, data, dataC))
+                    }, 1500)
+                })
+
+            })
+            .then((data) => {
+                console.log(data);
+            })
+    </script>
+</body>
+
+</html>

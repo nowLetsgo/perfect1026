@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            - Promise是一个构造函数 需要实例化调用
+                - Promise对象实例化的时候接收一个参数 是一个函数
+                - Promise的参数函数 有两个参数分别是resolve和reject
+
+            - Promise实例化会有一个返回值，是一个promise对象，promise对象中有两个值，一个是[PromiseState]:promise的状态，另一个是[[PromiseResult]]:promise返回后的结果
+
+            - promise对象的三种状态
+                - 当promise没有返回成功或失败的时候，promise将一直都是pending状态（正在进行中），pending状态的promise不会继续向下执行
+                - resolved/fulfilled 成功状态，当在promise中调用了resolve函数，则promise就会返回成功状态，代表当前代码执行成功
+                - rejected 失败状态，当promise中调用了reject函数，则返回失败状态的promise，一般异步执行失败的时候使用
+                - 当Promise实例化内部抛出错误的时候，代码停止运行，可能不会执行resolve或reject,promise的返回值就仍然是pending
+
+            - PromiseResult的值
+                - 当状态是pending的时候，或者resolve和reject函数调用的时候，没有传递任何值，则promise的值一直是undefined
+                - resolve和reject调用的时候 传入的参数，则这个参数就是prmiseResult的值
+
+
+
+        
+        */
+
+        const p1 = new Promise((resolve, reject) => {
+            //会把异步代码写入promise中 进行处理
+            //promise中直接书写的语句都是同步的
+            console.log("promise中的语句")
+            //模拟请求a数据
+            console.log("a数据开始请求")
+            setTimeout(() => {
+
+                console.log("a数据请求成功");
+                //当reject和resolve一起书写的时候，则优先写在前边的
+                // reject("you wrong");
+                const dataA = {
+                    name: "lucy"
+                }
+                resolve(dataA);
+
+                // throw new Error("我不管 反正你错了");
+            }, 2000)
+        });
+        console.log(p1);
+
+        console.log("end")
+    </script>
+</body>
+
+</html>
