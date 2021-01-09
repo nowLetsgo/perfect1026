@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            search方法是检测符合正则的字符在字符串中首次出现的位置，如果没有则返回-1
+            类似于indexOf
+            search可以用于正则匹配，indexOf只能检测固定的字符串，如果不是正则，请使用indexOf
+        
+        */
+        /* const str = "1ab123bc";
+        const reg = /[a-z]/g;
+        console.log(str.search(reg)); */
+
+
+        /* 
+            match：
+                拿到匹配字符串 组成的一个数组
+        
+        */
+        /* const str = "闫海静，静静，海静，宝宝，小可爱";
+        const reg = /[\u4E00-\u9FA5]+/gi;
+        console.log(str.match(reg)); */
+
+
+        /* 
+            split可以传入正则，让字符串按照正则分割为数组
+        */
+        const str = "闫海静a静静b海静d宝宝c小可爱";
+        const reg = /[a-z]+/gi;
+        console.log(str.split(reg))
+    </script>
+</body>
+
+</html>

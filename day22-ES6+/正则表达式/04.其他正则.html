@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const str = "1*&!Hk3023";
+        const reg1 = /[^0-9]/gi;
+        console.log(str.match(reg1));
+
+
+        const str2 = "div span div divvvv";
+        const reg2 = /\bdiv\b/gi;
+        console.log(str2.match(reg2));
+
+
+        const str3 = "1*&2!3Hk3023";
+        const reg3 = /\D+/gi;
+        console.log(str3.match(reg3));
+    </script>
+</body>
+
+</html>

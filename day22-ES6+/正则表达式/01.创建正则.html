@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            RegExp对象实例化可以得到正则
+                - 参数1 正则字符串
+                - 参数2 正则描述   
+                    g:全局匹配
+                    i：大小写
+        
+        */
+        const reg1 = new RegExp('\s', "gi");
+        console.log(reg1); // /s/gi
+
+
+        //字面量的方法创建
+        const reg2 = /\s/gi;
+
+        /* 
+            replace是字符串的方法
+                - 参数1 是被替换的字符串 可以书写正则表达式
+                - 参数2 是要替换的内容
+        
+        */
+        const str1 = "1 2 3 45 6 sdf sdfasd fsry 425";
+        console.log(str1.replace(reg2, ""));
+
+
+        const str2 = "我喜欢男的，男的叫做闫海静，闫海静真的很可爱";
+        const reg3 = /男|可爱/gi;
+        console.log(str2.replace(reg3, "**"));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.onclick = function () {
+            // const re = import("./02.js");
+
+            import("./01.js")
+                .then(() => {
+                    console.log("chenggong")
+                })
+                .catch(() => {
+                    console.log("shibai")
+                })
+        }
+
+        
+    </script>
+</body>
+
+</html>
