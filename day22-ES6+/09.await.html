@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            async将函数变成异步函数，返回promise对象
+            await必须在async函数中使用，后边等待异步代码执行
+
+            await等待的必须是一个promise对象
+                - 等待的promise对象如果是pending状态，则永远等下去
+                - 等待的promise对象变成成功状态，则继续向下执行
+                - 等待的promise对象变成了失败状态，则直接退出async函数，async返回这个失败的promise对象
+
+            await的返回值在等待的promise对象是成功状态才有意义
+                值是这个promise对象的值
+        */
+
+        const fn = async function () {
+            console.log(1);
+            const re = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(2);
+                    resolve("a")
+                    // reject("aya");
+                }, 2000)
+            })
+            console.log(re);
+            await console.log(3);
+        }
+
+        const re = fn();
+        console.log(re);
+        re.then((data) => {
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

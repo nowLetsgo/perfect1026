@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script async>
+        async function fn() {
+            const data1 = await new Promise((resolve, reject) => {
+                console.log("a start");
+
+                setTimeout(() => {
+                    try {
+                        // throw new Error("a有错")
+                        console.log("a end");
+                        resolve({
+                            name: "laowang"
+                        })
+                    } catch (err) {
+                        reject(err)
+                    }
+                }, 2000)
+
+            })
+
+            const data2 = await new Promise((resolve, reject) => {
+                console.log("b start");
+
+                setTimeout(() => {
+                    try {
+                        // throw new Error("b有错")
+                        console.log("b end");
+                        resolve(Object.assign({}, {
+                            age: 18
+                        }, data1))
+                    } catch (err) {
+                        reject(err)
+                    }
+                }, 1000)
+
+            })
+
+            const data3 = await new Promise((resolve, reject) => {
+                console.log("c start");
+
+                setTimeout(() => {
+                    try {
+                        throw new Error("c有错")
+                        console.log("c end");
+                        resolve(Object.assign({}, {
+                            sex: "nan"
+                        }, data2))
+                    } catch (err) {
+                        reject(err)
+                    }
+                }, 1500)
+
+            })
+
+            return data3;
+        }
+
+        const re = fn();
+        console.log(re);
+        re.then((data) => {
+            console.log(data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>
