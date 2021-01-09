@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Promise.allSettled:
+                - 接受多个promise对象
+                - 状态：
+                    - 当传入promise对象状态改变成成功或失败的时候
+                    - 永远成功
+                - 值：
+                    当传入promise对象状态改变成成功或失败的时候，
+                    所有promise对象 组成的一个数组(数组中是一个保存promise状态和值的对象（不是promise对象）) 
+        
+        
+        */
+
+        const p1 = new Promise((resolve, reject) => {
+            console.log("a Start");
+            setTimeout(() => {
+                try {
+                    console.log("a end");
+                    // throw new Error("cuole");
+                    resolve({
+                        name: "laowang"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+
+            }, 2000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("b Start");
+            setTimeout(() => {
+                try {
+                    console.log("b end")
+                    // throw new Error("cuole");
+                    resolve({
+                        age: "18"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+
+
+            }, 1000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("c Start");
+            setTimeout(() => {
+                try {
+                    console.log("c end");
+                    // throw new Error("cuole");
+                    resolve({
+                        sex: "nan"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+            }, 1500)
+        })
+
+        const re = Promise.allSettled([p1, p2, p3]);
+        console.log(re);
+        re.then((data) => {
+            console.log(data);
+            data.forEach((item, index) => {
+                console.log(item.value)
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Promise.all()
+                - 返回一个promise对象
+                - 状态
+                    - 当Promise.all中所有的promise对象的都是成功状态，则Promise.all返回值就是成功状态
+                    - 当任意一个Promise.all中的promise对象返回的是失败，则Promise.all返回值就是失败状态
+                - 返回值
+                    - 当全部成功，则是所有promise对象值组成的数组
+                    - 当失败，则是第一个失败promise对象的值
+                
+        
+        */
+        //不使用promise.all
+        /* let count = 0;
+        const p1 = new Promise((resolve, reject) => {
+            console.log("a Start");
+            setTimeout(() => {
+                console.log("a end");
+                count++;
+                if (count === 3) {
+                    console.log("全部请求成功")
+                    resolve();
+                }
+            }, 2000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("b Start");
+            setTimeout(() => {
+                console.log("b end");
+                count++;
+                if (count === 3) {
+                    console.log("全部请求成功")
+                    resolve();
+                }
+            }, 1000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("c Start");
+            setTimeout(() => {
+                console.log("c end");
+                count++;
+                if (count === 3) {
+                    console.log("全部请求成功")
+                    resolve();
+                }
+            }, 1500)
+        }) */
+
+
+
+        const p1 = new Promise((resolve, reject) => {
+            console.log("a Start");
+            setTimeout(() => {
+                console.log("a end");
+                resolve({
+                    name: "laowang"
+                });
+
+            }, 2000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("b Start");
+            setTimeout(() => {
+                try {
+                    console.log("b end")
+                    throw new Error("cuole");
+                    resolve({
+                        age: "18"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+
+
+            }, 1000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("c Start");
+            setTimeout(() => {
+                console.log("c end");
+                resolve({
+                    sex: "nan"
+                });
+            }, 1500)
+        })
+
+        const re = Promise.all([p1, p2, p3]);
+        console.log(re);
+        re.then((data) => {
+            console.log(data);
+            const re = data.reduce((p, c) => {
+                return Object.assign(p, c)
+            }, {});
+            console.log(re);
+        }).catch((err) => {
+            console.log(err)
+        })
+    </script>
+</body>
+
+</html>

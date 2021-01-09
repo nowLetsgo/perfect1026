@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        new Promise((resolve, reject) => {
+                //同步区域
+                //用来盛放异步代码
+                setTimeout(() => {
+                    console.log("a");
+                    resolve();
+                    reject();
+                })
+            })
+            .then(() => {})
+
+        /* 
+        
+            then：
+                - 返回的是promise
+                    then的返回值 就是这个promise对象
+
+                - 返回的不是promise
+                    默认返回的都是成功的promise对象
+                    resulte就是return的值
+                
+                - 内部报错的时候失败
+        
+        */
+    </script>
+</body>
+
+</html>

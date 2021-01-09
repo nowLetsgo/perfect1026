@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Promise.race:
+                - 接收多个promise对象
+                - 返回一个新的promise对象
+                - 返回的promise对象的状态，是所有的promise对象中，最先执行完成的，无论成功还是失败
+        
+        */
+
+        const p1 = new Promise((resolve, reject) => {
+            console.log("a Start");
+            setTimeout(() => {
+                try {
+                    console.log("a end");
+                    // throw new Error("cuole");
+                    resolve({
+                        name: "laowang"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+
+            }, 2000)
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("b Start");
+            setTimeout(() => {
+                try {
+                    console.log("b end")
+                    throw new Error("cuole");
+                    resolve({
+                        age: "18"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+
+
+            }, 1000)
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("c Start");
+            setTimeout(() => {
+                try {
+                    console.log("c end");
+                    // throw new Error("cuole");
+                    resolve({
+                        sex: "nan"
+                    });
+                } catch (e) {
+                    reject(e)
+                }
+            }, 1500)
+        })
+
+        const re = Promise.race([p1, p2, p3]);
+        console.log(re);
+    </script>
+</body>
+
+</html>

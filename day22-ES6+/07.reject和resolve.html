@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Promise.reject():直接返回一个失败的promise对象
+            promise.resolve()：直接返回一个成功的promise对象
+        */
+
+
+        Promise.resolve({
+            name: "laowang"
+        }).then((data) => {
+            console.log(data);
+        })
+    </script>
+</body>
+
+</html>
